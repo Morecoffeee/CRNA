@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CRNA School</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        candy: {
+                            bg: '#FFF8F0',
+                            cream: '#FFFCF7',
+                            ink: '#1A1035',
+                            purple: '#7C3AED',
+                            purpleMid: '#9D60F0',
+                            purpleLight: '#EDE9FF',
+                            pink: '#F43F82',
+                            pinkLight: '#FFE4EF',
+                            yellow: '#FBBF24',
+                            yellowLight: '#FEF9C3',
+                            teal: '#0D9488',
+                            tealLight: '#CCFBF1',
+                            orange: '#F97316',
+                            orangeLight: '#FFF0E6',
+                            green: '#16A34A',
+                            greenLight: '#DCFCE7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; }
+        body, html { 
+            font-family: 'Nunito', sans-serif; 
+            background-color: #FFF8F0;
+            color: #1A1035;
+            overflow-x: hidden;
+        }
+
+        /* === PLAYFUL CURSOR === */
+        :root {
+            --cur-normal: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="5" cy="5" r="4" fill="%237C3AED" stroke="white" stroke-width="1.5"/><line x1="5" y1="9" x2="16" y2="28" stroke="%237C3AED" stroke-width="3" stroke-linecap="round"/><line x1="16" y1="28" x2="22" y2="20" stroke="%237C3AED" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="20" x2="22" y2="20" stroke="%237C3AED" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="20" x2="5" y2="9" stroke="%237C3AED" stroke-width="3" stroke-linecap="round"/></svg>') 5 2, auto;
+            --cur-pointer: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="5" cy="5" r="4" fill="%23F43F82" stroke="white" stroke-width="1.5"/><line x1="5" y1="9" x2="16" y2="28" stroke="%23F43F82" stroke-width="3" stroke-linecap="round"/><line x1="16" y1="28" x2="22" y2="20" stroke="%23F43F82" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="20" x2="22" y2="20" stroke="%23F43F82" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="20" x2="5" y2="9" stroke="%23F43F82" stroke-width="3" stroke-linecap="round"/></svg>') 5 2, pointer;
+        }
+        body { cursor: var(--cur-normal) !important; }
+        a, button, [onclick] { cursor: var(--cur-pointer) !important; }
+
+        /* === BACKGROUND DOODLES === */
+        .doodle-bg {
+            background-color: #FFF8F0;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(124,58,237,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(244,63,130,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(251,191,36,0.04) 0%, transparent 60%);
+        }
+
+        /* === LOCK SCREEN === */
+        .lock-bg {
+            background: linear-gradient(135deg, #1A1035 0%, #2D1B69 50%, #1A1035 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .lock-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(124,58,237,0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(244,63,130,0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 10%, rgba(251,191,36,0.15) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        /* floating stars/dots on lock screen */
+        .star { position: absolute; border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* === VIALS === */
+        .vial-wrap {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: vialFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+        }
+        .vial-wrap:nth-child(1) { animation-delay: 0s; }
+        .vial-wrap:nth-child(2) { animation-delay: 0.7s; }
+        .vial-wrap:nth-child(3) { animation-delay: 1.4s; }
+        .vial-wrap:nth-child(4) { animation-delay: 2.1s; }
+        
+        @keyframes vialFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .vial-wrap:hover {
+            transform: scale(1.12) translateY(-14px) rotate(0deg) !important;
+            animation-play-state: paused;
+            filter: drop-shadow(0 20px 20px rgba(0,0,0,0.4));
+        }
+        .vial-wrap:active {
+            transform: scale(0.92) translateY(4px) !important;
+        }
+
+        /* vial glow on correct click */
+        @keyframes vialPop {
+            0% { transform: scale(0.9); filter: drop-shadow(0 0 0px var(--glow)); }
+            40% { transform: scale(1.18); filter: drop-shadow(0 0 24px var(--glow)); }
+            70% { transform: scale(1.08); filter: drop-shadow(0 0 12px var(--glow)); }
+            100% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3)); }
+        }
+        .vial-popped { animation: vialPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important; }
+
+        /* === PROGRESS DOTS === */
+        .progress-dot {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.25);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .progress-dot.filled {
+            background: #FBBF24;
+            border-color: #FBBF24;
+            transform: scale(1.25);
+            box-shadow: 0 0 12px rgba(251,191,36,0.6);
+        }
+
+        /* === LOCK CARD === */
+        .lock-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 28px;
+            padding: 40px 32px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        /* unlock animation */
+        @keyframes unlockBlast {
+            0% { opacity: 1; transform: scale(1); }
+            30% { transform: scale(1.04); }
+            100% { opacity: 0; transform: scale(1.15); filter: blur(16px); }
+        }
+        .unlocking { animation: unlockBlast 0.7s ease-out forwards; }
+
+        /* shake */
+        @keyframes shakeCard {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            15% { transform: translateX(-12px) rotate(-1.5deg); }
+            30% { transform: translateX(12px) rotate(1.5deg); }
+            45% { transform: translateX(-8px) rotate(-1deg); }
+            60% { transform: translateX(8px) rotate(1deg); }
+            75% { transform: translateX(-4px) rotate(-0.5deg); }
+        }
+        .shake { animation: shakeCard 0.55s ease-in-out; }
+
+        /* === NAV === */
+        .nav-bar {
+            background: linear-gradient(90deg, #7C3AED, #9D4FE8, #B45AF5);
+            border-bottom: 4px solid #1A1035;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 0 #1A1035, 0 6px 20px rgba(124,58,237,0.4);
+        }
+        .nav-pill {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: 2.5px solid transparent;
+            white-space: nowrap;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.01em;
+        }
+        .nav-pill:hover:not(.active) {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .nav-pill.active {
+            background: #FBBF24;
+            color: #1A1035;
+            border-color: #1A1035;
+            box-shadow: 3px 3px 0 #1A1035;
+            transform: translateY(-3px);
+        }
+
+        /* === CARDS === */
+        .fun-card {
+            background: #FFFCF7;
+            border-radius: 20px;
+            border: 2.5px solid #1A1035;
+            box-shadow: 5px 5px 0 #1A1035;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .fun-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 #1A1035;
+        }
+
+        .fun-card-purple { border-color: #7C3AED; box-shadow: 5px 5px 0 #7C3AED; }
+        .fun-card-purple:hover { box-shadow: 7px 7px 0 #7C3AED; }
+        .fun-card-pink { border-color: #F43F82; box-shadow: 5px 5px 0 #F43F82; }
+        .fun-card-pink:hover { box-shadow: 7px 7px 0 #F43F82; }
+        .fun-card-teal { border-color: #0D9488; box-shadow: 5px 5px 0 #0D9488; }
+        .fun-card-teal:hover { box-shadow: 7px 7px 0 #0D9488; }
+
+        /* sticker badge */
+        .sticker {
+            display: inline-flex;
+            align-items: center;
+            background: #FBBF24;
+            color: #1A1035;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 999px;
+            border: 2px solid #1A1035;
+            box-shadow: 2px 2px 0 #1A1035;
+        }
+        .sticker-purple { background: #EDE9FF; color: #7C3AED; }
+        .sticker-pink { background: #FFE4EF; color: #F43F82; }
+        .sticker-teal { background: #CCFBF1; color: #0D9488; }
+
+        /* section heading underline */
+        .heading-squiggle {
+            position: relative;
+            display: inline-block;
+        }
+        .heading-squiggle::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -4px;
+            height: 6px;
+            background: #FBBF24;
+            border-radius: 3px;
+            transform: rotate(-1deg);
+        }
+
+        /* === PAGE TRANSITIONS === */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.96) translateY(12px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .page-section { display: none; }
+        .page-section.active { 
+            display: block; 
+            animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* === ACCORDION === */
+        .accordion-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+        .accordion-body > div { overflow: hidden; }
+        .accordion-open .accordion-body { grid-template-rows: 1fr; }
+        .accordion-open .acc-icon { transform: rotate(180deg); }
+        .acc-icon { transition: transform 0.3s ease; }
+
+        /* === COHORT GRID === */
+        .cohort-card {
+            background: #FFFCF7;
+            border-radius: 16px;
+            border: 2px solid #1A1035;
+            box-shadow: 3px 3px 0 #1A1035;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+        }
+        .cohort-card:hover {
+            transform: translate(-2px, -4px) rotate(-1deg);
+            box-shadow: 5px 7px 0 #7C3AED;
+        }
+
+        /* === POLAROID GALLERY === */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px;
+            border: 2px solid #e5e7eb;
+            box-shadow: 3px 3px 0 #1A1035;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) translateY(-6px) !important;
+            box-shadow: 6px 8px 0 #7C3AED;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* scrollbar hide */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* wobbly dividers */
+        .wavy-divider { width: 100%; overflow: hidden; line-height: 0; }
+    </style>
+</head>
+<body class="doodle-bg min-h-screen overflow-x-hidden">
+
+    <!-- ======================== LOCK SCREEN ======================== -->
+    <div id="lock-screen" class="lock-bg fixed inset-0 z-[100] flex items-center justify-center p-4">
+
+        <!-- Decorative stars -->
+        <div class="star bg-yellow-300" style="width:6px;height:6px;top:12%;left:18%;animation-delay:0.2s"></div>
+        <div class="star bg-pink-400" style="width:4px;height:4px;top:25%;left:75%;animation-delay:0.8s"></div>
+        <div class="star bg-purple-400" style="width:8px;height:8px;top:65%;left:12%;animation-delay:1.4s"></div>
+        <div class="star bg-yellow-300" style="width:5px;height:5px;top:80%;left:82%;animation-delay:0.5s"></div>
+        <div class="star bg-pink-300" style="width:4px;height:4px;top:40%;left:90%;animation-delay:1.1s"></div>
+        <div class="star bg-purple-300" style="width:6px;height:6px;top:55%;left:6%;animation-delay:0.3s"></div>
+        <div class="star bg-yellow-200" style="width:4px;height:4px;top:8%;left:55%;animation-delay:1.8s"></div>
+        <div class="star bg-pink-400" style="width:5px;height:5px;top:90%;left:40%;animation-delay:0.9s"></div>
+
+        <div id="lock-card" class="lock-card max-w-xl w-full text-center">
+            
+            <!-- Header -->
+            <div class="mb-2">
+                <div class="text-5xl mb-4" style="filter: drop-shadow(0 0 16px rgba(251,191,36,0.6))">💉</div>
+                <h1 class="text-white mb-2" style="font-family:'Fredoka',sans-serif; font-size:2rem; font-weight:700; letter-spacing:0.01em;">Clinical Area Restricted</h1>
+                <p class="text-white/60 text-sm font-semibold">Enter the <span class="text-yellow-300 font-bold">Induction Sequence</span> to gain access</p>
+            </div>
+
+            <!-- Hint pills -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 mt-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(244,63,130,0.2);color:#FDA4AF;border:1px solid rgba(244,63,130,0.3)">Hint: think pre-op</span>
+            </div>
+
+            <!-- Vials SVG defs -->
+            <svg width="0" height="0" class="hidden">
+                <defs>
+                    <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+                        <stop offset="18%" stop-color="rgba(255,255,255,0.1)"/>
+                        <stop offset="100%" stop-color="rgba(0,0,0,0.08)"/>
+                    </linearGradient>
+                    <linearGradient id="crimp" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#888"/>
+                        <stop offset="30%" stop-color="#ddd"/>
+                        <stop offset="60%" stop-color="#bbb"/>
+                        <stop offset="100%" stop-color="#777"/>
+                    </linearGradient>
+                    <filter id="vialGlow">
+                        <feGaussianBlur stdDeviation="2" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                </defs>
+            </svg>
+
+            <!-- Vials Row -->
+            <div class="flex justify-center gap-5 sm:gap-8 mb-8 flex-wrap">
+
+                <!-- MIDAZOLAM (orange) -->
+                <div class="vial-wrap" style="--glow: rgba(249,115,22,0.9);" onclick="handleVial('midazolam', this)" title="Midazolam">
+                    <svg viewBox="0 0 80 150" width="68" height="130">
+                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#F97316"/>
+                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
+                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
+                        <!-- body -->
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <!-- liquid fill -->
+                        <path d="M17 80 L63 80 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(249,115,22,0.18)"/>
+                        <!-- label -->
+                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
+                        <rect x="17" y="68" width="46" height="13" fill="#F97316" rx="2"/>
+                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">MIDAZOLAM</text>
+                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">1 mg/mL</text>
+                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Versed® IV</text>
+                        <!-- shine -->
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
+                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
+                    </svg>
+                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Midazolam</p>
+                </div>
+
+                <!-- FENTANYL (blue) -->
+                <div class="vial-wrap" style="--glow: rgba(14,165,233,0.9);" onclick="handleVial('fentanyl', this)" title="Fentanyl">
+                    <svg viewBox="0 0 80 150" width="68" height="130">
+                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#0EA5E9"/>
+                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
+                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <path d="M17 70 L63 70 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(14,165,233,0.15)"/>
+                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
+                        <rect x="17" y="68" width="46" height="13" fill="#0EA5E9" rx="2"/>
+                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">FENTANYL</text>
+                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">50 mcg/mL</text>
+                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Sublimaze® IV</text>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
+                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
+                    </svg>
+                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Fentanyl</p>
+                </div>
+
+                <!-- PROPOFOL (yellow/milky) -->
+                <div class="vial-wrap" style="--glow: rgba(251,191,36,0.9);" onclick="handleVial('propofol', this)" title="Propofol">
+                    <svg viewBox="0 0 80 150" width="68" height="130">
+                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#FBBF24"/>
+                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
+                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <!-- milky white propofol fill -->
+                        <path d="M17 50 L63 50 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(248,248,245,0.9)"/>
+                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
+                        <rect x="17" y="68" width="46" height="13" fill="#FBBF24" rx="2"/>
+                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">PROPOFOL</text>
+                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">10 mg/mL</text>
+                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Diprivan® IV</text>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
+                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
+                    </svg>
+                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Propofol</p>
+                </div>
+
+                <!-- KETAMINE (pink) -->
+                <div class="vial-wrap" style="--glow: rgba(236,72,153,0.9);" onclick="handleVial('ketamine', this)" title="Ketamine">
+                    <svg viewBox="0 0 80 150" width="68" height="130">
+                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#EC4899"/>
+                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
+                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <path d="M17 75 L63 75 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(236,72,153,0.1)"/>
+                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
+                        <rect x="17" y="68" width="46" height="13" fill="#EC4899" rx="2"/>
+                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">KETAMINE</text>
+                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">10 mg/mL</text>
+                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Ketalar® IV</text>
+                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
+                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
+                    </svg>
+                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Ketamine</p>
+                </div>
+
+            </div>
+
+            <!-- Progress dots -->
+            <div class="flex justify-center gap-3 mb-4" id="progress-dots">
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+
+            <!-- Message -->
+            <div class="h-7 flex items-center justify-center">
+                <p id="lock-msg" class="text-sm font-bold transition-all duration-300"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================== MAIN APP ======================== -->
+    <div id="main-app" class="hidden flex flex-col min-h-screen">
+
+        <!-- Nav -->
+        <nav class="nav-bar py-3 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center gap-2 overflow-x-auto scrollbar-hide py-1 px-1 justify-start sm:justify-center">
+                    <button class="nav-pill active" onclick="showPage('home',this)">🏡 Home</button>
+                    <button class="nav-pill" onclick="showPage('faculty',this)">🧑‍🏫 Faculty</button>
+                    <button class="nav-pill" onclick="showPage('cohort',this)">🎓 Cohort 1</button>
+                    <button class="nav-pill" onclick="showPage('survival',this)">🧭 Survival</button>
+                    <button class="nav-pill" onclick="showPage('local',this)">☕ Local</button>
+                    <button class="nav-pill" onclick="showPage('gallery',this)">📸 Gallery</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow max-w-4xl mx-auto w-full p-4 sm:p-6 lg:p-8">
+
+            <!-- ===== HOME ===== -->
+            <section id="home" class="page-section active">
+                <div class="fun-card fun-card-purple p-8 sm:p-10 mt-4 relative overflow-hidden">
+                    <!-- decorative bg blobs -->
+                    <div class="absolute -top-8 -right-8 w-40 h-40 rounded-full opacity-10" style="background:radial-gradient(circle, #7C3AED, transparent)"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full opacity-10" style="background:radial-gradient(circle, #F43F82, transparent)"></div>
+
+                    <!-- sticker in corner -->
+                    <div class="absolute -top-4 -right-4 w-20 h-20 rounded-full flex items-center justify-center border-4 border-white font-bold text-center leading-tight text-sm rotate-12" style="background:#FBBF24;box-shadow:3px 3px 0 #1A1035;font-family:'Fredoka',sans-serif">
+                        Hi!<br>👋
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="sticker sticker-purple mb-4 inline-block">Hunter College CRNA DNP</span>
+                    </div>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:#F43F82;line-height:1.2;margin-bottom:0.4rem">
+                        🎉 CONGRATULATIONS! 🎉
+                    </h2>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:700;color:#1A1035;line-height:1.1;margin-bottom:1.25rem">
+                        Welcome, <span style="color:#7C3AED">Cohort 2!</span>
+                    </h2>
+
+                    <p class="text-lg font-semibold leading-relaxed mb-8" style="color:#4B3D6E;max-width:60ch">
+                        Congratulations on unlocking the site and making it to CRNA school! We know the transition can be overwhelming, so our cohort put this together to help you navigate your first year. Take a deep breath — you've got this.
+                    </p>
+
+                    <div class="rounded-2xl p-6 flex items-start gap-4 border-2 border-dashed" style="background:#FEF9C3;border-color:#FBBF24;transform:rotate(-0.5deg)">
+                        <span class="text-3xl">⚖️</span>
+                        <div>
+                            <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035;margin-bottom:4px">Work-Life Balance Pro Tip</h4>
+                            <p class="font-semibold" style="color:#78716C">Sleep is a non-negotiable study tool — your hippocampus consolidates memory while you're unconscious, which is ironic because making other people unconscious is literally your job now. Protect your sleep like you protect your IV access. 😴💉</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- quick links row -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+                    <button onclick="showPage('survival', document.querySelectorAll('.nav-pill')[3])" class="fun-card p-5 text-center group border-2" style="border-color:#F43F82;box-shadow:4px 4px 0 #F43F82">
+                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">🧭</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Survival Guide</p>
+                    </button>
+                    <button onclick="showPage('local', document.querySelectorAll('.nav-pill')[4])" class="fun-card p-5 text-center group border-2" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
+                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">☕</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Local Spots</p>
+                    </button>
+                    <button onclick="showPage('gallery', document.querySelectorAll('.nav-pill')[6])" class="fun-card p-5 text-center group border-2" style="border-color:#EC4899;box-shadow:4px 4px 0 #EC4899">
+                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">📸</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gallery</p>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ===== FACULTY ===== -->
+            <section id="faculty" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker sticker-teal mb-3 inline-block">Our Instructors</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035;line-height:1.1">Meet Our Faculty</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">The experts guiding you through the next three years.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div class="fun-card fun-card-purple p-6 flex flex-col items-center text-center group">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#7C3AED;box-shadow:3px 3px 0 #1A1035">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Stephen Yermal" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <span class="sticker sticker-purple text-[10px] mb-3">Program Director</span>
+                        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Stephen J. Yermal, PhD, RN, CRNA</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-4" style="color:#7C3AED">William Randolph Hearst Endowed Chair & Clinical Professor</p>
+                        <div class="w-full rounded-xl p-4 text-left relative" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
+                            <span class="absolute -top-3 left-3 text-2xl">✏️</span>
+                            <p class="text-sm font-semibold pt-1" style="color:#4B3D6E">Stephen Yermal is the founding Specialty Director of the Nurse Anesthesia DNP program and the William Randolph Hearst Endowed Chair in Clinical Nursing at the Hunter-Bellevue School of Nursing.</p>
+                        </div>
+                    </div>
+
+                    <div class="fun-card fun-card-pink p-6 flex flex-col items-center text-center group">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#F43F82;box-shadow:3px 3px 0 #1A1035">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Jennifer Majumdar" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <span class="sticker sticker-pink text-[10px] mb-3">Asst. Director</span>
+                        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Jennifer R. Majumdar, PhD, MSN, CRNA</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-4" style="color:#F43F82">Assistant Professor & Asst. Specialty Director</p>
+                        <div class="w-full rounded-xl p-4 text-left relative" style="background:#FFF0F7;border:1.5px solid #FBCFE8">
+                            <span class="absolute -top-3 left-3 text-2xl">✏️</span>
+                            <p class="text-sm font-semibold pt-1" style="color:#6B4C5B">Dr. Jennifer R. Majumdar is the founding Assistant Specialty Director of the Nurse Anesthesia DNP program and an assistant professor at the Hunter-Bellevue School of Nursing.</p>
+                        </div>
+                    </div>
+
+                    <div class="fun-card fun-card-teal p-6 flex flex-col items-center text-center group md:col-span-2 lg:w-2/3 lg:mx-auto">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#0D9488;box-shadow:3px 3px 0 #1A1035">
+                            <img src="image_014afe.png" alt="Madison Guptill" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\' style=\'background:#CCFBF1\'>🗂️</div>'">
+                        </div>
+                        <span class="sticker sticker-teal text-[10px] mb-3">Administrator</span>
+                        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035">Madison Guptill</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-4" style="color:#0D9488">Program Administrator, Nurse Anesthesia DNP</p>
+                        <div class="w-full rounded-xl p-4 text-left relative" style="background:#F0FDFA;border:1.5px solid #99F6E4">
+                            <span class="absolute -top-3 left-3 text-2xl">✏️</span>
+                            <p class="text-sm font-semibold pt-1" style="color:#4B6B67">I am here to help you navigate the program's logistics and administrative needs so you can focus entirely on your clinical and academic success.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== COHORT 1 ===== -->
+            <section id="cohort" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker mb-3 inline-block">The OGs 🏆</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035;line-height:1.1">Meet Cohort 1</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">The 20 trailblazers of the Hunter College Nurse Anesthesia DNP Program.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+
+                    <!-- President -->
+                    <div class="cohort-card p-4 flex flex-col items-center text-center relative" style="background:#FFFBE6;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap" style="background:#F59E0B;color:white;font-family:'Fredoka',sans-serif;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:999px;border:2px solid #1A1035;box-shadow:1px 1px 0 #1A1035">👑 President</div>
+                        <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mt-4 mb-2" style="background:#FEF9C3;border-color:#FBBF24">👑</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Bret</p>
+                    </div>
+
+                    <!-- Students 2-20 -->
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤓</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aaron</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">😴</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aizhana</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🤯</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ann</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥶</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ayo</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤪</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chelsea</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">☕</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chris</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥸</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Emily</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🥳</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Erin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👽</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Filis</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🥺</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gerard</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥵</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Godfred</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🤡</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Hannah</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👻</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Josi</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤖</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Julia</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🧛</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Kevin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🧟</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Laurence</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🦄</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Racheal</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥷</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Tara</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Wen</p></div>
+                </div>
+            </section>
+
+            <!-- ===== SURVIVAL ===== -->
+            <section id="survival" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker sticker-pink mb-3 inline-block">Hard-won wisdom</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Survival Guide</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Tap a topic to expand our best advice.</p>
+                </div>
+
+                <div class="space-y-4">
+
+                    <!-- COHORT ADVICE — first -->
+                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#FBBF24;box-shadow:4px 4px 0 #FBBF24">
+                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors" onclick="toggleAcc(this)">
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">💡 Cohort Advice</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#FBBF24;color:#1A1035;border-color:#1A1035">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-body">
+                            <div><div class="px-6 py-5 border-t-2" style="border-color:#FEF9C3;background:#FFFDE7">
+                                <ul class="space-y-3">
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">Stay organized and lean on your cohort!</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Try to get the easy assignments done and out of the way by the first 2-3 weeks. Saves you time at the end. Show up — do YOUR best. You got this.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take one day at a time. Stay organized and on top of your work. Make sure you take time to enjoy yourself!</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Make sure to take time off before beginning.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">The faculty is there to help you so use them if you are struggling. Keep reviewing pharmacology even when the anesthesia pharm class is complete first semester.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Work together as a team, help each other.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take it day by day. The days are long but the weeks are so fast.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Start forcing yourself to set a monthly budget early. Summer is jam-packed with multiple tests a week — learn how to set up a good schedule and not cram every week. It is okay to struggle and not get A+'s on everything... the competition is over, we are all in this together. Lean on your friends!</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">You're stuck with these people for 3 years — make a point to reach out and talk/learn/ask questions of everyone!</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Be patient with the slow processes of Hunter College, everything will work out (after a LOT of stress). Help each other! Your cohort's collaboration will be key to success.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Develop good time management because balancing clinical and studying can be difficult. Be flexible — in this program nothing is set in stone, everything is always changing.</li>
+                                </ul>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <!-- HOW TO STUDY — second -->
+                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#0D9488;box-shadow:4px 4px 0 #0D9488">
+                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-teal-50" onclick="toggleAcc(this)">
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🧠 How to Study</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#0D9488;color:white;border-color:#1A1035">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-body">
+                            <div><div class="px-6 py-5 border-t-2" style="border-color:#CCFBF1;background:#F0FDFA">
+                                <ul class="space-y-3">
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Focus on active recall and spaced repetition over re-reading notes. Form small study groups to talk through complex concepts like hemodynamics and pharmacology, and prioritize understanding the "why" rather than just memorizing facts.</li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">📖</span><span><span class="font-bold" style="color:#1A1035">Read: Make It Stick: The Science of Successful Learning</span> — the research-backed playbook for retaining dense material. Required reading before your first exam season.</span></li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🃏</span><span><span class="font-bold" style="color:#1A1035">Learn Anki (or a similar spaced-repetition platform)</span> — set it up before day one. Use it daily. Your future self will be very, very grateful.</span></li>
+                                </ul>
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <!-- RECOMMENDED RESOURCES — third -->
+                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#7C3AED;box-shadow:4px 4px 0 #7C3AED">
+                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-purple-50" onclick="toggleAcc(this)">
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">📚 Recommended Resources</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-current acc-icon flex-shrink-0" style="background:#7C3AED;color:white;border-color:#1A1035">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-body">
+                            <div><div class="px-6 py-5 border-t-2" style="border-color:#EDE9FF;background:#F9F7FF">
+                                <ul class="space-y-3">
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151">
+                                        <span class="text-xl flex-shrink-0">✅</span>
+                                        <span><span class="font-bold" style="color:#1A1035">Apex Anesthesia Review</span> — paid for by Hunter, use it religiously. This is your primary question bank and review platform.</span>
+                                    </li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">
+                                        <p class="font-bold mb-2" style="color:#1A1035">Most textbooks on the syllabus are available as PDFs — check before you buy. Pick one to supplement lectures and stick with it:</p>
+                                        <ul class="space-y-2 mt-1">
+                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Nagelhout & Elisha (Nurse Anesthesia)</span><span>— written specifically for CRNAs, approachable, and well-organized for how this program teaches.</span></li>
+                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Morgan & Mikhail</span><span>— dense but thorough; great for mechanism-heavy learners who want to understand the "why" behind every drug and technique.</span></li>
+                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Barash (Clinical Anesthesia)</span><span>— the gold standard reference. Better as a deep-dive supplement than a cover-to-cover read; reach for it when a topic needs more depth.</span></li>
+                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Miller's Anesthesia</span><span>— the encyclopedia. Brilliant for specific rabbit holes but way too much for day-to-day studying. Save it for when you need the authoritative answer on one topic.</span></li>
+                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Jaffe's Anesthesiologist's Manual of Surgical Procedures</span><span>— the go-to for case planning. Essential when you need to understand the surgical procedure, positioning, and anesthetic considerations before stepping into the OR.</span></li>
+                                        </ul>
+                                    </li>
+                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F43F82;background:white;color:#374151">
+                                        <span class="text-xl flex-shrink-0">💡</span>
+                                        <span>Whatever you choose — <span class="font-bold" style="color:#1A1035">one textbook done well beats four textbooks skimmed.</span> Consistency matters more than having every resource.</span>
+                                    </li>
+                                </ul>
+                            </div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== LOCAL ===== -->
+            <section id="local" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker mb-3 inline-block">🗺️ FiDi Picks</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Fuel & Food</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Cohort-approved coffee spots in the Financial District.</p>
+                </div>
+
+                <div class="fun-card fun-card-purple p-8">
+                    <h3 style="font-family:'Fredoka',sans-serif;font-size:2rem;color:#7C3AED;margin-bottom:1.25rem">☕ Coffee & Caffeine</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#7C3AED;box-shadow:3px 3px 0 #7C3AED">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Bluestone Lane</h4>
+                                <span class="sticker sticker-purple" style="font-size:0.6rem">Aussie vibes</span>
+                            </div>
+                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">30 Broad St & multiple FiDi locations. Excellent flat whites, avocado toast, and a calm atmosphere for pre-shift prep or post-shift decompression.</p>
+                        </div>
+
+                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#F43F82;box-shadow:3px 3px 0 #F43F82">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Gregory's Coffee</h4>
+                                <span class="sticker sticker-pink" style="font-size:0.6rem">NYC staple</span>
+                            </div>
+                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">100 William St. A NYC-born chain that takes its espresso seriously — strong, fast, and reliable when you have 10 minutes before rounds.</p>
+                        </div>
+
+                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#0D9488;box-shadow:3px 3px 0 #0D9488">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Joe Coffee</h4>
+                                <span class="sticker sticker-teal" style="font-size:0.6rem">Local legend</span>
+                            </div>
+                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">125 Maiden Lane. A beloved NYC independent with excellent single-origin options and a cozy spot to crack open Nagelhout between shifts.</p>
+                        </div>
+
+                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Cultura Coffee</h4>
+                                <span class="sticker" style="font-size:0.6rem">Hidden gem</span>
+                            </div>
+                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">90 John St. A quieter, less-crowded option with great espresso and a relaxed vibe — perfect for squeezing in an Anki session before heading in.</p>
+                        </div>
+
+                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1 sm:col-span-2" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Brookfield Place Food Hall</h4>
+                                <span class="sticker" style="background:#F97316;color:white;border-color:#1A1035;font-size:0.6rem">Bonus spot</span>
+                            </div>
+                            <p class="font-semibold text-sm" style="color:#6B7280">230 Vesey St. Not just coffee — multiple vendors including Le District for a proper café au lait and pastry. Great for a longer study break or grabbing a real meal between a morning and afternoon case.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== GALLERY ===== -->
+            <section id="gallery" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker sticker-pink mb-3 inline-block">📸 Memories</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Cohort Memories</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">A little proof that we actually have fun sometimes!</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+                    <div class="polaroid -rotate-3 mx-auto w-full max-w-xs group">
+                        <div class="aspect-square overflow-hidden bg-gray-100">
+                            <img src="https://i.imgur.com/ftW6eD4.jpeg" alt="Study session" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105">
+                        </div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#7C3AED;text-align:center;margin-top:8px">First Sim 📚</p>
+                    </div>
+                    <div class="polaroid rotate-2 mx-auto w-full max-w-xs group" style="margin-top:24px">
+                        <div class="aspect-square overflow-hidden bg-gray-100 flex items-center justify-center text-6xl" style="background:#EDE9FF">🎓</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F43F82;text-align:center;margin-top:8px">Graduation Vibes ✨</p>
+                    </div>
+                    <div class="polaroid -rotate-1 mx-auto w-full max-w-xs group">
+                        <div class="aspect-square overflow-hidden bg-gray-100 flex items-center justify-center text-6xl" style="background:#FFF0E6">🎉</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F97316;text-align:center;margin-top:8px">Cohort Hangouts 🥂</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // ====== LOCK SCREEN ======
+        const CORRECT = ['midazolam', 'fentanyl', 'propofol', 'ketamine'];
+        let seq = [];
+
+        function handleVial(drug, el) {
+            if (seq.length >= 4) return;
+
+            el.classList.remove('vial-popped');
+            void el.offsetWidth;
+            el.classList.add('vial-popped');
+
+            seq.push(drug);
+
+            const dots = document.querySelectorAll('.progress-dot');
+            dots[seq.length - 1].classList.add('filled');
+
+            const msg = document.getElementById('lock-msg');
+
+            if (seq.length === 4) {
+                const ok = seq.every((v,i) => v === CORRECT[i]);
+                if (ok) {
+                    msg.textContent = '✅ Access Granted!';
+                    msg.style.color = '#4ADE80';
+                    setTimeout(() => {
+                        document.getElementById('lock-screen').classList.add('unlocking');
+                        setTimeout(() => {
+                            document.getElementById('lock-screen').style.display = 'none';
+                            document.getElementById('main-app').classList.remove('hidden');
+                            document.getElementById('main-app').classList.add('flex');
+                        }, 650);
+                    }, 350);
+                } else {
+                    msg.textContent = '❌ Wrong sequence — try again!';
+                    msg.style.color = '#F87171';
+                    const card = document.getElementById('lock-card');
+                    card.classList.add('shake');
+                    card.addEventListener('animationend', () => card.classList.remove('shake'), { once: true });
+                    setTimeout(() => {
+                        seq = [];
+                        dots.forEach(d => d.classList.remove('filled'));
+                        msg.textContent = '';
+                    }, 1400);
+                }
+            }
+        }
+
+        // ====== NAV ======
+        function showPage(id, btn) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-pill').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (btn) btn.classList.add('active');
+            if (window.innerWidth < 640) window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ====== ACCORDION ======
+        function toggleAcc(btn) {
+            const item = btn.closest('.accordion-item');
+            item.classList.toggle('accordion-open');
+        }
+    </script>    <p style="position:fixed;bottom:10px;right:14px;font-family:'Nunito',sans-serif;font-size:0.65rem;color:rgba(42,27,56,0.35);font-weight:700;letter-spacing:0.03em;pointer-events:none;z-index:40">Made by Aaron T.</p>
+
+</body>
+</html>
