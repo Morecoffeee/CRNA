@@ -363,91 +363,8 @@
                 </defs>
             </svg>
 
-            <!-- Vials Row -->
-            <div class="flex justify-center gap-5 sm:gap-8 mb-8 flex-wrap">
-
-                <!-- MIDAZOLAM (orange) -->
-                <div class="vial-wrap" style="--glow: rgba(249,115,22,0.9);" onclick="handleVial('midazolam', this)" title="Midazolam">
-                    <svg viewBox="0 0 80 150" width="68" height="130">
-                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#F97316"/>
-                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
-                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
-                        <!-- body -->
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        <!-- liquid fill -->
-                        <path d="M17 80 L63 80 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(249,115,22,0.18)"/>
-                        <!-- label -->
-                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
-                        <rect x="17" y="68" width="46" height="13" fill="#F97316" rx="2"/>
-                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">MIDAZOLAM</text>
-                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">1 mg/mL</text>
-                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Versed® IV</text>
-                        <!-- shine -->
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
-                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
-                    </svg>
-                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Midazolam</p>
-                </div>
-
-                <!-- FENTANYL (blue) -->
-                <div class="vial-wrap" style="--glow: rgba(14,165,233,0.9);" onclick="handleVial('fentanyl', this)" title="Fentanyl">
-                    <svg viewBox="0 0 80 150" width="68" height="130">
-                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#0EA5E9"/>
-                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
-                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        <path d="M17 70 L63 70 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(14,165,233,0.15)"/>
-                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
-                        <rect x="17" y="68" width="46" height="13" fill="#0EA5E9" rx="2"/>
-                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">FENTANYL</text>
-                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">50 mcg/mL</text>
-                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Sublimaze® IV</text>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
-                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
-                    </svg>
-                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Fentanyl</p>
-                </div>
-
-                <!-- PROPOFOL (yellow/milky) -->
-                <div class="vial-wrap" style="--glow: rgba(251,191,36,0.9);" onclick="handleVial('propofol', this)" title="Propofol">
-                    <svg viewBox="0 0 80 150" width="68" height="130">
-                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#FBBF24"/>
-                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
-                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        <!-- milky white propofol fill -->
-                        <path d="M17 50 L63 50 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(248,248,245,0.9)"/>
-                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
-                        <rect x="17" y="68" width="46" height="13" fill="#FBBF24" rx="2"/>
-                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">PROPOFOL</text>
-                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">10 mg/mL</text>
-                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Diprivan® IV</text>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
-                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
-                    </svg>
-                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Propofol</p>
-                </div>
-
-                <!-- KETAMINE (pink) -->
-                <div class="vial-wrap" style="--glow: rgba(236,72,153,0.9);" onclick="handleVial('ketamine', this)" title="Ketamine">
-                    <svg viewBox="0 0 80 150" width="68" height="130">
-                        <rect x="28" y="4" width="24" height="16" rx="3" fill="#EC4899"/>
-                        <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
-                        <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        <path d="M17 75 L63 75 L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="rgba(236,72,153,0.1)"/>
-                        <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
-                        <rect x="17" y="68" width="46" height="13" fill="#EC4899" rx="2"/>
-                        <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="7" fill="white" text-anchor="middle">KETAMINE</text>
-                        <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">10 mg/mL</text>
-                        <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">Ketalar® IV</text>
-                        <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
-                        <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
-                    </svg>
-                    <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">Ketamine</p>
-                </div>
-
-            </div>
+            <!-- Vials Row — rendered & shuffled by JS -->
+            <div id="vials-row" class="flex justify-center gap-5 sm:gap-8 mb-8 flex-wrap"></div>
 
             <!-- Progress dots -->
             <div class="flex justify-center gap-3 mb-4" id="progress-dots">
@@ -475,7 +392,8 @@
                     <button class="nav-pill active" onclick="showPage('home',this)">🏡 Home</button>
                     <button class="nav-pill" onclick="showPage('faculty',this)">🧑‍🏫 Faculty</button>
                     <button class="nav-pill" onclick="showPage('cohort',this)">🎓 Cohort 1</button>
-                    <button class="nav-pill" onclick="showPage('survival',this)">🧭 Survival</button>
+                    <button class="nav-pill" onclick="showPage('survival',this)">🧭 Study Tools</button>
+                    <button class="nav-pill" onclick="showPage('financial',this)">💰 Financial Aid</button>
                     <button class="nav-pill" onclick="showPage('local',this)">☕ Local</button>
                     <button class="nav-pill" onclick="showPage('gallery',this)">📸 Gallery</button>
                 </div>
@@ -523,7 +441,7 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
                     <button onclick="showPage('survival', document.querySelectorAll('.nav-pill')[3])" class="fun-card p-5 text-center group border-2" style="border-color:#F43F82;box-shadow:4px 4px 0 #F43F82">
                         <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">🧭</div>
-                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Survival Guide</p>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Study Tools</p>
                     </button>
                     <button onclick="showPage('local', document.querySelectorAll('.nav-pill')[4])" class="fun-card p-5 text-center group border-2" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
                         <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">☕</div>
@@ -627,11 +545,11 @@
                 </div>
             </section>
 
-            <!-- ===== SURVIVAL ===== -->
+            <!-- ===== STUDY TOOLS ===== -->
             <section id="survival" class="page-section">
                 <div class="mb-8 mt-2">
-                    <span class="sticker sticker-pink mb-3 inline-block">Hard-won wisdom</span>
-                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Survival Guide</h2>
+                    <span class="sticker sticker-pink mb-3 inline-block">Your toolkit 🛠️</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Study Tools</h2>
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">Tap a topic to expand our best advice.</p>
                 </div>
 
@@ -715,6 +633,149 @@
                                 </ul>
                             </div></div>
                         </div>
+                    </div>
+
+                    <!-- RECOMMENDED TOOLS -->
+                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
+                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-orange-50" onclick="toggleAcc(this)">
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🛠️ Recommended Tools</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#F97316;color:white;border-color:#1A1035">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-body">
+                            <div><div class="px-6 py-5 border-t-2 space-y-6" style="border-color:#FFF0E6;background:#FFFAF5">
+
+                                <!-- APPS -->
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="text-xl">📱</span>
+                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Apps</h4>
+                                    </div>
+                                    <ul class="space-y-3">
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F97316;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">📝</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Notability</span> — the go-to note-taking app for iPad. Record lectures while you annotate slides, then replay audio synced to your handwriting. Worth every penny for CRNA school.</span>
+                                        </li>
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">🗂️</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Notion</span> — all-in-one workspace for organizing notes, case logs, schedules, and study plans. Great for keeping everything in one place across your phone, tablet, and laptop.</span>
+                                        </li>
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#0D9488;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">💊</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Vargo App</span> — anesthesia drug reference at your fingertips. Perfect for quick lookups on dosing, mechanisms, and clinical pearls before and during cases.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- YOUTUBE / VIDEO -->
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="text-xl">▶️</span>
+                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">YouTube & Video</h4>
+                                    </div>
+                                    <ul class="space-y-3">
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F43F82;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">🥷</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Ninja Nerd</span> — free YouTube channel with incredibly clear, visual explanations of physiology and pharmacology. A lifesaver when lectures leave you confused. Watch before class, not after.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- PODCASTS -->
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="text-xl">🎙️</span>
+                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Podcasts</h4>
+                                    </div>
+                                    <ul class="space-y-3">
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">🎧</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Core Anesthesia Podcast</span> — high-yield anesthesia concepts broken down into digestible episodes. Great for commutes, the gym, or winding down. Covers pharmacology, regional, and clinical reasoning.</span>
+                                        </li>
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151">
+                                            <span class="text-xl flex-shrink-0">⚡</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Atomic Anesthesia</span> — rapid-fire, concise anesthesia pearls in short episodes. Perfect when you only have 10-15 minutes and want focused, high-yield content without fluff.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== FINANCIAL AID ===== -->
+            <section id="financial" class="page-section">
+                <div class="mb-8 mt-2">
+                    <span class="sticker mb-3 inline-block" style="background:#16A34A;color:white;border-color:#1A1035">💰 Money Matters</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Financial Aid</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Navigating the financial side of CRNA school.</p>
+                </div>
+
+                <div class="space-y-6">
+
+                    <!-- Hunter Financial Aid Office -->
+                    <div class="fun-card p-6" style="border-color:#16A34A;box-shadow:5px 5px 0 #16A34A">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">🏛️</span>
+                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Hunter College Financial Aid Office</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="rounded-xl p-4 flex items-start gap-3" style="background:#DCFCE7;border:1.5px solid #86EFAC">
+                                <span class="text-lg flex-shrink-0">⚠️</span>
+                                <p class="font-semibold text-sm" style="color:#166534">Be patient — Hunter's financial aid process is notoriously slow. Apply as early as possible and follow up regularly. It will work out, but it takes time.</p>
+                            </div>
+                            <div class="rounded-xl p-4 flex items-start gap-3" style="background:white;border:1.5px solid #BBF7D0">
+                                <span class="text-lg flex-shrink-0">🌐</span>
+                                <div>
+                                    <p class="font-bold text-sm mb-1" style="color:#1A1035">Hunter Financial Aid Portal</p>
+                                    <a href="https://www.hunter.cuny.edu/financial-aid" target="_blank" class="font-semibold text-sm" style="color:#16A34A;text-decoration:underline">hunter.cuny.edu/financial-aid</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loan Types -->
+                    <div class="fun-card p-6" style="border-color:#7C3AED;box-shadow:5px 5px 0 #7C3AED">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">📋</span>
+                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Loan Types to Know</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
+                                <p class="font-bold text-sm mb-1" style="color:#7C3AED">Federal Direct Unsubsidized Loans</p>
+                                <p class="font-semibold text-sm" style="color:#374151">The most common option. Interest accrues while you're in school but fixed rates are manageable. Apply via FAFSA.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
+                                <p class="font-bold text-sm mb-1" style="color:#7C3AED">Graduate PLUS Loans</p>
+                                <p class="font-semibold text-sm" style="color:#374151">Covers costs beyond the Unsubsidized limit. Higher interest rate but flexible — useful if you need to cover living expenses.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
+                                <p class="font-bold text-sm mb-1" style="color:#7C3AED">HRSA Nursing Scholarships</p>
+                                <p class="font-semibold text-sm" style="color:#374151">Federal scholarship for nursing students who commit to working in underserved areas after graduation. Worth applying — competitive but real money.</p>
+                            </div>
+                            <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
+                                <p class="font-bold text-sm mb-1" style="color:#7C3AED">Private / Hospital Loans</p>
+                                <p class="font-semibold text-sm" style="color:#374151">Some hospitals offer tuition assistance or loan repayment in exchange for a work commitment post-graduation. Worth asking your clinical sites.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budgeting Tips -->
+                    <div class="fun-card p-6" style="border-color:#FBBF24;box-shadow:5px 5px 0 #FBBF24">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">💡</span>
+                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Budgeting Tips from Cohort 1</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#FBBF24;background:white;color:#374151">Set a monthly budget <span class="font-bold">before</span> you stop working — it's a shock to the system and harder to adjust once you're in the thick of school.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#FBBF24;background:white;color:#374151">Track every expense for the first month. Most people are surprised where money actually goes once they have no income.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#FBBF24;background:white;color:#374151">Look into PRN / per diem nursing shifts if your schedule allows in later semesters — some cohort members picked up occasional shifts to offset costs.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#FBBF24;background:white;color:#374151">File your FAFSA as early as October 1st for the upcoming academic year. Earlier = more options.</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -806,8 +867,97 @@
 
     <script>
         // ====== LOCK SCREEN ======
-        const CORRECT = ['midazolam', 'fentanyl', 'propofol', 'ketamine'];
+        const CORRECT = ['midazolam', 'lidocaine', 'propofol', 'etomidate'];
         let seq = [];
+
+        // Vial definitions — order is shuffled on each page load
+        const VIALS = [
+            {
+                id: 'midazolam',
+                label: 'Midazolam',
+                color: '#F97316',
+                glow: 'rgba(249,115,22,0.9)',
+                dose: '1 mg/mL',
+                brand: 'Versed® IV',
+                liquidFill: 'rgba(249,115,22,0.18)',
+                liquidY: 80,
+            },
+            {
+                id: 'lidocaine',
+                label: 'Lidocaine',
+                color: '#0D9488',
+                glow: 'rgba(13,148,136,0.9)',
+                dose: '10 mg/mL (1%)',
+                brand: 'Xylocaine® IV',
+                liquidFill: 'rgba(13,148,136,0.12)',
+                liquidY: 72,
+            },
+            {
+                id: 'propofol',
+                label: 'Propofol',
+                color: '#FBBF24',
+                glow: 'rgba(251,191,36,0.9)',
+                dose: '10 mg/mL',
+                brand: 'Diprivan® IV',
+                liquidFill: 'rgba(248,248,245,0.92)',
+                liquidY: 50,
+            },
+            {
+                id: 'etomidate',
+                label: 'Etomidate',
+                color: '#7C3AED',
+                glow: 'rgba(124,58,237,0.9)',
+                dose: '2 mg/mL',
+                brand: 'Amidate® IV',
+                liquidFill: 'rgba(124,58,237,0.1)',
+                liquidY: 76,
+            },
+        ];
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function buildVial(v) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'vial-wrap';
+            wrapper.style.cssText = `--glow: ${v.glow};`;
+            wrapper.title = v.label;
+            wrapper.onclick = () => handleVial(v.id, wrapper);
+
+            // SVG label font size — shrink slightly for longer names
+            const fontSize = v.label.length > 8 ? '6' : '7';
+
+            wrapper.innerHTML = `
+                <svg viewBox="0 0 80 150" width="68" height="130">
+                    <rect x="28" y="4" width="24" height="16" rx="3" fill="${v.color}"/>
+                    <rect x="26" y="18" width="28" height="8" rx="1" fill="url(#crimp)"/>
+                    <rect x="28" y="24" width="24" height="10" fill="rgba(255,255,255,0.35)" stroke="#ccc" stroke-width="1"/>
+                    <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <path d="M17 ${v.liquidY} L63 ${v.liquidY} L63 128 C63 134 57 139 50 139 L30 139 C23 139 17 134 17 128 Z" fill="${v.liquidFill}"/>
+                    <rect x="17" y="68" width="46" height="48" fill="white" rx="2"/>
+                    <rect x="17" y="68" width="46" height="13" fill="${v.color}" rx="2"/>
+                    <text x="40" y="79" font-family="Fredoka,sans-serif" font-weight="700" font-size="${fontSize}" fill="white" text-anchor="middle">${v.label.toUpperCase()}</text>
+                    <text x="40" y="92" font-family="Nunito,sans-serif" font-weight="700" font-size="6" fill="#555" text-anchor="middle">${v.dose}</text>
+                    <text x="40" y="105" font-family="Nunito,sans-serif" font-size="5" fill="#888" text-anchor="middle">${v.brand}</text>
+                    <path d="M16 38 C16 33 21 30 28 30 L52 30 C59 30 64 33 64 38 L64 128 C64 135 58 140 51 140 L29 140 C22 140 16 135 16 128 Z" fill="url(#glassShine)"/>
+                    <rect x="17" y="42" width="6" height="80" rx="3" fill="rgba(255,255,255,0.45)"/>
+                </svg>
+                <p style="font-family:'Fredoka',sans-serif;color:rgba(255,255,255,0.7);font-size:0.7rem;text-align:center;margin-top:4px">${v.label}</p>
+            `;
+            return wrapper;
+        }
+
+        // Render shuffled vials on load
+        (function renderVials() {
+            const container = document.getElementById('vials-row');
+            shuffle(VIALS).forEach(v => container.appendChild(buildVial(v)));
+        })();
 
         function handleVial(drug, el) {
             if (seq.length >= 4) return;
