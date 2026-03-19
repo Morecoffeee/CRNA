@@ -393,7 +393,7 @@
                     <button class="nav-pill" onclick="showPage('faculty',this)">🧑‍🏫 Faculty</button>
                     <button class="nav-pill" onclick="showPage('cohort',this)">🎓 Cohort 1</button>
                     <button class="nav-pill" onclick="showPage('survival',this)">🧭 Study Tools</button>
-                    <button class="nav-pill" onclick="showPage('financial',this)">💰 Financial Aid</button>
+                    <button class="nav-pill" onclick="showPage('financial',this)">🔗 Hunter Links</button>
                     <button class="nav-pill" onclick="showPage('local',this)">☕ Local</button>
                     <button class="nav-pill" onclick="showPage('gallery',this)">📸 Gallery</button>
                 </div>
@@ -812,31 +812,67 @@
             <!-- ===== FINANCIAL AID ===== -->
             <section id="financial" class="page-section">
                 <div class="mb-8 mt-2">
-                    <span class="sticker mb-3 inline-block" style="background:#16A34A;color:white;border-color:#1A1035">💰 Money Matters</span>
-                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Financial Aid</h2>
-                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Navigating the financial side of CRNA school.</p>
+                    <span class="sticker mb-3 inline-block" style="background:#16A34A;color:white;border-color:#1A1035">🔗 Quick Access</span>
+                    <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Hunter Links</h2>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Everything you need, all in one place.</p>
                 </div>
 
                 <div class="space-y-6">
 
-                    <!-- Hunter Financial Aid Office -->
+                    <!-- Quick Links Card -->
                     <div class="fun-card p-6" style="border-color:#16A34A;box-shadow:5px 5px 0 #16A34A">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-3xl">🏛️</span>
-                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Hunter College Financial Aid Office</h3>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-3xl">🔗</span>
+                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Essential Links</h3>
                         </div>
                         <div class="space-y-3">
-                            <div class="rounded-xl p-4 flex items-start gap-3" style="background:#DCFCE7;border:1.5px solid #86EFAC">
-                                <span class="text-lg flex-shrink-0">⚠️</span>
-                                <p class="font-semibold text-sm" style="color:#166534">Be patient — Hunter's financial aid process is notoriously slow. Apply as early as possible and follow up regularly. It will work out, but it takes time.</p>
-                            </div>
-                            <div class="rounded-xl p-4 flex items-start gap-3" style="background:white;border:1.5px solid #BBF7D0">
-                                <span class="text-lg flex-shrink-0">🌐</span>
-                                <div>
-                                    <p class="font-bold text-sm mb-1" style="color:#1A1035">Hunter Financial Aid Portal</p>
-                                    <a href="https://www.hunter.cuny.edu/financial-aid" target="_blank" class="font-semibold text-sm" style="color:#16A34A;text-decoration:underline">hunter.cuny.edu/financial-aid</a>
+
+                            <!-- CUNYfirst -->
+                            <a href="https://home.cunyfirst.cuny.edu/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#16A34A;box-shadow:3px 3px 0 #16A34A;text-decoration:none">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xl">🎓</span>
+                                        <p class="font-bold text-sm" style="color:#1A1035">CUNYfirst</p>
+                                    </div>
+                                    <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#DCFCE7;color:#16A34A">Open ↗</span>
                                 </div>
+                                <p class="font-semibold text-sm" style="color:#6B7280">Admin platform — manage financial account, course registration, and transcript.</p>
+                            </a>
+
+                            <!-- Brightspace -->
+                            <a href="https://brightspace.cuny.edu/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#7C3AED;box-shadow:3px 3px 0 #7C3AED;text-decoration:none">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xl">💻</span>
+                                        <p class="font-bold text-sm" style="color:#1A1035">Brightspace</p>
+                                    </div>
+                                    <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#EDE9FF;color:#7C3AED">Open ↗</span>
+                                </div>
+                                <p class="font-semibold text-sm" style="color:#6B7280">Course work platform — lectures, assignments, and course materials.</p>
+                            </a>
+
+                            <!-- Financial Aid Forms -->
+                            <a href="https://www.hunter.cuny.edu/students/financial-aid/policies-and-forms/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316;text-decoration:none">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xl">📄</span>
+                                        <p class="font-bold text-sm" style="color:#1A1035">Financial Aid Forms</p>
+                                    </div>
+                                    <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#FFF0E6;color:#F97316">Open ↗</span>
+                                </div>
+                                <p class="font-semibold text-sm" style="color:#6B7280">Hunter College Financial Aid policies and forms portal.</p>
+                            </a>
+
+                            <!-- Registrar Email -->
+                            <div class="rounded-xl p-4 border-2" style="background:white;border-color:#F43F82;box-shadow:3px 3px 0 #F43F82">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-xl">✉️</span>
+                                    <p class="font-bold text-sm" style="color:#1A1035">Registrar Email</p>
+                                </div>
+                                <a href="mailto:regweb@hunter.cuny.edu" class="font-bold text-sm" style="color:#F43F82;text-decoration:underline">regweb@hunter.cuny.edu</a>
+                                <p class="font-semibold text-sm mt-2 rounded-lg p-2" style="color:#9D174D;background:#FFF0F7;border-left:3px solid #F43F82">⚠️ Send in-school deferment requests to the registrar for verification.</p>
                             </div>
+
                         </div>
                     </div>
 
