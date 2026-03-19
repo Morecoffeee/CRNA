@@ -339,7 +339,7 @@
 
             <!-- Hint pills -->
             <div class="flex flex-wrap justify-center gap-2 mb-8 mt-5">
-                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(244,63,130,0.2);color:#FDA4AF;border:1px solid rgba(244,63,130,0.3)">Hint: think pre-op</span>
+                <span class="text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(244,63,130,0.2);color:#FDA4AF;border:1px solid rgba(244,63,130,0.3)">Hint: think pre-op first</span>
             </div>
 
             <!-- Vials SVG defs -->
@@ -442,13 +442,12 @@
                     <!-- header -->
                     <div class="flex items-center justify-between px-6 py-4" style="background:linear-gradient(90deg,#7C3AED,#9D4FE8)">
                         <div class="flex items-center gap-3">
-                            <span style="font-size:1.6rem">🧪</span>
+                            <span style="font-size:2rem;font-weight:900;color:white;font-family:'Fredoka',sans-serif;line-height:1">?</span>
                             <div>
                                 <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:700;color:white;margin:0">Daily Question</p>
                                 <p id="quiz-date" style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.65);margin:0;letter-spacing:0.05em;text-transform:uppercase"></p>
                             </div>
                         </div>
-                        <div id="quiz-streak" style="background:rgba(255,255,255,0.15);border-radius:999px;padding:4px 12px;font-family:'Fredoka',sans-serif;font-size:0.85rem;font-weight:700;color:#FBBF24"></div>
                     </div>
 
                     <!-- body -->
@@ -659,69 +658,30 @@
                         </div>
                     </div>
 
-                    <!-- HOW TO STUDY — second -->
-                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#0D9488;box-shadow:4px 4px 0 #0D9488">
-                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-teal-50" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🧠 How to Study</span>
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#0D9488;color:white;border-color:#1A1035">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-body">
-                            <div><div class="px-6 py-5 border-t-2" style="border-color:#CCFBF1;background:#F0FDFA">
-                                <ul class="space-y-3">
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Focus on active recall and spaced repetition over re-reading notes. Form small study groups to talk through complex concepts like hemodynamics and pharmacology, and prioritize understanding the "why" rather than just memorizing facts.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">📖</span><span><span class="font-bold" style="color:#1A1035">Read: Make It Stick: The Science of Successful Learning</span> — the research-backed playbook for retaining dense material. Required reading before your first exam season.</span></li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🃏</span><span><span class="font-bold" style="color:#1A1035">Learn Anki (or a similar spaced-repetition platform)</span> — set it up before day one. Use it daily. Your future self will be very, very grateful.</span></li>
-                                </ul>
-                            </div></div>
-                        </div>
-                    </div>
 
-                    <!-- RECOMMENDED RESOURCES — third -->
-                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#7C3AED;box-shadow:4px 4px 0 #7C3AED">
-                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-purple-50" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">📚 Recommended Resources</span>
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-current acc-icon flex-shrink-0" style="background:#7C3AED;color:white;border-color:#1A1035">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-body">
-                            <div><div class="px-6 py-5 border-t-2" style="border-color:#EDE9FF;background:#F9F7FF">
-                                <ul class="space-y-3">
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151">
-                                        <span class="text-xl flex-shrink-0">✅</span>
-                                        <span><span class="font-bold" style="color:#1A1035">Apex Anesthesia Review</span> — paid for by Hunter, use it religiously. This is your primary question bank and review platform.</span>
-                                    </li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">
-                                        <p class="font-bold mb-2" style="color:#1A1035">Most textbooks on the syllabus are available as PDFs — check before you buy. Pick one to supplement lectures and stick with it:</p>
-                                        <ul class="space-y-2 mt-1">
-                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Nagelhout & Elisha (Nurse Anesthesia)</span><span>— written specifically for CRNAs, approachable, and well-organized for how this program teaches.</span></li>
-                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Morgan & Mikhail</span><span>— dense but thorough; great for mechanism-heavy learners who want to understand the "why" behind every drug and technique.</span></li>
-                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Barash (Clinical Anesthesia)</span><span>— the gold standard reference. Better as a deep-dive supplement than a cover-to-cover read; reach for it when a topic needs more depth.</span></li>
-                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Miller's Anesthesia</span><span>— the encyclopedia. Brilliant for specific rabbit holes but way too much for day-to-day studying. Save it for when you need the authoritative answer on one topic.</span></li>
-                                            <li class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">Jaffe's Anesthesiologist's Manual of Surgical Procedures</span><span>— the go-to for case planning. Essential when you need to understand the surgical procedure, positioning, and anesthetic considerations before stepping into the OR.</span></li>
-                                        </ul>
-                                    </li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F43F82;background:white;color:#374151">
-                                        <span class="text-xl flex-shrink-0">💡</span>
-                                        <span>Whatever you choose — <span class="font-bold" style="color:#1A1035">one textbook done well beats four textbooks skimmed.</span> Consistency matters more than having every resource.</span>
-                                    </li>
-                                </ul>
-                            </div></div>
-                        </div>
-                    </div>
-
-                    <!-- RECOMMENDED TOOLS -->
+                    <!-- STUDY TOOLS (merged How to Study + Recommended Tools) -->
                     <div class="accordion-item fun-card overflow-hidden" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
                         <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-orange-50" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🛠️ Recommended Tools</span>
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🛠️ Study Tools</span>
                             <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#F97316;color:white;border-color:#1A1035">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
                             </div>
                         </button>
                         <div class="accordion-body">
                             <div><div class="px-6 py-5 border-t-2 space-y-6" style="border-color:#FFF0E6;background:#FFFAF5">
+
+                                <!-- HOW TO STUDY -->
+                                <div>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <span class="text-xl">🧠</span>
+                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">How to Study</h4>
+                                    </div>
+                                    <ul class="space-y-3">
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Focus on active recall and spaced repetition over re-reading notes. Form small study groups to talk through complex concepts like hemodynamics and pharmacology, and prioritize understanding the "why" rather than just memorizing facts.</li>
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">📖</span><span><span class="font-bold" style="color:#1A1035">Read: Make It Stick: The Science of Successful Learning</span> — the research-backed playbook for retaining dense material. Required reading before your first exam season.</span></li>
+                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🃏</span><span><span class="font-bold" style="color:#1A1035">Learn Anki (or a similar spaced-repetition platform)</span> — set it up before day one. Use it daily. Your future self will be very, very grateful.</span></li>
+                                    </ul>
+                                </div>
 
                                 <!-- APPS -->
                                 <div>
@@ -768,15 +728,80 @@
                                     <ul class="space-y-3">
                                         <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151">
                                             <span class="text-xl flex-shrink-0">🎧</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Core Anesthesia Podcast</span> — high-yield anesthesia concepts broken down into digestible episodes. Great for commutes, the gym, or winding down. Covers pharmacology, regional, and clinical reasoning.</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Core Anesthesia Podcast</span> — high-yield anesthesia concepts broken down into digestible episodes. Great for commutes, the gym, or winding down.</span>
                                         </li>
                                         <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151">
                                             <span class="text-xl flex-shrink-0">⚡</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Atomic Anesthesia</span> — rapid-fire, concise anesthesia pearls in short episodes. Perfect when you only have 10-15 minutes and want focused, high-yield content without fluff.</span>
+                                            <span><span class="font-bold" style="color:#1A1035">Atomic Anesthesia</span> — rapid-fire, concise anesthesia pearls in short episodes. Perfect when you only have 10-15 minutes.</span>
                                         </li>
                                     </ul>
                                 </div>
 
+                            </div></div>
+                        </div>
+                    </div>
+
+                    <!-- TEXTBOOKS -->
+                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#7C3AED;box-shadow:4px 4px 0 #7C3AED">
+                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-purple-50" onclick="toggleAcc(this)">
+                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">📚 Textbooks</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-current acc-icon flex-shrink-0" style="background:#7C3AED;color:white;border-color:#1A1035">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </button>
+                        <div class="accordion-body">
+                            <div><div class="px-6 py-5 border-t-2" style="border-color:#EDE9FF;background:#F9F7FF">
+                                <div class="space-y-3">
+
+                                    <!-- Apex -->
+                                    <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#FBBF24;background:white">
+                                        <span class="text-xl flex-shrink-0">✅</span>
+                                        <div>
+                                            <p class="font-bold text-sm" style="color:#1A1035">Apex Anesthesia Review</p>
+                                            <p class="font-semibold text-sm mt-1" style="color:#6B7280">Paid for by Hunter — use it religiously. Your primary question bank and review platform.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Intro label -->
+                                    <p class="font-bold text-sm px-1 pt-1" style="color:#1A1035">📖 Pick one textbook to supplement lectures. Most are available as PDFs — check before you buy:</p>
+
+                                    <!-- Nagelhout -->
+                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#7C3AED;background:white">
+                                        <p class="font-bold text-sm" style="color:#7C3AED">Nagelhout & Elisha — Nurse Anesthesia</p>
+                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Written specifically for CRNAs, approachable, and well-organized for how this program teaches.</p>
+                                    </div>
+
+                                    <!-- Morgan -->
+                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#0D9488;background:white">
+                                        <p class="font-bold text-sm" style="color:#0D9488">Morgan & Mikhail — Clinical Anesthesiology</p>
+                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Dense but thorough. Great for learners who want to understand the "why" behind every drug and technique.</p>
+                                    </div>
+
+                                    <!-- Barash -->
+                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#F97316;background:white">
+                                        <p class="font-bold text-sm" style="color:#F97316">Barash — Clinical Anesthesia</p>
+                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Gold standard reference. Better as a deep-dive supplement than cover-to-cover — reach for it when a topic needs more depth.</p>
+                                    </div>
+
+                                    <!-- Miller -->
+                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#F43F82;background:white">
+                                        <p class="font-bold text-sm" style="color:#F43F82">Miller's Anesthesia</p>
+                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">The encyclopedia. Best for specific deep dives — too much for daily studying. Save it for when you need the definitive answer.</p>
+                                    </div>
+
+                                    <!-- Jaffe -->
+                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#FBBF24;background:white">
+                                        <p class="font-bold text-sm" style="color:#92400E">Jaffe's — Anesthesiologist's Manual of Surgical Procedures</p>
+                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Go-to for case planning. Essential for understanding the surgical procedure, positioning, and anesthetic considerations before stepping into the OR.</p>
+                                    </div>
+
+                                    <!-- Tip -->
+                                    <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#F43F82;background:#FFF0F7">
+                                        <span class="text-xl flex-shrink-0">💡</span>
+                                        <p class="font-bold text-sm" style="color:#9D174D">One textbook done well beats four textbooks skimmed. Pick one and stick with it.</p>
+                                    </div>
+
+                                </div>
                             </div></div>
                         </div>
                     </div>
@@ -922,20 +947,66 @@
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">A little proof that we actually have fun sometimes!</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+
+                    <!-- Existing photo -->
                     <div class="polaroid -rotate-3 mx-auto w-full max-w-xs group">
                         <div class="aspect-square overflow-hidden bg-gray-100">
-                            <img src="https://i.imgur.com/ftW6eD4.jpeg" alt="Study session" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105">
+                            <img src="https://i.imgur.com/ftW6eD4.jpeg" alt="First Sim" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105">
                         </div>
                         <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#7C3AED;text-align:center;margin-top:8px">First Sim 📚</p>
                     </div>
+
+                    <!-- Placeholder 2 -->
                     <div class="polaroid rotate-2 mx-auto w-full max-w-xs group" style="margin-top:24px">
-                        <div class="aspect-square overflow-hidden bg-gray-100 flex items-center justify-center text-6xl" style="background:#EDE9FF">🎓</div>
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#EDE9FF">🎓</div>
                         <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F43F82;text-align:center;margin-top:8px">Graduation Vibes ✨</p>
                     </div>
+
+                    <!-- Placeholder 3 -->
                     <div class="polaroid -rotate-1 mx-auto w-full max-w-xs group">
-                        <div class="aspect-square overflow-hidden bg-gray-100 flex items-center justify-center text-6xl" style="background:#FFF0E6">🎉</div>
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#FFF0E6">🎉</div>
                         <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F97316;text-align:center;margin-top:8px">Cohort Hangouts 🥂</p>
                     </div>
+
+                    <!-- Placeholder 4 -->
+                    <div class="polaroid rotate-3 mx-auto w-full max-w-xs group">
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#FEF9C3">☕</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F59E0B;text-align:center;margin-top:8px">Coffee Runs ☕</p>
+                    </div>
+
+                    <!-- Placeholder 5 -->
+                    <div class="polaroid -rotate-2 mx-auto w-full max-w-xs group" style="margin-top:18px">
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#CCFBF1">🏥</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#0D9488;text-align:center;margin-top:8px">Clinical Days 🩺</p>
+                    </div>
+
+                    <!-- Placeholder 6 -->
+                    <div class="polaroid rotate-1 mx-auto w-full max-w-xs group">
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#FFE4EF">🍕</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#F43F82;text-align:center;margin-top:8px">Post-Exam Eats 🍕</p>
+                    </div>
+
+                    <!-- Placeholder 7 -->
+                    <div class="polaroid -rotate-3 mx-auto w-full max-w-xs group" style="margin-top:20px">
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#F5F0FF">😴</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#7C3AED;text-align:center;margin-top:8px">Study Fatigue is Real 😵</p>
+                    </div>
+
+                    <!-- Placeholder 8 -->
+                    <div class="polaroid rotate-2 mx-auto w-full max-w-xs group">
+                        <div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:#DCFCE7">🎊</div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:#16A34A;text-align:center;margin-top:8px">We Passed!! 🎊</p>
+                    </div>
+
+                    <!-- Add your own hint card -->
+                    <div class="polaroid -rotate-1 mx-auto w-full max-w-xs group" style="border-style:dashed;border-color:#C4B5FD">
+                        <div class="aspect-square overflow-hidden flex flex-col items-center justify-center gap-3" style="background:#F9F7FF">
+                            <span style="font-size:3rem">📷</span>
+                            <p style="font-family:'Fredoka',sans-serif;font-size:0.95rem;color:#9D60F0;text-align:center;padding:0 12px;line-height:1.4">Add your photos here via Imgur!</p>
+                        </div>
+                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#C4B5FD;text-align:center;margin-top:8px">Your Memory Here 🌟</p>
+                    </div>
+
                 </div>
             </section>
 
@@ -1290,7 +1361,6 @@
             const q = QUIZ_BANK[dayIndex % QUIZ_BANK.length];
 
             document.getElementById('quiz-date').textContent = dateStr;
-            document.getElementById('quiz-streak').textContent = `Day ${(dayIndex % QUIZ_BANK.length) + 1} of ${QUIZ_BANK.length}`;
             document.getElementById('quiz-q').textContent = q.q;
 
             const optionsEl = document.getElementById('quiz-options');
