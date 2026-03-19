@@ -526,7 +526,7 @@
 
                     <!-- Ylenia Quiaoit -->
                     <div class="fun-card p-6 flex flex-col items-center text-center group" style="border-color:#F97316;box-shadow:5px 5px 0 #F97316">
-                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center text-5xl" style="border-color:#F97316;box-shadow:3px 3px 0 #1A1035;background:#FFF0E6">🩺</div>
+                        <div id="ylenia-photo" class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center text-5xl relative" style="border-color:#F97316;box-shadow:3px 3px 0 #1A1035;background:#FFF0E6">🩺</div>
                         <span class="sticker text-[10px] mb-3" style="background:#FFF0E6;color:#F97316;border-color:#F97316">Adjunct Faculty</span>
                         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Ylenia Quiaoit, DNP, ACNP-BC</h3>
                         <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-1" style="color:#F97316">Adjunct Assistant Professor</p>
@@ -539,7 +539,7 @@
 
                     <!-- Maria Reila Molina -->
                     <div class="fun-card p-6 flex flex-col items-center text-center group" style="border-color:#F97316;box-shadow:5px 5px 0 #F97316">
-                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center text-5xl" style="border-color:#F97316;box-shadow:3px 3px 0 #1A1035;background:#FFF0E6">🩺</div>
+                        <div id="maria-photo" class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center text-5xl relative" style="border-color:#F97316;box-shadow:3px 3px 0 #1A1035;background:#FFF0E6">🩺</div>
                         <span class="sticker text-[10px] mb-3" style="background:#FFF0E6;color:#F97316;border-color:#F97316">Adjunct Faculty</span>
                         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Maria Reila Molina, DNP, ACNP-BC, AGACNP-BC, FAANP</h3>
                         <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-1" style="color:#F97316">Adjunct Assistant Professor</p>
@@ -887,9 +887,9 @@
                                 <p class="font-bold text-sm mb-1" style="color:#7C3AED">Federal Direct Unsubsidized Loans</p>
                                 <p class="font-semibold text-sm" style="color:#374151">The most common option. Interest accrues while you're in school but fixed rates are manageable. Apply via FAFSA.</p>
                             </div>
-                            <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
-                                <p class="font-bold text-sm mb-1" style="color:#7C3AED">Graduate PLUS Loans</p>
-                                <p class="font-semibold text-sm" style="color:#374151">Covers costs beyond the Unsubsidized limit. Higher interest rate but flexible — useful if you need to cover living expenses.</p>
+                            <div class="rounded-xl p-4" style="background:#F3F4F6;border:1.5px solid #D1D5DB;opacity:0.8">
+                                <p class="font-bold text-sm mb-1 line-through" style="color:#9CA3AF">Graduate PLUS Loans</p>
+                                <p class="font-semibold text-sm" style="color:#4B5563">RIP 🪦. Unfortunately, The big beautiful bill took this away from us.</p>
                             </div>
                             <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
                                 <p class="font-bold text-sm mb-1" style="color:#7C3AED">HRSA Nursing Scholarships</p>
@@ -957,10 +957,10 @@
 
                         <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
                             <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Cultura Coffee</h4>
-                                <span class="sticker" style="font-size:0.6rem">Hidden gem</span>
+                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Black Fox Coffee</h4>
+                                <span class="sticker" style="font-size:0.6rem">Top tier</span>
                             </div>
-                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">90 John St. A quieter, less-crowded option with great espresso and a relaxed vibe — perfect for squeezing in an Anki session before heading in.</p>
+                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">70 Pine St. Known for some of the best coffee in the city. A premium spot to treat yourself after surviving a tough exam or a long case.</p>
                         </div>
 
                         <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1 sm:col-span-2" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316">
@@ -989,6 +989,28 @@
     </div>
 
     <script>
+        // ====== ADJUNCT FACULTY PHOTOS ======
+        // ─────────────────────────────────────────────────────────────
+        // TO ADD OR CHANGE AN ADJUNCT PHOTO:
+        // Paste your Imgur link inside the quotes below.
+        // Leave it as '' to keep the default stethoscope emoji!
+        // ─────────────────────────────────────────────────────────────
+        const ADJUNCT_PHOTOS = {
+            ylenia: 'https://i.imgur.com/VlVUUer.jpg', 
+            maria: 'https://i.imgur.com/iQjhAgG.jpg'   
+        };
+
+        (function renderAdjunctPhotos() {
+            const yleniaEl = document.getElementById('ylenia-photo');
+            const mariaEl = document.getElementById('maria-photo');
+            if (yleniaEl && ADJUNCT_PHOTOS.ylenia) {
+                yleniaEl.innerHTML = `<img src="${ADJUNCT_PHOTOS.ylenia}" alt="Ylenia Quiaoit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">`;
+            }
+            if (mariaEl && ADJUNCT_PHOTOS.maria) {
+                mariaEl.innerHTML = `<img src="${ADJUNCT_PHOTOS.maria}" alt="Maria Reila Molina" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">`;
+            }
+        })();
+
         // ====== LOCK SCREEN ======
         const CORRECT = ['midazolam', 'lidocaine', 'propofol', 'rocuronium'];
         let seq = [];
@@ -1538,7 +1560,11 @@
                 grid.appendChild(card);
             });
         })();
-    </script>    <p style="position:fixed;bottom:10px;right:14px;font-family:'Nunito',sans-serif;font-size:0.65rem;color:rgba(42,27,56,0.35);font-weight:700;letter-spacing:0.03em;pointer-events:none;z-index:40">Made by Aaron T.</p>
+    </script>    
+    
+    <div style="position:fixed;bottom:10px;right:14px;z-index:9999;display:flex;align-items:center;gap:12px;pointer-events:none;">
+        <p style="font-family:'Nunito',sans-serif;font-size:0.65rem;color:rgba(42,27,56,0.6);font-weight:800;letter-spacing:0.03em;margin:0;">Made by Aaron T.</p>
+    </div>
 
 </body>
 </html>
