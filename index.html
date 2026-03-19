@@ -437,21 +437,31 @@
                     </div>
                 </div>
 
-                <!-- quick links row -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-                    <button onclick="showPage('survival', document.querySelectorAll('.nav-pill')[3])" class="fun-card p-5 text-center group border-2" style="border-color:#F43F82;box-shadow:4px 4px 0 #F43F82">
-                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">🧭</div>
-                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Study Tools</p>
-                    </button>
-                    <button onclick="showPage('local', document.querySelectorAll('.nav-pill')[4])" class="fun-card p-5 text-center group border-2" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
-                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">☕</div>
-                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Local Spots</p>
-                    </button>
-                    <button onclick="showPage('gallery', document.querySelectorAll('.nav-pill')[6])" class="fun-card p-5 text-center group border-2" style="border-color:#EC4899;box-shadow:4px 4px 0 #EC4899">
-                        <div class="text-3xl mb-2 group-hover:scale-125 transition-transform duration-200">📸</div>
-                        <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gallery</p>
-                    </button>
+                <!-- DAILY QUIZ CARD -->
+                <div class="mt-6 rounded-2xl overflow-hidden" style="border:2.5px solid #1A1035;box-shadow:5px 5px 0 #1A1035">
+                    <!-- header -->
+                    <div class="flex items-center justify-between px-6 py-4" style="background:linear-gradient(90deg,#7C3AED,#9D4FE8)">
+                        <div class="flex items-center gap-3">
+                            <span style="font-size:1.6rem">🧪</span>
+                            <div>
+                                <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:700;color:white;margin:0">Daily Question</p>
+                                <p id="quiz-date" style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.65);margin:0;letter-spacing:0.05em;text-transform:uppercase"></p>
+                            </div>
+                        </div>
+                        <div id="quiz-streak" style="background:rgba(255,255,255,0.15);border-radius:999px;padding:4px 12px;font-family:'Fredoka',sans-serif;font-size:0.85rem;font-weight:700;color:#FBBF24"></div>
+                    </div>
+
+                    <!-- body -->
+                    <div style="background:#FFFCF7;padding:20px 24px 24px">
+                        <p id="quiz-q" style="font-family:'Nunito',sans-serif;font-weight:800;font-size:0.95rem;color:#1A1035;margin:0 0 16px;line-height:1.5"></p>
+                        <div id="quiz-options" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div>
+                        <div id="quiz-result" style="display:none;margin-top:16px;border-radius:14px;padding:14px 16px"></div>
+                        <div id="quiz-explanation" style="display:none;margin-top:10px;border-radius:14px;padding:12px 16px;background:#F5F0FF;border-left:4px solid #7C3AED">
+                            <p id="quiz-exp-text" style="font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#4B3D6E;margin:0;line-height:1.5"></p>
+                        </div>
+                    </div>
                 </div>
+
             </section>
 
             <!-- ===== FACULTY ===== -->
@@ -465,21 +475,23 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="fun-card fun-card-purple p-6 flex flex-col items-center text-center group">
-                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#7C3AED;box-shadow:3px 3px 0 #1A1035">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 relative" style="border-color:#7C3AED;box-shadow:3px 3px 0 #1A1035">
                             <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Stephen Yermal" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <div style="position:absolute;bottom:2px;right:2px;font-size:1.4rem;line-height:1;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4))">🧠</div>
                         </div>
                         <span class="sticker sticker-purple text-[10px] mb-3">Program Director</span>
                         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Stephen J. Yermal, PhD, RN, CRNA</h3>
                         <p class="text-xs font-bold uppercase tracking-wider mt-1 mb-4" style="color:#7C3AED">William Randolph Hearst Endowed Chair & Clinical Professor</p>
                         <div class="w-full rounded-xl p-4 text-left relative" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
                             <span class="absolute -top-3 left-3 text-2xl">✏️</span>
-                            <p class="text-sm font-semibold pt-1" style="color:#4B3D6E">Stephen Yermal is the founding Specialty Director of the Nurse Anesthesia DNP program and the William Randolph Hearst Endowed Chair in Clinical Nursing at the Hunter-Bellevue School of Nursing.</p>
+                            <p class="text-sm font-semibold pt-1" style="color:#4B3D6E">Dr. Stephen Yermal is the founding Specialty Director of the Nurse Anesthesia DNP program and the William Randolph Hearst Endowed Chair in Clinical Nursing at the Hunter-Bellevue School of Nursing.</p>
                         </div>
                     </div>
 
                     <div class="fun-card fun-card-pink p-6 flex flex-col items-center text-center group">
-                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#F43F82;box-shadow:3px 3px 0 #1A1035">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 relative" style="border-color:#F43F82;box-shadow:3px 3px 0 #1A1035">
                             <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Jennifer Majumdar" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <div style="position:absolute;bottom:2px;right:2px;font-size:1.4rem;line-height:1;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4))">💉</div>
                         </div>
                         <span class="sticker sticker-pink text-[10px] mb-3">Asst. Director</span>
                         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035;line-height:1.2">Jennifer R. Majumdar, PhD, MSN, CRNA</h3>
@@ -491,8 +503,9 @@
                     </div>
 
                     <div class="fun-card fun-card-teal p-6 flex flex-col items-center text-center group md:col-span-2 lg:w-2/3 lg:mx-auto">
-                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110" style="border-color:#0D9488;box-shadow:3px 3px 0 #1A1035">
+                        <div class="w-28 h-28 rounded-full border-4 overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-110 relative" style="border-color:#0D9488;box-shadow:3px 3px 0 #1A1035">
                             <img src="image_014afe.png" alt="Madison Guptill" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-5xl\' style=\'background:#CCFBF1\'>🗂️</div>'">
+                            <div style="position:absolute;bottom:2px;right:2px;font-size:1.4rem;line-height:1;filter:drop-shadow(1px 1px 2px rgba(0,0,0,0.4))">📋</div>
                         </div>
                         <span class="sticker sticker-teal text-[10px] mb-3">Administrator</span>
                         <h3 style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035">Madison Guptill</h3>
@@ -521,7 +534,7 @@
                         <p class="text-xs font-bold uppercase tracking-wider mb-4" style="color:#6B7280">Adult-Gerontology Acute Care NP</p>
                         <div class="w-full rounded-xl p-4 text-left relative" style="background:#FFF7F0;border:1.5px solid #FDBA74">
                             <span class="absolute -top-3 left-3 text-2xl">✏️</span>
-                            <p class="text-sm font-semibold pt-1 leading-relaxed" style="color:#7C3D12">Adjunct Assistant Professor at Hunter College School of Nursing (August 2024–Present), specializing in Adult-Gerontology Acute Care. An experienced clinician who previously managed inpatient cardiology at the Hospital of the University of Pennsylvania (HUP), and a certified expert in transplant nursing, having served as President of the International Transplant Nursing Society (ITNS).</p>
+                            <p class="text-sm font-semibold pt-1 leading-relaxed" style="color:#7C3D12">Dr. Quiaoit is an experienced clinician who previously managed inpatient cardiology at the Hospital of the University of Pennsylvania (HUP), and a certified expert in transplant nursing, having served as President of the International Transplant Nursing Society (ITNS).</p>
                         </div>
                     </div>
 
@@ -534,7 +547,7 @@
                         <p class="text-xs font-bold uppercase tracking-wider mb-4" style="color:#6B7280">Adult-Gerontology Acute Care NP</p>
                         <div class="w-full rounded-xl p-4 text-left relative" style="background:#FFF7F0;border:1.5px solid #FDBA74">
                             <span class="absolute -top-3 left-3 text-2xl">✏️</span>
-                            <p class="text-sm font-semibold pt-1 leading-relaxed" style="color:#7C3D12">Adjunct Assistant Professor at Hunter College School of Nursing (August 2024–Present), specializing in Adult-Gerontology Acute Care. A nurse leader, Fellow of the American Association of Nurse Practitioners (FAANP), and certified expert in transplant nursing, previously serving as President of the International Transplant Nursing Society (ITNS).</p>
+                            <p class="text-sm font-semibold pt-1 leading-relaxed" style="color:#7C3D12">Dr. Molina is a nurse leader, Fellow of the American Association of Nurse Practitioners (FAANP), and certified expert in transplant nursing, previously serving as President of the International Transplant Nursing Society (ITNS).</p>
                         </div>
                     </div>
 
@@ -547,39 +560,67 @@
                     <span class="sticker mb-3 inline-block">The OGs 🏆</span>
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035;line-height:1.1">Meet Cohort 1</h2>
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">The 20 trailblazers of the Hunter College Nurse Anesthesia DNP Program.</p>
+                    <p class="font-semibold mt-1" style="color:#7C3AED;font-size:0.85rem">✨ Tap any card to meet them!</p>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
 
                     <!-- President -->
-                    <div class="cohort-card p-4 flex flex-col items-center text-center relative" style="background:#FFFBE6;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
+                    <div class="cohort-card p-4 flex flex-col items-center text-center relative" style="background:#FFFBE6;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24;cursor:pointer" onclick="openProfile('bret')">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap" style="background:#F59E0B;color:white;font-family:'Fredoka',sans-serif;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:999px;border:2px solid #1A1035;box-shadow:1px 1px 0 #1A1035">👑 President</div>
                         <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mt-4 mb-2" style="background:#FEF9C3;border-color:#FBBF24">👑</div>
                         <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Bret</p>
-                    </div>
+                                    </div>
 
-                    <!-- Students 2-20 -->
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤓</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aaron</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">😴</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aizhana</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🤯</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ann</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥶</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ayo</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤪</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chelsea</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">☕</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chris</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥸</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Emily</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🥳</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Erin</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👽</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Filis</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🥺</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gerard</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥵</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Godfred</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🤡</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Hannah</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👻</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Josi</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤖</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Julia</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🧛</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Kevin</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🧟</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Laurence</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🦄</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Racheal</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥷</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Tara</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Wen</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('aaron')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🫠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aaron</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('aizhana')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">👧</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aizhana</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('ann')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🤯</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ann</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('ayo')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥶</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ayo</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('chelsea')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤪</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chelsea</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('chris')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">☕</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chris</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('emily')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥸</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Emily</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('erin')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🥳</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Erin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('filis')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👽</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Filis</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('gerard')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🥺</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gerard</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('godfred')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥵</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Godfred</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('hannah')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🤡</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Hannah</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('josi')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👻</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Josi</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('julia')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤖</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Julia</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('kevin')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🧛</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Kevin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('laurence')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🧟</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Laurence</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('racheal')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🦄</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Racheal</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('tara')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥷</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Tara</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('wen')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Wen</p></div>
                 </div>
             </section>
+
+            <!-- ======= COHORT PROFILE MODAL ======= -->
+            <div id="cohort-modal" onclick="if(event.target===this)closeProfile()" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(26,16,53,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem">
+                <div id="cohort-modal-card" style="background:#FFFCF7;border-radius:28px;border:3px solid #1A1035;box-shadow:10px 10px 0 #1A1035;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.85);opacity:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),opacity 0.25s ease">
+
+                    <!-- confetti layer -->
+                    <div id="modal-confetti" style="position:absolute;inset:0;border-radius:28px;overflow:hidden;pointer-events:none;z-index:0"></div>
+
+                    <!-- close button -->
+                    <button onclick="closeProfile()" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#1A1035;color:white;font-size:1rem;font-weight:700;border:none;z-index:10;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>
+
+                    <!-- header band -->
+                    <div id="modal-header-band" style="border-radius:25px 25px 0 0;padding:28px 24px 20px;text-align:center;position:relative;z-index:1">
+                        <div id="modal-avatar" style="width:100px;height:100px;border-radius:50%;border:4px solid #1A1035;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;overflow:hidden;box-shadow:4px 4px 0 #1A1035"></div>
+                        <div id="modal-badge" style="display:inline-block;margin-bottom:10px"></div>
+                        <h3 id="modal-name" style="font-family:'Fredoka',sans-serif;font-size:2rem;color:#1A1035;line-height:1.1;margin:0 0 4px"></h3>
+                        <p id="modal-tagline" style="font-family:'Nunito',sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#6B7280;margin:0">Cohort 1 · Hunter CRNA DNP</p>
+                    </div>
+
+                    <!-- body -->
+                    <div style="padding:0 24px 28px;position:relative;z-index:1">
+                        <div id="modal-facts" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px"></div>
+                        <div id="modal-quote-box" style="border-radius:14px;padding:14px 16px;border-left:4px solid #7C3AED;background:#F5F0FF;margin-top:4px">
+                            <p id="modal-quote" style="font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;font-style:italic;color:#4B3D6E;margin:0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- ===== STUDY TOOLS ===== -->
             <section id="survival" class="page-section">
@@ -1051,6 +1092,374 @@
             const item = btn.closest('.accordion-item');
             item.classList.toggle('accordion-open');
         }
+
+        // ====== DAILY QUIZ ======
+        const QUIZ_BANK = [
+            {
+                q: "What is the mechanism of action of propofol?",
+                options: ["NMDA receptor antagonist", "GABA-A receptor potentiation", "Opioid receptor agonist", "Sodium channel blockade"],
+                answer: 1,
+                exp: "Propofol enhances GABA-A receptor activity, increasing chloride conductance and causing CNS depression. It also inhibits NMDA receptors and modulates calcium channels."
+            },
+            {
+                q: "Which volatile anesthetic has the LOWEST blood-gas partition coefficient?",
+                options: ["Halothane", "Isoflurane", "Sevoflurane", "Desflurane"],
+                answer: 3,
+                exp: "Desflurane has the lowest blood-gas partition coefficient (0.45), meaning it is the least soluble in blood, resulting in the fastest induction and emergence."
+            },
+            {
+                q: "A patient receives succinylcholine and develops masseter spasm with rising temperature. What is the FIRST priority?",
+                options: ["Administer dantrolene 2.5 mg/kg IV", "Hyperventilate with 100% O₂", "Call for help and stop all triggering agents", "Obtain a serum creatine kinase level"],
+                answer: 2,
+                exp: "Malignant hyperthermia treatment: immediately discontinue all triggering agents (volatiles + succinylcholine) and call for help. Dantrolene follows quickly, but stopping the trigger is the absolute first step."
+            },
+            {
+                q: "What is the primary determinant of local anesthetic duration of action?",
+                options: ["pKa of the agent", "Protein binding", "Lipid solubility", "Molecular weight"],
+                answer: 1,
+                exp: "Protein binding is the primary determinant of duration. Highly protein-bound agents like bupivacaine (95%) have long durations, while agents with less binding (like lidocaine, ~65%) are shorter-acting."
+            },
+            {
+                q: "During laryngoscopy, a patient's heart rate drops to 38 bpm. What receptor is responsible?",
+                options: ["Alpha-1 adrenergic", "Beta-1 adrenergic", "Muscarinic (vagal)", "Nicotinic"],
+                answer: 2,
+                exp: "Laryngoscopy can trigger a vagal response via muscarinic receptors, causing bradycardia. Treat with atropine 0.5 mg IV or glycopyrrolate. Anticipated with lighter planes of anesthesia."
+            },
+            {
+                q: "The minimum alveolar concentration (MAC) of a volatile anesthetic is DECREASED by which of the following?",
+                options: ["Hyperthermia", "Chronic alcohol use", "Opioid administration", "Hyperthyroidism"],
+                answer: 2,
+                exp: "Opioids decrease MAC via synergistic CNS depression. Other MAC reducers: hypothermia, acute alcohol intoxication, advanced age, pregnancy, hypoxia, hypotension, and other CNS depressants."
+            },
+            {
+                q: "Which neuromuscular blocking agent is the FASTEST onset and should be used for RSI?",
+                options: ["Rocuronium 0.6 mg/kg", "Vecuronium 0.1 mg/kg", "Succinylcholine 1.5 mg/kg", "Cisatracurium 0.2 mg/kg"],
+                answer: 2,
+                exp: "Succinylcholine (1–1.5 mg/kg) has the fastest onset (~60 seconds) due to depolarizing mechanism. Rocuronium at high dose (1.2 mg/kg) can match succinylcholine onset and is preferred when succinylcholine is contraindicated."
+            },
+            {
+                q: "What is the Fick principle used to calculate in anesthesia?",
+                options: ["Oxygen consumption", "Cardiac output", "Pulmonary vascular resistance", "Functional residual capacity"],
+                answer: 1,
+                exp: "The Fick principle states that cardiac output = O₂ consumption ÷ arteriovenous O₂ difference. It is the gold standard for measuring cardiac output, though the thermodilution method is more commonly used clinically."
+            },
+            {
+                q: "A patient with a history of pseudocholinesterase deficiency undergoes RSI with succinylcholine. What would you expect?",
+                options: ["Accelerated metabolism and short duration", "Prolonged neuromuscular blockade", "No effect — succinylcholine is unaffected", "Immediate anaphylaxis"],
+                answer: 1,
+                exp: "Pseudocholinesterase (plasma cholinesterase) normally metabolizes succinylcholine rapidly. Deficiency leads to prolonged paralysis (phase II block), sometimes lasting hours. Treat with ventilatory support until block resolves."
+            },
+            {
+                q: "Which inhalational agent should be AVOIDED in patients with a history of hepatic disease?",
+                options: ["Sevoflurane", "Desflurane", "Halothane", "Isoflurane"],
+                answer: 2,
+                exp: "Halothane undergoes the most hepatic metabolism (~20%) and is associated with halothane hepatitis, ranging from mild enzyme elevation to fatal fulminant hepatic failure. Modern agents (sevo, des, iso) are largely safe."
+            },
+            {
+                q: "The oxygen flush valve on an anesthesia machine delivers oxygen at approximately what flow rate?",
+                options: ["2–4 L/min", "10–15 L/min", "35–75 L/min", "100 L/min"],
+                answer: 2,
+                exp: "The O₂ flush valve delivers 35–75 L/min of 100% oxygen at pipeline pressure (50 psi). Avoid using it during spontaneous ventilation — the high flow can cause barotrauma or dilute inhaled anesthetic."
+            },
+            {
+                q: "Etomidate is preferred for induction in hemodynamically unstable patients because it:",
+                options: ["Has strong analgesic properties", "Causes minimal cardiovascular depression", "Decreases intracranial pressure", "Has a rapid onset of action"],
+                answer: 1,
+                exp: "Etomidate maintains hemodynamic stability better than propofol or barbiturates by preserving autonomic reflexes. Downside: it causes adrenocortical suppression (inhibits 11-β-hydroxylase), especially with infusion."
+            },
+            {
+                q: "What is the MOST common cause of intraoperative hypoxia?",
+                options: ["Pulmonary embolism", "Endobronchial intubation", "Anaphylaxis", "Pneumothorax"],
+                answer: 1,
+                exp: "Endobronchial (right mainstem) intubation is the most common cause of intraoperative hypoxia. It causes atelectasis of the unventilated lung and significant V/Q mismatch. Always confirm bilateral breath sounds post-intubation."
+            },
+            {
+                q: "Ketamine's dissociative anesthesia is primarily mediated through:",
+                options: ["GABA-A potentiation", "NMDA receptor antagonism", "Opioid receptor agonism", "Alpha-2 adrenergic agonism"],
+                answer: 1,
+                exp: "Ketamine is a non-competitive NMDA (glutamate) receptor antagonist. It also has opioid, muscarinic, and monoaminergic activity. It uniquely preserves airway reflexes and cardiovascular function."
+            },
+            {
+                q: "A patient is in the prone position and develops sudden hypotension and decreased ETCO₂. What is the MOST likely cause?",
+                options: ["Anaphylaxis", "Tension pneumothorax", "Venous air embolism", "Myocardial infarction"],
+                answer: 2,
+                exp: "Venous air embolism (VAE) is a serious complication in prone/sitting positions. Air enters open venous sinuses and causes a 'air lock' in the right heart, dropping CO and ETCO₂. Treat: flood field, Durant's maneuver, aspiration through CVL."
+            },
+            {
+                q: "What does a soda lime color change from WHITE to VIOLET indicate?",
+                options: ["CO₂ absorption is adequate", "CO₂ absorber is exhausted", "Moisture has been lost", "Temperature has increased"],
+                answer: 1,
+                exp: "Soda lime contains a pH-sensitive dye. As CO₂ is absorbed and the absorber becomes exhausted, the pH drops and the dye turns violet/purple. Note: the color can partially reverse when not in use — always check clinically."
+            },
+            {
+                q: "The hypoxic pulmonary vasoconstriction (HPV) reflex is INHIBITED by:",
+                options: ["Positive end-expiratory pressure (PEEP)", "Volatile anesthetic agents", "Hypercapnia", "Vasopressors"],
+                answer: 1,
+                exp: "Volatile anesthetics inhibit HPV in a dose-dependent manner, potentially worsening V/Q mismatch during one-lung ventilation. IV anesthetics (propofol, ketamine) are preferred for thoracic surgery with OLV."
+            },
+            {
+                q: "Which of the following is the CORRECT sequence for RSI?",
+                options: ["Preoxygenate → induction agent → succinylcholine → cricoid pressure → intubate", "Preoxygenate → cricoid pressure → induction agent → succinylcholine → intubate", "Cricoid pressure → preoxygenate → induction → succinylcholine → intubate", "Preoxygenate → succinylcholine → induction agent → cricoid pressure → intubate"],
+                answer: 1,
+                exp: "The correct RSI sequence: preoxygenate (3 min or 8 vital capacity breaths) → apply cricoid pressure → induction agent → succinylcholine (or high-dose rocuronium) → intubate without mask ventilation. Timing varies by preference."
+            },
+            {
+                q: "Which electrolyte abnormality is MOST dangerous in a patient receiving succinylcholine?",
+                options: ["Hyponatremia", "Hypocalcemia", "Hyperkalemia", "Hypomagnesemia"],
+                answer: 2,
+                exp: "Succinylcholine causes a transient rise in serum K⁺ of ~0.5 mEq/L. In patients with burns, crush injuries, denervation, prolonged immobility, or hyperkalemia, this can precipitate fatal cardiac arrhythmias."
+            },
+            {
+                q: "The closing volume is clinically important because when it exceeds FRC, what happens?",
+                options: ["Increased dead space ventilation", "Small airway collapse during normal tidal breathing", "Pulmonary hypertension develops", "CO₂ retention increases"],
+                answer: 1,
+                exp: "When closing volume > FRC (occurs in obesity, pregnancy, elderly, supine position), small airways close during normal tidal breathing, causing atelectasis, V/Q mismatch, and hypoxemia. PEEP can restore FRC above closing volume."
+            },
+            {
+                q: "Neostigmine reversal of neuromuscular blockade should always be given with:",
+                options: ["Ephedrine", "Glycopyrrolate or atropine", "Flumazenil", "Naloxone"],
+                answer: 1,
+                exp: "Neostigmine inhibits acetylcholinesterase, increasing ACh at all cholinergic synapses — causing bradycardia, bronchospasm, hypersalivation. An anticholinergic (glycopyrrolate preferred — does not cross BBB) must be given concurrently."
+            },
+            {
+                q: "What is the most reliable sign of correct endotracheal tube placement?",
+                options: ["Bilateral breath sounds", "Chest rise with ventilation", "Continuous end-tidal CO₂ waveform", "Tube misting on exhalation"],
+                answer: 2,
+                exp: "Continuous capnography (ETCO₂ waveform) across multiple breaths is the gold standard for confirming ETT placement. Bilateral breath sounds can be misleading (esophageal intubation may produce sounds). Always use both together."
+            },
+            {
+                q: "A patient with a full stomach requires emergency surgery. Which of the following is TRUE about RSI?",
+                options: ["Mask ventilation should be used to preoxygenate after induction", "Cricoid pressure is applied before induction agent", "No ventilation is given between induction and intubation", "Rocuronium cannot be used for RSI"],
+                answer: 2,
+                exp: "In true RSI, no positive pressure ventilation is given between induction and intubation to prevent gastric insufflation and aspiration. The goal is rapid, controlled intubation without the risk of regurgitation."
+            },
+            {
+                q: "Dexmedetomidine produces its sedative effects by acting on:",
+                options: ["GABA-A receptors in the cortex", "Alpha-2 receptors in the locus coeruleus", "Opioid receptors in the spinal cord", "NMDA receptors in the brainstem"],
+                answer: 1,
+                exp: "Dexmedetomidine is a highly selective alpha-2 agonist. It acts on presynaptic alpha-2 receptors in the locus coeruleus (brainstem) to inhibit norepinephrine release, producing sedation that mimics natural sleep."
+            },
+            {
+                q: "What is the primary reason sevoflurane is preferred over desflurane for inhalational induction?",
+                options: ["Lower cost", "Non-pungent odor and low airway irritability", "Faster emergence", "Lower blood-gas partition coefficient"],
+                answer: 1,
+                exp: "Sevoflurane has a sweet, non-pungent smell and minimal airway irritability, making it ideal for inhalational induction, especially in pediatrics. Desflurane is highly pungent and causes coughing, breath-holding, and laryngospasm."
+            },
+            {
+                q: "Which of the following patients is at HIGHEST risk for postoperative pulmonary complications?",
+                options: ["A 25-year-old undergoing appendectomy", "A 70-year-old smoker with COPD undergoing upper abdominal surgery", "A 45-year-old with well-controlled hypertension undergoing knee replacement", "A 30-year-old with asthma undergoing laparoscopic cholecystectomy"],
+                answer: 1,
+                exp: "Upper abdominal surgery + advanced age + COPD + smoking = highest risk for postoperative pulmonary complications (atelectasis, pneumonia, respiratory failure). Diaphragm dysfunction post-laparotomy dramatically reduces FRC."
+            },
+            {
+                q: "Fentanyl is more potent than morphine because it is:",
+                options: ["More water-soluble", "More highly protein-bound", "More lipid-soluble with faster CNS penetration", "Metabolized more slowly"],
+                answer: 2,
+                exp: "Fentanyl is ~100x more potent than morphine. Its high lipid solubility allows rapid CNS penetration and faster onset. It also has minimal histamine release, making it preferable in hemodynamically sensitive patients."
+            },
+            {
+                q: "A patient develops stridor immediately after extubation. What is the FIRST intervention?",
+                options: ["Reintubate immediately", "Administer racemic epinephrine nebulizer", "Apply jaw thrust and supplemental oxygen", "Call for surgical airway"],
+                answer: 2,
+                exp: "Post-extubation stridor is often partial airway obstruction from soft tissue. First: jaw thrust, head-tilt, supplemental O₂. If no improvement → racemic epinephrine + heliox + steroids. Reintubate if airway not secured with conservative measures."
+            },
+            {
+                q: "The anion gap is calculated as:",
+                options: ["Na⁺ − (HCO₃⁻ + K⁺)", "Na⁺ − (Cl⁻ + HCO₃⁻)", "(Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻)", "Na⁺ − Cl⁻"],
+                answer: 1,
+                exp: "Anion gap = Na⁺ − (Cl⁻ + HCO₃⁻). Normal = 8–12 mEq/L. Elevated AG metabolic acidosis causes (MUDPILES): Methanol, Uremia, DKA, Propylene glycol, Isoniazid, Lactic acidosis, Ethylene glycol, Salicylates."
+            },
+            {
+                q: "Which of the following BEST describes the mechanism of action of midazolam?",
+                options: ["Direct GABA-A receptor activation", "GABA-A receptor positive allosteric modulation", "Glycine receptor potentiation", "NMDA receptor inhibition"],
+                answer: 1,
+                exp: "Benzodiazepines like midazolam bind to the benzodiazepine site on GABA-A receptors, increasing the frequency of Cl⁻ channel opening in response to GABA. They do NOT directly activate the receptor — they enhance GABA's effect."
+            },
+            {
+                q: "During a spinal anesthetic, a patient develops sudden bradycardia and hypotension with nausea. The block is at T4. What is the MOST likely cause?",
+                options: ["Local anesthetic toxicity", "High spinal with sympathectomy and cardiac accelerator fiber blockade", "Vasovagal episode", "Anaphylaxis to local anesthetic"],
+                answer: 1,
+                exp: "Cardiac accelerator fibers (T1–T4) accelerate HR via sympathetics. A T4 block interrupts these, causing bradycardia + hypotension (vasodilation from sympathectomy). Treat: Trendelenburg, IV fluids, ephedrine/epinephrine, atropine."
+            },
+        ];
+
+        (function initQuiz() {
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+            const dayIndex = Math.floor(today.getTime() / 86400000); // changes daily
+            const q = QUIZ_BANK[dayIndex % QUIZ_BANK.length];
+
+            document.getElementById('quiz-date').textContent = dateStr;
+            document.getElementById('quiz-streak').textContent = `Day ${(dayIndex % QUIZ_BANK.length) + 1} of ${QUIZ_BANK.length}`;
+            document.getElementById('quiz-q').textContent = q.q;
+
+            const optionsEl = document.getElementById('quiz-options');
+            const letters = ['A', 'B', 'C', 'D'];
+
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.style.cssText = `
+                    display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+                    background:white;border:2px solid #E5E7EB;border-radius:10px;
+                    padding:8px 10px;font-family:'Nunito',sans-serif;font-size:0.76rem;
+                    font-weight:700;color:#374151;cursor:pointer;
+                    transition:border-color 0.15s,background 0.15s;
+                    line-height:1.3;
+                `;
+                btn.onmouseover = () => { if (!btn.disabled) { btn.style.borderColor = '#7C3AED'; btn.style.background = '#F5F0FF'; } };
+                btn.onmouseout  = () => { if (!btn.disabled) { btn.style.borderColor = '#E5E7EB'; btn.style.background = 'white'; } };
+                btn.innerHTML = `<span style="min-width:19px;height:19px;border-radius:50%;background:#EDE9FF;color:#7C3AED;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">${letters[i]}</span><span>${opt}</span>`;
+
+                btn.onclick = () => {
+                    // disable all buttons
+                    optionsEl.querySelectorAll('button').forEach(b => b.disabled = true);
+
+                    const correct = (i === q.answer);
+                    const resultEl = document.getElementById('quiz-result');
+                    const expEl    = document.getElementById('quiz-explanation');
+
+                    // style chosen button
+                    btn.style.borderColor = correct ? '#16A34A' : '#F43F82';
+                    btn.style.background  = correct ? '#DCFCE7' : '#FFE4EF';
+                    btn.style.color       = correct ? '#166534' : '#9D174D';
+
+                    // style correct answer if wrong
+                    if (!correct) {
+                        const allBtns = optionsEl.querySelectorAll('button');
+                        allBtns[q.answer].style.borderColor = '#16A34A';
+                        allBtns[q.answer].style.background  = '#DCFCE7';
+                        allBtns[q.answer].style.color       = '#166534';
+                    }
+
+                    // result banner
+                    resultEl.style.display = 'block';
+                    resultEl.style.background = correct ? '#DCFCE7' : '#FFE4EF';
+                    resultEl.style.borderLeft = `4px solid ${correct ? '#16A34A' : '#F43F82'}`;
+                    resultEl.style.borderRadius = '12px';
+                    resultEl.style.padding = '12px 16px';
+                    resultEl.innerHTML = `<p style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;color:${correct ? '#166534' : '#9D174D'};margin:0">${correct ? '🎉 Correct! Nice work!' : '❌ Not quite — but that\'s how we learn!'}</p>`;
+
+                    // explanation
+                    expEl.style.display = 'block';
+                    document.getElementById('quiz-exp-text').textContent = '💡 ' + q.exp;
+                };
+
+                optionsEl.appendChild(btn);
+            });
+        })();
+        const PROFILES = {
+            bret:     { name:'Bret', emoji:'👑', color:'#F59E0B', bg:'#FEF9C3', role:'Class President 👑', photo:'', facts:[{i:'🏥',t:'ICU background — kept cool when everyone else was panicking.'},{i:'💬',t:'Somehow always knows what\'s going on with the schedule before faculty does.'},{i:'🎯',t:'Elected president because someone had to wrangle this group.'}], quote:'"Leadership is just organized chaos." — Bret, probably' },
+            aaron:    { name:'Aaron', emoji:'🫠', color:'#7C3AED', bg:'#EDE9FF', role:'Resident Anki Evangelist', photo:'', facts:[{i:'💻',t:'Built this very website. You\'re welcome.'},{i:'🃏',t:'Has more Anki cards than the rest of the cohort combined.'},{i:'☕',t:'Fueled entirely by espresso and existential dread.'}], quote:'"Have you tried making an Anki card for that?" — Aaron, always' },
+            aizhana:  { name:'Aizhana', emoji:'👧', color:'#F43F82', bg:'#FFE4EF', role:'Heart of the Cohort', photo:'', facts:[{i:'🌸',t:'Brings warmth to every study session and rotation.'},{i:'📚',t:'Never misses a deadline — quietly one of the most organized.'},{i:'💪',t:'Tougher than she looks. Don\'t underestimate her.'}], quote:'"Soft voice, iron will." — The cohort' },
+            ann:      { name:'Ann', emoji:'🤯', color:'#0D9488', bg:'#CCFBF1', role:'Clinical Powerhouse', photo:'', facts:[{i:'🏥',t:'More clinical experience than most — and she knows how to use it.'},{i:'🧠',t:'Asks the questions everyone else was too afraid to ask.'},{i:'🤯',t:'Her face when pharm exam hits different.'}], quote:'"Wait, that\'s due TODAY?" — Ann, twice a semester' },
+            ayo:      { name:'Ayo', emoji:'🥶', color:'#F97316', bg:'#FFF0E6', role:'Always Freezing in the OR', photo:'', facts:[{i:'🧥',t:'Has a personal blanket at every clinical site. Non-negotiable.'},{i:'💡',t:'Sharp clinical mind — just needs the thermostat at 80°F.'},{i:'😂',t:'Provides comedy relief the cohort needs at 6am.'}], quote:'"Why is it ALWAYS so cold in here?!" — Ayo, every single day' },
+            chelsea:  { name:'Chelsea', emoji:'🤪', color:'#7C3AED', bg:'#EDE9FF', role:'Chaos Coordinator', photo:'', facts:[{i:'🎉',t:'Suggests a hangout whenever everyone is about to break.'},{i:'📖',t:'Gets great grades despite appearing to have fun all the time.'},{i:'💜',t:'Keeps the group chat alive with memes at 2am pre-exam.'}], quote:'"We NEED to go out this weekend." — Chelsea, every Thursday' },
+            chris:    { name:'Chris', emoji:'☕', color:'#F43F82', bg:'#FFE4EF', role:'The Human Coffeemaker', photo:'', facts:[{i:'☕',t:'Arrives to every 6am rotation already on his second coffee.'},{i:'😌',t:'Unnervingly calm in high-pressure situations.'},{i:'📝',t:'Takes the most thorough case notes in the cohort.'}], quote:'"I\'m fine. I just need coffee." — Chris, definitely' },
+            emily:    { name:'Emily', emoji:'🥸', color:'#0D9488', bg:'#CCFBF1', role:'Quietly Brilliant', photo:'', facts:[{i:'🔬',t:'Understands physiology at a level that makes everyone nervous.'},{i:'🤫',t:'Doesn\'t say much — but when she does, write it down.'},{i:'📗',t:'Has actually read the textbook. All of it.'}], quote:'"Oh, I figured that out last week." — Emily, casually' },
+            erin:     { name:'Erin', emoji:'🥳', color:'#FBBF24', bg:'#FEF9C3', role:'Chief Morale Officer', photo:'', facts:[{i:'🎊',t:'Treats every passed exam like a national holiday.'},{i:'🤝',t:'First person to check in on you when things get hard.'},{i:'⚡',t:'Energy levels that should not be possible at 5:30am.'}], quote:'"WE DID IT!! 🎉🎉🎉" — Erin, after every exam' },
+            filis:    { name:'Filis', emoji:'👽', color:'#7C3AED', bg:'#EDE9FF', role:'On a Different Frequency', photo:'', facts:[{i:'🌌',t:'Sees patterns in pharmacology that most humans can\'t detect.'},{i:'🤔',t:'Always has a follow-up question that changes the whole conversation.'},{i:'👾',t:'Marches to their own drum — and it works.'}], quote:'"What if we think about it this way instead..." — Filis' },
+            gerard:   { name:'Gerard', emoji:'🥺', color:'#F43F82', bg:'#FFE4EF', role:'The Big Softie', photo:'', facts:[{i:'💙',t:'Biggest heart in the cohort — patients love him immediately.'},{i:'🏋️',t:'Looks intimidating. Actually the most gentle person in the room.'},{i:'😰',t:'His face before every exam is iconic and we love him for it.'}], quote:'"I studied SO much for this..." — Gerard, before every test' },
+            godfred:  { name:'Godfred', emoji:'🥵', color:'#0D9488', bg:'#CCFBF1', role:'Always Running Hot', photo:'', facts:[{i:'🔥',t:'The only person who welcomes the freezing OR temperatures.'},{i:'💪',t:'Work ethic that makes everyone else feel slightly guilty.'},{i:'😅',t:'Sweating during presentations but never misses a beat.'}], quote:'"Is it hot in here or is it just me?" — Godfred, always' },
+            hannah:   { name:'Hannah', emoji:'🤡', color:'#F97316', bg:'#FFF0E6', role:'Certified Comedian, Actual Genius', photo:'', facts:[{i:'😂',t:'Responsible for 60% of cohort laughter. Critical role.'},{i:'🎭',t:'Makes the most stressful days actually bearable.'},{i:'📊',t:'Still aces everything while making it look like a bit.'}], quote:'"I\'m not worried about it." *proceeds to ace it* — Hannah' },
+            josi:     { name:'Josi', emoji:'👻', color:'#7C3AED', bg:'#EDE9FF', role:'Appears, Disappears, Always Delivers', photo:'', facts:[{i:'👻',t:'Goes quiet for two days before an exam — comes back crushing it.'},{i:'🎯',t:'Quietly one of the most precise in the cohort.'},{i:'🌙',t:'A mystery — but a loveable one.'}], quote:'"Oh I was just studying." — Josi, after vanishing for a week' },
+            julia:    { name:'Julia', emoji:'🤖', color:'#FBBF24', bg:'#FEF9C3', role:'Runs on Logic & Algorithms', photo:'', facts:[{i:'🤖',t:'Approaches every problem with precision — anesthesia suits her.'},{i:'📐',t:'Has a formula for everything, including study breaks.'},{i:'🏆',t:'Does not believe in wasted effort. Every minute is optimized.'}], quote:'"I\'ve already made a spreadsheet for that." — Julia' },
+            kevin:    { name:'Kevin', emoji:'🧛', color:'#F43F82', bg:'#FFE4EF', role:'Nocturnal, Mysterious, Thriving', photo:'', facts:[{i:'🌙',t:'Most productive between midnight and 3am. Don\'t question it.'},{i:'😎',t:'Effortless cool that makes stressful situations look easy.'},{i:'🩸',t:'Blood draws? Perfectly placed IVs? He\'s got it handled.'}], quote:'"I\'ll sleep after boards." — Kevin' },
+            laurence: { name:'Laurence', emoji:'🧟', color:'#0D9488', bg:'#CCFBF1', role:'Functioning on Fumes & Determination', photo:'', facts:[{i:'😵',t:'Looking like a zombie but performing like a rockstar.'},{i:'💪',t:'Keeps going when everyone else has hit a wall.'},{i:'🤝',t:'First to offer help, even when he needs it himself.'}], quote:'"I\'m fine. Just tired. I\'m always tired." — Laurence' },
+            racheal:  { name:'Racheal', emoji:'🦄', color:'#7C3AED', bg:'#EDE9FF', role:'One of a Kind', photo:'', facts:[{i:'🌈',t:'Brings color and magic to every rotation and study session.'},{i:'✨',t:'Somehow makes scrubs look like a fashion statement.'},{i:'💜',t:'Deeply kind and deeply competent — a rare combo.'}], quote:'"I just believe in doing everything with intention." — Racheal' },
+            tara:     { name:'Tara', emoji:'🥷', color:'#F97316', bg:'#FFF0E6', role:'Silent Operator', photo:'', facts:[{i:'🥷',t:'Gets things done without anyone knowing how or when.'},{i:'🎯',t:'Zero wasted motion — clinically and academically.'},{i:'😤',t:'Competitive in the best possible way. Pushes everyone around her.'}], quote:'"Done." — Tara, before everyone else even started' },
+            wen:      { name:'Wen', emoji:'🤠', color:'#FBBF24', bg:'#FEF9C3', role:'The Steady Hand', photo:'', facts:[{i:'🤠',t:'Rides into every rotation cool, calm, and collected.'},{i:'🌾',t:'Grounded, no-nonsense energy that balances the group.'},{i:'👐',t:'The person you want next to you in a crisis. Full stop.'}], quote:'"Let\'s just take it one step at a time." — Wen' },
+        };
+
+        function openProfile(id) {
+            const p = PROFILES[id];
+            if (!p) return;
+            const modal = document.getElementById('cohort-modal');
+            const card  = document.getElementById('cohort-modal-card');
+
+            // header band color
+            document.getElementById('modal-header-band').style.background = p.bg;
+
+            // avatar
+            const av = document.getElementById('modal-avatar');
+            av.style.borderColor = p.color;
+            av.style.background  = p.bg;
+            av.innerHTML = p.photo
+                ? `<img src="${p.photo}" style="width:100%;height:100%;object-fit:cover">`
+                : p.emoji;
+
+            // badge
+            document.getElementById('modal-badge').innerHTML = `<span style="display:inline-block;background:white;color:${p.color};border:2px solid ${p.color};font-family:'Fredoka',sans-serif;font-size:0.7rem;font-weight:700;padding:3px 14px;border-radius:999px;box-shadow:2px 2px 0 #1A1035">${p.role}</span>`;
+
+            // name
+            document.getElementById('modal-name').textContent = p.name;
+
+            // facts
+            document.getElementById('modal-facts').innerHTML = p.facts.map(f =>
+                `<div style="display:flex;align-items:flex-start;gap:12px;background:white;border-left:4px solid ${p.color};border-radius:12px;padding:11px 14px">
+                    <span style="font-size:1.3rem;flex-shrink:0;line-height:1">${f.i}</span>
+                    <p style="font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:700;color:#374151;margin:0;line-height:1.4">${f.t}</p>
+                </div>`
+            ).join('');
+
+            // quote
+            document.getElementById('modal-quote').textContent = p.quote;
+            document.getElementById('modal-quote-box').style.borderLeftColor = p.color;
+            document.getElementById('modal-quote-box').style.background = p.bg;
+
+            // show
+            modal.style.display = 'flex';
+            requestAnimationFrame(() => {
+                card.style.transform = 'scale(1)';
+                card.style.opacity   = '1';
+            });
+
+            // confetti burst
+            launchConfetti(p.color);
+
+            // close on Escape
+            document._escHandler = (e) => { if (e.key === 'Escape') closeProfile(); };
+            document.addEventListener('keydown', document._escHandler);
+        }
+
+        function closeProfile() {
+            const modal = document.getElementById('cohort-modal');
+            const card  = document.getElementById('cohort-modal-card');
+            card.style.transform = 'scale(0.85)';
+            card.style.opacity   = '0';
+            setTimeout(() => { modal.style.display = 'none'; }, 280);
+            if (document._escHandler) document.removeEventListener('keydown', document._escHandler);
+        }
+
+        function launchConfetti(baseColor) {
+            const container = document.getElementById('modal-confetti');
+            container.innerHTML = '';
+            const palette = [baseColor,'#FBBF24','#F43F82','#7C3AED','#0D9488','#F97316','#ffffff'];
+            for (let i = 0; i < 22; i++) {
+                const el = document.createElement('div');
+                const size = 5 + Math.random() * 9;
+                const isCircle = Math.random() > 0.4;
+                const color = palette[Math.floor(Math.random() * palette.length)];
+                const x = Math.random() * 100;
+                const delay = Math.random() * 0.4;
+                const dur   = 0.7 + Math.random() * 0.6;
+                el.style.cssText = `
+                    position:absolute;left:${x}%;top:55%;
+                    width:${size}px;height:${size}px;
+                    background:${color};
+                    border-radius:${isCircle ? '50%' : '3px'};
+                    opacity:0;
+                    animation:cfly ${dur}s ease-out ${delay}s forwards;
+                `;
+                container.appendChild(el);
+            }
+        }
+
+        // inject confetti keyframes once
+        (() => {
+            const s = document.createElement('style');
+            s.textContent = `@keyframes cfly{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}100%{opacity:0;transform:translateY(-140px) rotate(400deg) scale(0.15)}}`;
+            document.head.appendChild(s);
+        })();
     </script>    <p style="position:fixed;bottom:10px;right:14px;font-family:'Nunito',sans-serif;font-size:0.65rem;color:rgba(42,27,56,0.35);font-weight:700;letter-spacing:0.03em;pointer-events:none;z-index:40">Made by Aaron T.</p>
 
 </body>
