@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     
     <script>
         tailwind.config = {
@@ -367,16 +367,16 @@
             <div id="vials-row" class="flex justify-center gap-5 sm:gap-8 mb-8 flex-wrap"></div>
 
             <!-- Progress dots -->
-            <div class="flex justify-center gap-3 mb-4" id="progress-dots">
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
+            <div class="flex justify-center gap-3 mb-4" id="progress-dots" role="group" aria-label="Induction sequence progress">
+                <div class="progress-dot" aria-label="Step 1"></div>
+                <div class="progress-dot" aria-label="Step 2"></div>
+                <div class="progress-dot" aria-label="Step 3"></div>
+                <div class="progress-dot" aria-label="Step 4"></div>
             </div>
 
             <!-- Message -->
             <div class="h-7 flex items-center justify-center">
-                <p id="lock-msg" class="text-sm font-bold transition-all duration-300"></p>
+                <p id="lock-msg" class="text-sm font-bold transition-all duration-300" aria-live="assertive"></p>
             </div>
         </div>
     </div>
@@ -453,7 +453,7 @@
                     <!-- body -->
                     <div style="background:#FFFCF7;padding:20px 24px 24px">
                         <p id="quiz-q" style="font-family:'Nunito',sans-serif;font-weight:800;font-size:0.95rem;color:#1A1035;margin:0 0 16px;line-height:1.5"></p>
-                        <div id="quiz-options" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div>
+                        <div id="quiz-options" role="group" aria-label="Answer choices" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div>
                         <div id="quiz-result" style="display:none;margin-top:16px;border-radius:14px;padding:14px 16px"></div>
                         <div id="quiz-explanation" style="display:none;margin-top:10px;border-radius:14px;padding:12px 16px;background:#F5F0FF;border-left:4px solid #7C3AED">
                             <p id="quiz-exp-text" style="font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:700;color:#4B3D6E;margin:0;line-height:1.5"></p>
@@ -565,43 +565,43 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
 
                     <!-- President -->
-                    <div class="cohort-card p-4 flex flex-col items-center text-center relative" style="background:#FFFBE6;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24;cursor:pointer" onclick="openProfile('bret')">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap" style="background:#F59E0B;color:white;font-family:'Fredoka',sans-serif;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:999px;border:2px solid #1A1035;box-shadow:1px 1px 0 #1A1035">👑 President</div>
-                        <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mt-4 mb-2" style="background:#FEF9C3;border-color:#FBBF24">👑</div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center relative" role="button" tabindex="0" aria-label="Brett's profile" style="background:#FFFBE6;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24;cursor:pointer" onclick="openProfile('bret')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('bret')}">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap" aria-hidden="true" style="background:#F59E0B;color:white;font-family:'Fredoka',sans-serif;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:999px;border:2px solid #1A1035;box-shadow:1px 1px 0 #1A1035">👑 President</div>
+                        <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mt-4 mb-2" aria-hidden="true" style="background:#FEF9C3;border-color:#FBBF24">👑</div>
                         <p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Brett</p>
                                     </div>
 
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('aaron')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🫠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aaron</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('aizhana')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">👧</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aizhana</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('ann')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🤯</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ann</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('ayo')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🥶</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ayo</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('chelsea')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🤪</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chelsea</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('chris')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">☕</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chris</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('emily')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥸</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Emily</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('erin')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🥳</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Erin</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('filis')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👽</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Filis</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('gerard')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🥺</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gerard</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('godfred')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🥵</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Godfred</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('hannah')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🤡</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Hannah</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('josi')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">👻</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Josi</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('julia')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤖</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Julia</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('kevin')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFE4EF;border-color:#F43F82">🧛</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Kevin</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('laurence')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#CCFBF1;border-color:#0D9488">🧟</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Laurence</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('racheal')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#EDE9FF;border-color:#7C3AED">🦄</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Racheal</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('tara')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FFF0E6;border-color:#F97316">🏋️</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Tara</p></div>
-                    <div class="cohort-card p-4 flex flex-col items-center text-center" style="cursor:pointer" onclick="openProfile('wen')"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" style="background:#FEF9C3;border-color:#FBBF24">🤠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Wen</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Aaron's profile" style="cursor:pointer" onclick="openProfile('aaron')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('aaron')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#EDE9FF;border-color:#7C3AED">🫠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aaron</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Aizhana's profile" style="cursor:pointer" onclick="openProfile('aizhana')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('aizhana')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFE4EF;border-color:#F43F82">👧</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Aizhana</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Ann's profile" style="cursor:pointer" onclick="openProfile('ann')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('ann')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#CCFBF1;border-color:#0D9488">🤯</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ann</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Ayo's profile" style="cursor:pointer" onclick="openProfile('ayo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('ayo')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFF0E6;border-color:#F97316">🥶</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Ayo</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Chelsea's profile" style="cursor:pointer" onclick="openProfile('chelsea')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('chelsea')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#EDE9FF;border-color:#7C3AED">🤪</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chelsea</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Chris's profile" style="cursor:pointer" onclick="openProfile('chris')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('chris')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFE4EF;border-color:#F43F82">☕</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Chris</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Emily's profile" style="cursor:pointer" onclick="openProfile('emily')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('emily')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#CCFBF1;border-color:#0D9488">🥸</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Emily</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Erin's profile" style="cursor:pointer" onclick="openProfile('erin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('erin')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FEF9C3;border-color:#FBBF24">🥳</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Erin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Filis's profile" style="cursor:pointer" onclick="openProfile('filis')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('filis')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#EDE9FF;border-color:#7C3AED">👽</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Filis</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Gerard's profile" style="cursor:pointer" onclick="openProfile('gerard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('gerard')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFE4EF;border-color:#F43F82">🥺</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Gerard</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Godfred's profile" style="cursor:pointer" onclick="openProfile('godfred')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('godfred')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#CCFBF1;border-color:#0D9488">🥵</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Godfred</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Hannah's profile" style="cursor:pointer" onclick="openProfile('hannah')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('hannah')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFF0E6;border-color:#F97316">🤡</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Hannah</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Josi's profile" style="cursor:pointer" onclick="openProfile('josi')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('josi')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#EDE9FF;border-color:#7C3AED">👻</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Josi</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Julia's profile" style="cursor:pointer" onclick="openProfile('julia')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('julia')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FEF9C3;border-color:#FBBF24">🤖</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Julia</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Kevin's profile" style="cursor:pointer" onclick="openProfile('kevin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('kevin')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFE4EF;border-color:#F43F82">🧛</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Kevin</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Laurence's profile" style="cursor:pointer" onclick="openProfile('laurence')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('laurence')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#CCFBF1;border-color:#0D9488">🧟</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Laurence</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Racheal's profile" style="cursor:pointer" onclick="openProfile('racheal')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('racheal')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#EDE9FF;border-color:#7C3AED">🦄</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Racheal</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Tara's profile" style="cursor:pointer" onclick="openProfile('tara')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('tara')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FFF0E6;border-color:#F97316">🏋️</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Tara</p></div>
+                    <div class="cohort-card p-4 flex flex-col items-center text-center" role="button" tabindex="0" aria-label="Wen's profile" style="cursor:pointer" onclick="openProfile('wen')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProfile('wen')}"><div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-3xl mb-2" aria-hidden="true" style="background:#FEF9C3;border-color:#FBBF24">🤠</div><p style="font-family:'Fredoka',sans-serif;font-size:1rem;color:#1A1035">Wen</p></div>
                 </div>
             </section>
 
             <!-- ======= COHORT PROFILE MODAL ======= -->
-            <div id="cohort-modal" onclick="if(event.target===this)closeProfile()" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(26,16,53,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem">
+            <div id="cohort-modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" onclick="if(event.target===this)closeProfile()" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(26,16,53,0.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem">
                 <div id="cohort-modal-card" style="background:#FFFCF7;border-radius:28px;border:3px solid #1A1035;box-shadow:10px 10px 0 #1A1035;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.85);opacity:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),opacity 0.25s ease">
 
                     <!-- confetti layer -->
                     <div id="modal-confetti" style="position:absolute;inset:0;border-radius:28px;overflow:hidden;pointer-events:none;z-index:0"></div>
 
                     <!-- close button -->
-                    <button onclick="closeProfile()" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#1A1035;color:white;font-size:1rem;font-weight:700;border:none;z-index:10;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>
+                    <button id="modal-close-btn" onclick="closeProfile()" aria-label="Close profile" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#1A1035;color:white;font-size:1rem;font-weight:700;border:none;z-index:10;cursor:pointer;display:flex;align-items:center;justify-content:center" aria-hidden="false">✕</button>
 
                     <!-- header band -->
                     <div id="modal-header-band" style="border-radius:25px 25px 0 0;padding:28px 24px 20px;text-align:center;position:relative;z-index:1">
@@ -1073,7 +1073,11 @@
             wrapper.className = 'vial-wrap';
             wrapper.style.cssText = `--glow: ${v.glow};`;
             wrapper.title = v.label;
+            wrapper.setAttribute('role', 'button');
+            wrapper.setAttribute('tabindex', '0');
+            wrapper.setAttribute('aria-label', v.label + ' vial — ' + v.dose);
             wrapper.onclick = () => handleVial(v.id, wrapper);
+            wrapper.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleVial(v.id, wrapper); } };
 
             // SVG label font size — shrink slightly for longer names
             const fontSize = v.label.length > 8 ? '6' : '7';
@@ -1373,9 +1377,10 @@
                     transition:border-color 0.15s,background 0.15s;
                     line-height:1.3;
                 `;
+                btn.setAttribute('aria-label', `Option ${letters[i]}: ${opt}`);
                 btn.onmouseover = () => { if (!btn.disabled) { btn.style.borderColor = '#7C3AED'; btn.style.background = '#F5F0FF'; } };
                 btn.onmouseout  = () => { if (!btn.disabled) { btn.style.borderColor = '#E5E7EB'; btn.style.background = 'white'; } };
-                btn.innerHTML = `<span style="min-width:19px;height:19px;border-radius:50%;background:#EDE9FF;color:#7C3AED;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">${letters[i]}</span><span>${opt}</span>`;
+                btn.innerHTML = `<span style="min-width:19px;height:19px;border-radius:50%;background:#EDE9FF;color:#7C3AED;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0" aria-hidden="true">${letters[i]}</span><span>${opt}</span>`;
 
                 btn.onclick = () => {
                     // disable all buttons
@@ -1488,7 +1493,10 @@
                         facts:[{i:'🤠',t:'Rides into every rotation cool, calm, and collected.'},{i:'🌾',t:'Grounded, no-nonsense energy that balances the group.'},{i:'👐',t:'The person you want next to you in a crisis. Full stop.'}], quote:'"Let\'s just take it one step at a time." — Wen' },
         };
 
+        let _profileTrigger = null;
+
         function openProfile(id) {
+            _profileTrigger = document.activeElement;
             const p = PROFILES[id];
             if (!p) return;
             const modal = document.getElementById('cohort-modal');
@@ -1529,6 +1537,11 @@
             requestAnimationFrame(() => {
                 card.style.transform = 'scale(1)';
                 card.style.opacity   = '1';
+                // move focus into the modal after animation frame
+                setTimeout(() => {
+                    const closeBtn = document.getElementById('modal-close-btn');
+                    if (closeBtn) closeBtn.focus();
+                }, 50);
             });
 
             // confetti burst
@@ -1544,7 +1557,10 @@
             const card  = document.getElementById('cohort-modal-card');
             card.style.transform = 'scale(0.85)';
             card.style.opacity   = '0';
-            setTimeout(() => { modal.style.display = 'none'; }, 280);
+            setTimeout(() => {
+                modal.style.display = 'none';
+                if (_profileTrigger && _profileTrigger.focus) _profileTrigger.focus();
+            }, 280);
             if (document._escHandler) document.removeEventListener('keydown', document._escHandler);
         }
 
