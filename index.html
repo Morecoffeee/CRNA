@@ -1619,10 +1619,94 @@
             GALLERY.forEach(item => {
                 const card = document.createElement('div');
                 card.className = `polaroid ${item.rotate} mx-auto w-full max-w-xs group`;
-                const inner = item.photo
-                    ? `<div class="aspect-square overflow-hidden bg-gray-100"><img src="${item.photo}" alt="${item.caption}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"></div>`
-                    : `<div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:${item.bg}">${item.emoji}</div>`;
-                card.innerHTML = `${inner}<p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px">${item.caption}</p>${item.subcaption ? `<p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:#6B7280;text-align:center;margin-top:3px;line-height:1.4">${item.subcaption}</p>` : ''}`;
+
+                // normalise: support both photo (string) and photos (array)
+                const photos = item.photos || (item.photo ? [item.photo] : []);
+
+                // image section
+                const imgWrap = document.createElement('div');
+
+                if (photos.length === 0) {
+                    imgWrap.className = 'aspect-square overflow-hidden flex items-center justify-center text-6xl';
+                    imgWrap.style.background = item.bg;
+                    imgWrap.textContent = item.emoji;
+                } else {
+                    imgWrap.className = 'aspect-square overflow-hidden bg-gray-100 relative';
+                    let idx = 0;
+
+                    const img = document.createElement('img');
+                    img.src = photos[0];
+                    img.alt = item.caption;
+                    img.className = 'w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105';
+                    imgWrap.appendChild(img);
+
+                    if (photos.length > 1) {
+                        // dots
+                        const dotsWrap = document.createElement('div');
+                        dotsWrap.style.cssText = 'position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;pointer-events:none';
+                        const dotEls = photos.map((_, i) => {
+                            const d = document.createElement('div');
+                            d.style.cssText = `width:6px;height:6px;border-radius:50%;background:${i === 0 ? 'white' : 'rgba(255,255,255,0.4)'};box-shadow:0 1px 3px rgba(0,0,0,0.5);transition:background 0.2s`;
+                            dotsWrap.appendChild(d);
+                            return d;
+                        });
+
+                        function go(newIdx) {
+                            img.style.opacity = '0';
+                            setTimeout(() => {
+                                idx = (newIdx + photos.length) % photos.length;
+                                img.src = photos[idx];
+                                img.style.opacity = '1';
+                                dotEls.forEach((d, i) => d.style.background = i === idx ? 'white' : 'rgba(255,255,255,0.4)');
+                            }, 180);
+                        }
+
+                        // prev / next buttons
+                        const btnStyle = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;border-radius:50%;width:28px;height:28px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:opacity 0.2s';
+                        const prev = document.createElement('button');
+                        prev.innerHTML = '&#8249;';
+                        prev.setAttribute('aria-label', 'Previous photo');
+                        prev.style.cssText = btnStyle + ';left:6px';
+                        prev.onclick = (e) => { e.stopPropagation(); go(idx - 1); };
+
+                        const next = document.createElement('button');
+                        next.innerHTML = '&#8250;';
+                        next.setAttribute('aria-label', 'Next photo');
+                        next.style.cssText = btnStyle + ';right:6px';
+                        next.onclick = (e) => { e.stopPropagation(); go(idx + 1); };
+
+                        // show arrows on hover (desktop)
+                        imgWrap.addEventListener('mouseenter', () => { prev.style.opacity = '1'; next.style.opacity = '1'; });
+                        imgWrap.addEventListener('mouseleave', () => { prev.style.opacity = '0'; next.style.opacity = '0'; });
+
+                        // swipe support (mobile)
+                        let tx = 0;
+                        imgWrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+                        imgWrap.addEventListener('touchend', e => {
+                            const diff = tx - e.changedTouches[0].clientX;
+                            if (Math.abs(diff) > 40) go(diff > 0 ? idx + 1 : idx - 1);
+                        });
+
+                        imgWrap.appendChild(prev);
+                        imgWrap.appendChild(next);
+                        imgWrap.appendChild(dotsWrap);
+                    }
+                }
+
+                card.appendChild(imgWrap);
+
+                const cap = document.createElement('p');
+                cap.style.cssText = `font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px`;
+                cap.textContent = item.caption;
+                card.appendChild(cap);
+
+                if (item.subcaption) {
+                    const sub = document.createElement('p');
+                    sub.style.cssText = `font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:#6B7280;text-align:center;margin-top:3px;line-height:1.4`;
+                    sub.textContent = item.subcaption;
+                    card.appendChild(sub);
+                }
+
                 grid.appendChild(card);
             });
         })();
