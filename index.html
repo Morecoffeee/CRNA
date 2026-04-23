@@ -1610,6 +1610,7 @@
             { caption: 'Dimsum crew ☕',            photo: 'https://i.imgur.com/GMG7gYx.jpg',                                  emoji: '☕', bg: '#FEF9C3', captionColor: '#F59E0B', rotate: 'rotate-3'  },
             { caption: 'Last day of NP Clinical 🩺', photo: 'https://i.imgur.com/mfV0kZp.jpeg', emoji: '🩺', bg: '#CCFBF1', captionColor: '#0D9488', rotate: 'rotate-1'  },
             { caption: 'NARA 2026 Crew 🎉',          photo: 'https://i.imgur.com/boq2OBB.jpeg', emoji: '🎉', bg: '#EDE9FF', captionColor: '#7C3AED', rotate: '-rotate-2' },
+            { caption: 'ENT & Shared Airway Panel', subcaption: 'Left to Right: Jennifer Majumdar, PhD, MSN, CRNA · Anna Jobe, CRNA · Stacy Rogers, MS, CRNA · Stephen Yermal, PhD, CRNA', photo: 'https://i.imgur.com/mBTskkZ.jpeg', emoji: '🎤', bg: '#F5F0FF', captionColor: '#7C3AED', rotate: 'rotate-2' },
         ];
 
         (function renderGallery() {
@@ -1621,7 +1622,7 @@
                 const inner = item.photo
                     ? `<div class="aspect-square overflow-hidden bg-gray-100"><img src="${item.photo}" alt="${item.caption}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"></div>`
                     : `<div class="aspect-square overflow-hidden flex items-center justify-center text-6xl" style="background:${item.bg}">${item.emoji}</div>`;
-                card.innerHTML = `${inner}<p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px">${item.caption}</p>`;
+                card.innerHTML = `${inner}<p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px">${item.caption}</p>${item.subcaption ? `<p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:#6B7280;text-align:center;margin-top:3px;line-height:1.4">${item.subcaption}</p>` : ''}`;
                 grid.appendChild(card);
             });
         })();
