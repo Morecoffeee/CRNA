@@ -305,73 +305,6 @@
             position: relative;
         }
 
-        /* === LIGHTBOX === */
-        #gallery-lightbox {
-            display: none;
-            position: fixed; inset: 0; z-index: 9990;
-            background: rgba(10,5,25,0.95);
-            align-items: center; justify-content: center;
-            flex-direction: column;
-        }
-        #gallery-lightbox.lb-open { display: flex; }
-        #lb-img {
-            max-width: min(90vw, 1000px);
-            max-height: 78vh;
-            object-fit: contain;
-            border-radius: 6px;
-            transition: opacity 0.22s ease;
-        }
-        #lb-caption-wrap {
-            margin-top: 14px;
-            text-align: center;
-            max-width: min(90vw, 800px);
-            padding: 0 16px;
-        }
-        #lb-caption-wrap strong {
-            display: block;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.1rem;
-            color: #e9e0ff;
-        }
-        #lb-caption-wrap small {
-            display: block;
-            font-family: 'Nunito', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: rgba(200,185,255,0.7);
-            margin-top: 5px;
-            line-height: 1.5;
-        }
-        #lb-counter {
-            font-family: 'Nunito', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 800;
-            color: rgba(200,185,255,0.55);
-            margin-top: 8px;
-        }
-        .lb-btn {
-            position: fixed; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.12);
-            border: none; border-radius: 50%;
-            width: 46px; height: 46px;
-            color: #fff; font-size: 1.6rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s;
-        }
-        .lb-btn:hover { background: rgba(124,58,237,0.6); }
-        #lb-prev { left: 14px; }
-        #lb-next { right: 14px; }
-        #lb-close {
-            position: fixed; top: 14px; right: 18px;
-            background: rgba(255,255,255,0.12);
-            border: none; border-radius: 50%;
-            width: 40px; height: 40px;
-            color: #fff; font-size: 1.3rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s;
-        }
-        #lb-close:hover { background: rgba(220,38,38,0.5); }
-
         /* scrollbar hide */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
@@ -1683,82 +1616,6 @@
             { caption: 'FIRE Event & DNP Scholarship Winners — Hunter\'s 20th Annual Poster Day', subcaption: 'Left to Right: Tara Mackey, Wen Huang, Erin Murphy, Aaron Tan · Topic: Intraoperative Anesthetic Requirements in Cannabis Users: A RE-AIM-Guided Comprehensive Lit Review', photo: 'https://i.imgur.com/rDue5A5.jpeg', emoji: '🏆', bg: '#FEF9C3', captionColor: '#F59E0B', rotate: '-rotate-2' },
         ];
 
-        // ── Lightbox ──
-        const LB_PHOTOS = [];
-        GALLERY.forEach(item => {
-            const srcs = item.photos || (item.photo ? [item.photo] : []);
-            srcs.forEach(src => LB_PHOTOS.push({ src, caption: item.caption, subcaption: item.subcaption || '' }));
-        });
-
-        let lbIdx = 0;
-        let _lbTrigger = null;
-        const lbEl    = document.getElementById('gallery-lightbox');
-        const lbImg   = document.getElementById('lb-img');
-        const lbCapT  = document.getElementById('lb-cap-title');
-        const lbCapS  = document.getElementById('lb-cap-sub');
-        const lbCount = document.getElementById('lb-counter');
-        const lbPrev  = document.getElementById('lb-prev');
-        const lbNext  = document.getElementById('lb-next');
-
-        function lbRender(fade) {
-            const p = LB_PHOTOS[lbIdx];
-            if (fade) lbImg.style.opacity = '0';
-            const doSet = () => {
-                lbImg.src = p.src;
-                lbImg.alt = p.caption;
-                lbCapT.textContent = p.caption;
-                lbCapS.textContent = p.subcaption;
-                lbCapS.style.display = p.subcaption ? 'block' : 'none';
-                lbCount.textContent = LB_PHOTOS.length > 1 ? `${lbIdx + 1} / ${LB_PHOTOS.length}` : '';
-                lbPrev.style.display = LB_PHOTOS.length > 1 ? 'flex' : 'none';
-                lbNext.style.display = LB_PHOTOS.length > 1 ? 'flex' : 'none';
-                if (fade) setTimeout(() => { lbImg.style.opacity = '1'; }, 30);
-            };
-            fade ? setTimeout(doSet, 180) : doSet();
-        }
-
-        function openLightbox(src, triggerEl) {
-            const i = LB_PHOTOS.findIndex(p => p.src === src);
-            lbIdx = i >= 0 ? i : 0;
-            _lbTrigger = triggerEl || null;
-            lbRender(false);
-            lbEl.classList.add('lb-open');
-            document.body.style.overflow = 'hidden';
-            document.getElementById('lb-close').focus();
-        }
-
-        function closeLightbox() {
-            lbEl.classList.remove('lb-open');
-            document.body.style.overflow = '';
-            if (_lbTrigger) { _lbTrigger.focus(); _lbTrigger = null; }
-        }
-
-        function lbGo(dir) {
-            lbIdx = (lbIdx + dir + LB_PHOTOS.length) % LB_PHOTOS.length;
-            lbRender(true);
-        }
-
-        document.getElementById('lb-close').addEventListener('click', closeLightbox);
-        lbPrev.addEventListener('click', () => lbGo(-1));
-        lbNext.addEventListener('click', () => lbGo(1));
-        lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLightbox(); });
-
-        document.addEventListener('keydown', e => {
-            if (!lbEl.classList.contains('lb-open')) return;
-            if (e.key === 'Escape')     closeLightbox();
-            if (e.key === 'ArrowRight') lbGo(1);
-            if (e.key === 'ArrowLeft')  lbGo(-1);
-        });
-
-        (function() {
-            let sx = 0;
-            lbEl.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
-            lbEl.addEventListener('touchend', e => {
-                const diff = sx - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 50) lbGo(diff > 0 ? 1 : -1);
-            });
-        })();
-
         (function renderGallery() {
             const grid = document.getElementById('gallery-grid');
             if (!grid) return;
@@ -1778,7 +1635,6 @@
                     imgWrap.textContent = item.emoji;
                 } else {
                     imgWrap.className = 'aspect-square overflow-hidden bg-gray-100 relative';
-                    imgWrap.style.cursor = 'zoom-in';
                     let idx = 0;
 
                     const img = document.createElement('img');
@@ -1786,8 +1642,6 @@
                     img.alt = item.caption;
                     img.className = 'w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105';
                     imgWrap.appendChild(img);
-
-                    imgWrap.addEventListener('click', () => openLightbox(photos[idx], imgWrap));
 
                     if (photos.length > 1) {
                         // dots
@@ -1861,19 +1715,6 @@
         })();
     </script>    
     
-    <!-- ======================== GALLERY LIGHTBOX ======================== -->
-    <div id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-        <button id="lb-close" aria-label="Close photo viewer">&#x2715;</button>
-        <button id="lb-prev" class="lb-btn" aria-label="Previous photo">&#8249;</button>
-        <button id="lb-next" class="lb-btn" aria-label="Next photo">&#8250;</button>
-        <img id="lb-img" src="" alt="">
-        <div id="lb-caption-wrap">
-            <strong id="lb-cap-title"></strong>
-            <small id="lb-cap-sub"></small>
-        </div>
-        <div id="lb-counter"></div>
-    </div>
-
     <div style="position:fixed;bottom:10px;right:14px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
         <p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(26,16,53,0.35);margin:0">Made by Aaron Tan</p>
         <a href="mailto:Tan.aaronh@gmail.com" style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(124,58,237,0.5);text-decoration:none;display:block;text-align:right">Tan.aaronh@gmail.com</a>
