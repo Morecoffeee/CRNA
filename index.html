@@ -502,6 +502,7 @@
         <nav class="nav-bar py-3 px-4">
             <div class="max-w-5xl mx-auto">
                 <div class="flex items-center gap-2 overflow-x-auto scrollbar-hide py-1 px-1 justify-start sm:justify-center">
+                    <span id="site-logo" onclick="handleNapClick()" style="font-family:'Fredoka',sans-serif;font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.28);padding:3px 8px;border-radius:8px;cursor:pointer;user-select:none;flex-shrink:0;transition:color 0.2s" title="">CRNA</span>
                     <button class="nav-pill active" onclick="showPage('home',this)">🏡 Home</button>
                     <button class="nav-pill" onclick="showPage('faculty',this)">🧑‍🏫 Faculty</button>
                     <button class="nav-pill" onclick="showPage('cohort',this)">🎓 Cohort 1</button>
@@ -1101,6 +1102,30 @@
         </main>
     </div>
 
+    <!-- ======================== NAP ROOM ======================== -->
+    <div id="nap-room" style="display:none;position:fixed;inset:0;z-index:9995;background:linear-gradient(135deg,#060312 0%,#0F0720 50%,#1A1035 100%);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
+        <div style="font-size:5rem;animation:vialFloat 3s ease-in-out infinite">😴</div>
+        <h2 style="font-family:'Fredoka',sans-serif;font-size:2.2rem;color:white;margin:16px 0 6px">Shhh. CRNA in Recovery.</h2>
+        <p style="font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.5);margin:0 0 28px">Do Not Disturb — actively regenerating clinical neurons</p>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px 24px;margin-bottom:28px;max-width:340px">
+            <p style="font-family:'Nunito',sans-serif;font-size:0.75rem;font-weight:800;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin:0 0 8px">Current Status</p>
+            <p style="font-family:'Fredoka',sans-serif;font-size:1.1rem;color:rgba(200,185,255,0.8);margin:0">Horizontal ✓ &nbsp;·&nbsp; Eyes closed ✓ &nbsp;·&nbsp; Not answering pages ✓</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+            <button id="noise-btn" onclick="toggleWhiteNoise()" style="font-family:'Fredoka',sans-serif;font-size:1rem;background:rgba(124,58,237,0.3);border:2px solid rgba(124,58,237,0.6);color:white;border-radius:999px;padding:10px 22px;cursor:pointer">🔊 White Noise</button>
+            <button onclick="closeNapRoom()" style="font-family:'Fredoka',sans-serif;font-size:1rem;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:999px;padding:10px 22px;cursor:pointer">☀️ Okay, fine.</button>
+        </div>
+    </div>
+
+    <!-- ======================== COFFEE EGG ======================== -->
+    <div id="coffee-egg" style="display:none;position:fixed;inset:0;z-index:9996;background:rgba(8,4,18,0.97);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px">
+        <div id="coffee-cup" style="font-size:5rem;display:inline-block">☕</div>
+        <h2 style="font-family:'Fredoka',sans-serif;font-size:2.4rem;color:#FBBF24;margin:18px 0 8px">YOU FOUND IT!</h2>
+        <p style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:white;margin:0 0 6px">Show this screen to <span style="color:#A78BFA">Aaron Tan</span> for a free coffee ☕</p>
+        <p id="egg-timestamp" style="font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.35);margin:0 0 28px"></p>
+        <button onclick="closeCoffeeEgg()" style="font-family:'Fredoka',sans-serif;font-size:1rem;background:rgba(251,191,36,0.2);border:2px solid rgba(251,191,36,0.5);color:#FBBF24;border-radius:999px;padding:10px 28px;cursor:pointer">Close</button>
+    </div>
+
     <div id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
         <button id="lb-close" aria-label="Close photo viewer">&#x2715;</button>
         <button id="lb-prev" class="lb-btn" aria-label="Previous photo">&#8249;</button>
@@ -1287,6 +1312,83 @@
                     }, 1400);
                 }
             }
+        }
+
+        // ====== EASTER EGGS ======
+
+        // — Nap Room (triple-click CRNA logo) —
+        let napClicks = 0, napTimer;
+        function handleNapClick() {
+            napClicks++;
+            clearTimeout(napTimer);
+            if (napClicks >= 3) {
+                napClicks = 0;
+                openNapRoom();
+            } else {
+                napTimer = setTimeout(() => { napClicks = 0; }, 600);
+            }
+        }
+
+        let noiseCtx, noiseNode, noiseOn = false;
+        function toggleWhiteNoise() {
+            if (noiseOn) {
+                noiseNode.stop(); noiseCtx.close(); noiseOn = false;
+                document.getElementById('noise-btn').textContent = '🔊 White Noise';
+            } else {
+                noiseCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const buf = noiseCtx.createBuffer(1, noiseCtx.sampleRate * 3, noiseCtx.sampleRate);
+                const data = buf.getChannelData(0);
+                for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+                noiseNode = noiseCtx.createBufferSource();
+                noiseNode.buffer = buf; noiseNode.loop = true;
+                const gain = noiseCtx.createGain(); gain.gain.value = 0.07;
+                noiseNode.connect(gain); gain.connect(noiseCtx.destination);
+                noiseNode.start(); noiseOn = true;
+                document.getElementById('noise-btn').textContent = '🔇 Stop Noise';
+            }
+        }
+
+        function openNapRoom() {
+            const el = document.getElementById('nap-room');
+            el.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeNapRoom() {
+            document.getElementById('nap-room').style.display = 'none';
+            document.body.style.overflow = '';
+            if (noiseOn) toggleWhiteNoise();
+        }
+
+        // — Coffee Easter Egg (click attribution 5×) —
+        let coffeeClicks = 0, coffeeTimer;
+        function handleCoffeeClick() {
+            coffeeClicks++;
+            clearTimeout(coffeeTimer);
+            if (coffeeClicks >= 5) {
+                coffeeClicks = 0;
+                openCoffeeEgg();
+            } else {
+                coffeeTimer = setTimeout(() => { coffeeClicks = 0; }, 2000);
+            }
+        }
+
+        function openCoffeeEgg() {
+            const now = new Date();
+            document.getElementById('egg-timestamp').textContent =
+                'Discovered: ' + now.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }) +
+                ' at ' + now.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+            const el = document.getElementById('coffee-egg');
+            el.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            fireConfetti();
+            // bounce the cup
+            const cup = document.getElementById('coffee-cup');
+            cup.style.animation = 'none'; void cup.offsetWidth;
+            cup.style.animation = 'vialPop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards';
+        }
+        function closeCoffeeEgg() {
+            document.getElementById('coffee-egg').style.display = 'none';
+            document.body.style.overflow = '';
         }
 
         // ====== NAV ======
@@ -1864,7 +1966,7 @@
     </script>    
     
     <div style="position:fixed;bottom:10px;right:14px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
-        <p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(26,16,53,0.35);margin:0">Made by Aaron Tan</p>
+        <p onclick="handleCoffeeClick()" style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(26,16,53,0.35);margin:0;cursor:default;user-select:none">Made by Aaron Tan</p>
         <a href="mailto:Tan.aaronh@gmail.com" style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(124,58,237,0.5);text-decoration:none;display:block;text-align:right">Tan.aaronh@gmail.com</a>
     </div>
 
