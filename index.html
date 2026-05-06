@@ -260,6 +260,24 @@
         .sticker-pink { background: #FFE4EF; color: #F43F82; }
         .sticker-teal { background: #CCFBF1; color: #0D9488; }
 
+        /* === HUNTER LINKS TABS === */
+        .hunter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .hunter-tab-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem; font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 2px solid #1A1035;
+            cursor: pointer;
+            background: white; color: #4B3D6E;
+            box-shadow: 3px 3px 0 #1A1035;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+        }
+        .hunter-tab-btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 #1A1035; }
+        .hunter-tab-btn.active { background: #1A1035; color: white; transform: translateY(-2px); }
+        .hunter-tab-panel { display: none; }
+        .hunter-tab-panel.active { display: block; }
+
         /* section heading underline */
         .heading-squiggle {
             position: relative;
@@ -927,77 +945,61 @@
 
             <!-- ===== FINANCIAL AID ===== -->
             <section id="financial" class="page-section">
-                <div class="mb-8 mt-2">
+                <div class="mb-6 mt-2">
                     <span class="sticker mb-3 inline-block" style="background:#16A34A;color:white;border-color:#1A1035">🔗 Quick Access</span>
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Hunter Links</h2>
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">Everything you need, all in one place.</p>
                 </div>
 
-                <div class="space-y-6">
+                <!-- Tab buttons -->
+                <div class="hunter-tabs">
+                    <button class="hunter-tab-btn active" onclick="switchHunterTab('tab-links', this)">🔗 Links</button>
+                    <button class="hunter-tab-btn" onclick="switchHunterTab('tab-financial', this)">📋 Financial Aid</button>
+                    <button class="hunter-tab-btn" onclick="switchHunterTab('tab-budgeting', this)">💡 Budgeting</button>
+                </div>
 
-                    <!-- Quick Links Card -->
+                <!-- Tab: Links -->
+                <div id="tab-links" class="hunter-tab-panel active">
                     <div class="fun-card p-6" style="border-color:#16A34A;box-shadow:5px 5px 0 #16A34A">
                         <div class="flex items-center gap-3 mb-5">
                             <span class="text-3xl">🔗</span>
                             <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Essential Links</h3>
                         </div>
                         <div class="space-y-3">
-
-                            <!-- CUNYfirst -->
                             <a href="https://home.cunyfirst.cuny.edu/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#16A34A;box-shadow:3px 3px 0 #16A34A;text-decoration:none">
                                 <div class="flex items-center justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xl">🎓</span>
-                                        <p class="font-bold text-sm" style="color:#1A1035">CUNYfirst</p>
-                                    </div>
+                                    <div class="flex items-center gap-2"><span class="text-xl">🎓</span><p class="font-bold text-sm" style="color:#1A1035">CUNYfirst</p></div>
                                     <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#DCFCE7;color:#16A34A">Open ↗</span>
                                 </div>
                                 <p class="font-semibold text-sm" style="color:#6B7280">Admin platform — manage financial account, course registration, and transcript.</p>
                             </a>
-
-                            <!-- Brightspace -->
                             <a href="https://brightspace.cuny.edu/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#7C3AED;box-shadow:3px 3px 0 #7C3AED;text-decoration:none">
                                 <div class="flex items-center justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xl">💻</span>
-                                        <p class="font-bold text-sm" style="color:#1A1035">Brightspace</p>
-                                    </div>
+                                    <div class="flex items-center gap-2"><span class="text-xl">💻</span><p class="font-bold text-sm" style="color:#1A1035">Brightspace</p></div>
                                     <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#EDE9FF;color:#7C3AED">Open ↗</span>
                                 </div>
                                 <p class="font-semibold text-sm" style="color:#6B7280">Course work platform — lectures, assignments, and course materials.</p>
                             </a>
-
-                            <!-- Financial Aid Forms -->
                             <a href="https://www.hunter.cuny.edu/students/financial-aid/policies-and-forms/" target="_blank" class="block rounded-xl p-4 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316;text-decoration:none">
                                 <div class="flex items-center justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-xl">📄</span>
-                                        <p class="font-bold text-sm" style="color:#1A1035">Financial Aid Forms</p>
-                                    </div>
+                                    <div class="flex items-center gap-2"><span class="text-xl">📄</span><p class="font-bold text-sm" style="color:#1A1035">Financial Aid Forms</p></div>
                                     <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#FFF0E6;color:#F97316">Open ↗</span>
                                 </div>
                                 <p class="font-semibold text-sm" style="color:#6B7280">Hunter College Financial Aid policies and forms portal.</p>
                             </a>
-
-                            <!-- Registrar Email -->
                             <div class="rounded-xl p-4 border-2" style="background:white;border-color:#F43F82;box-shadow:3px 3px 0 #F43F82">
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-xl">✉️</span>
-                                    <p class="font-bold text-sm" style="color:#1A1035">Registrar Email</p>
-                                </div>
+                                <div class="flex items-center gap-2 mb-1"><span class="text-xl">✉️</span><p class="font-bold text-sm" style="color:#1A1035">Registrar Email</p></div>
                                 <a href="/cdn-cgi/l/email-protection#54263133233136143c213a2031267a37213a2d7a313021" class="font-bold text-sm" style="color:#F43F82;text-decoration:underline"><span class="__cf_email__" data-cfemail="3c4e595b4b595e7c54495248594e125f49524512595849">[email&#160;protected]</span></a>
                                 <p class="font-semibold text-sm mt-2 rounded-lg p-2" style="color:#9D174D;background:#FFF0F7;border-left:3px solid #F43F82">⚠️ Send in-school deferment requests to the registrar for verification.</p>
                             </div>
-
                         </div>
                     </div>
+                </div>
 
-                    <!-- Loan Types -->
+                <!-- Tab: Financial Aid -->
+                <div id="tab-financial" class="hunter-tab-panel">
                     <div class="fun-card p-6" style="border-color:#7C3AED;box-shadow:5px 5px 0 #7C3AED">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-3xl">📋</span>
-                            <h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Loan Types to Know</h3>
-                        </div>
+                        <div class="flex items-center gap-3 mb-4"><span class="text-3xl">📋</span><h3 style="font-family:'Fredoka',sans-serif;font-size:1.6rem;color:#1A1035">Loan Types to Know</h3></div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="rounded-xl p-4" style="background:#F5F0FF;border:1.5px solid #C4B5FD">
                                 <p class="font-bold text-sm mb-1" style="color:#7C3AED">Federal Direct Unsubsidized Loans</p>
@@ -1018,7 +1020,8 @@
                         </div>
                     </div>
 
-                    <!-- Budgeting Tips -->
+                <!-- Tab: Budgeting -->
+                <div id="tab-budgeting" class="hunter-tab-panel">
                     <div class="fun-card p-6" style="border-color:#FBBF24;box-shadow:5px 5px 0 #FBBF24">
                         <div class="flex items-center gap-3 mb-4">
                             <span class="text-3xl">💡</span>
@@ -1031,8 +1034,8 @@
                             <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#FBBF24;background:white;color:#374151">File your FAFSA as early as October 1st for the upcoming academic year. Earlier = more options.</li>
                         </ul>
                     </div>
-
                 </div>
+
             </section>
 
             <!-- ===== LOCAL ===== -->
@@ -1498,6 +1501,14 @@
         function closeCoffeeEgg() {
             document.getElementById('coffee-egg').style.display = 'none';
             document.body.style.overflow = '';
+        }
+
+        // ====== HUNTER LINKS TABS ======
+        function switchHunterTab(id, btn) {
+            document.querySelectorAll('.hunter-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.hunter-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
         }
 
         // ====== NAV ======
