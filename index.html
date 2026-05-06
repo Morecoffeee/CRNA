@@ -261,20 +261,26 @@
         .sticker-teal { background: #CCFBF1; color: #0D9488; }
 
         /* === HUNTER LINKS TABS === */
-        .hunter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .hunter-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
         .hunter-tab-btn {
             font-family: 'Fredoka', sans-serif;
-            font-size: 1rem; font-weight: 700;
-            padding: 10px 20px;
-            border-radius: 12px;
-            border: 2px solid #1A1035;
+            font-size: 1.05rem; font-weight: 700;
+            padding: 11px 22px;
+            border-radius: 14px;
+            border: 2.5px solid #1A1035;
             cursor: pointer;
-            background: white; color: #4B3D6E;
-            box-shadow: 3px 3px 0 #1A1035;
-            transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+            box-shadow: 4px 4px 0 #1A1035;
+            transition: transform 0.15s, box-shadow 0.15s;
+            background: white; color: #1A1035;
         }
-        .hunter-tab-btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 #1A1035; }
-        .hunter-tab-btn.active { background: #1A1035; color: white; transform: translateY(-2px); }
+        .hunter-tab-btn:hover { transform: translateY(-3px); box-shadow: 5px 6px 0 #1A1035; }
+        .hunter-tab-btn.active { transform: translateY(-3px); box-shadow: 5px 6px 0 #1A1035; }
+        .hunter-tab-btn[onclick*="tab-links"]         { background: #DCFCE7; color: #14532D; }
+        .hunter-tab-btn[onclick*="tab-links"].active  { background: #16A34A; color: white; }
+        .hunter-tab-btn[onclick*="tab-financial"]        { background: #EDE9FF; color: #4C1D95; }
+        .hunter-tab-btn[onclick*="tab-financial"].active { background: #7C3AED; color: white; }
+        .hunter-tab-btn[onclick*="tab-budgeting"]        { background: #FEF9C3; color: #713F12; }
+        .hunter-tab-btn[onclick*="tab-budgeting"].active { background: #FBBF24; color: #1A1035; }
         .hunter-tab-panel { display: none; }
         .hunter-tab-panel.active { display: block; }
 
