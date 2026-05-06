@@ -284,6 +284,36 @@
         .hunter-tab-panel { display: none; }
         .hunter-tab-panel.active { display: block; }
 
+        /* === STUDY + LOCAL TABS (shared base) === */
+        .study-tabs, .local-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .study-tab-btn, .local-tab-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05rem; font-weight: 700;
+            padding: 11px 22px; border-radius: 14px;
+            border: 2.5px solid #1A1035; cursor: pointer;
+            box-shadow: 4px 4px 0 #1A1035;
+            transition: transform 0.15s, box-shadow 0.15s;
+            background: white; color: #1A1035;
+        }
+        .study-tab-btn:hover, .local-tab-btn:hover { transform: translateY(-3px); box-shadow: 5px 6px 0 #1A1035; }
+        .study-tab-btn.active, .local-tab-btn.active { transform: translateY(-3px); box-shadow: 5px 6px 0 #1A1035; }
+        .study-tab-panel, .local-tab-panel { display: none; }
+        .study-tab-panel.active, .local-tab-panel.active { display: block; }
+
+        /* study tab colors */
+        .study-tab-btn[onclick*="stab-advice"]       { background:#FEF9C3; color:#713F12; }
+        .study-tab-btn[onclick*="stab-advice"].active { background:#FBBF24; color:#1A1035; }
+        .study-tab-btn[onclick*="stab-tools"]        { background:#FFF0E6; color:#7C2D12; }
+        .study-tab-btn[onclick*="stab-tools"].active  { background:#F97316; color:white; }
+        .study-tab-btn[onclick*="stab-books"]        { background:#EDE9FF; color:#4C1D95; }
+        .study-tab-btn[onclick*="stab-books"].active  { background:#7C3AED; color:white; }
+
+        /* local tab colors */
+        .local-tab-btn[onclick*="ltab-coffee"]        { background:#EDE9FF; color:#4C1D95; }
+        .local-tab-btn[onclick*="ltab-coffee"].active  { background:#7C3AED; color:white; }
+        .local-tab-btn[onclick*="ltab-picks"]         { background:#FFF0F7; color:#831843; }
+        .local-tab-btn[onclick*="ltab-picks"].active   { background:#F43F82; color:white; }
+
         /* section heading underline */
         .heading-squiggle {
             position: relative;
@@ -763,190 +793,86 @@
 
             <!-- ===== STUDY TOOLS ===== -->
             <section id="survival" class="page-section">
-                <div class="mb-8 mt-2">
+                <div class="mb-6 mt-2">
                     <span class="sticker sticker-pink mb-3 inline-block">Your toolkit 🛠️</span>
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Study Tools</h2>
-                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Tap a topic to expand our best advice.</p>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Pick a topic to explore.</p>
                 </div>
 
-                <div class="space-y-4">
-
-                    <!-- COHORT ADVICE — first -->
-                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#FBBF24;box-shadow:4px 4px 0 #FBBF24">
-                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">💡 Cohort Advice</span>
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#FBBF24;color:#1A1035;border-color:#1A1035">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-body">
-                            <div><div class="px-6 py-5 border-t-2" style="border-color:#FEF9C3;background:#FFFDE7">
-                                <ul class="space-y-3">
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">Stay organized and lean on your cohort!</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Try to get the easy assignments done and out of the way by the first 2-3 weeks. Saves you time at the end. Show up — do YOUR best. You got this.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take one day at a time. Stay organized and on top of your work. Make sure you take time to enjoy yourself!</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Make sure to take time off before beginning.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">The faculty is there to help you so use them if you are struggling. Keep reviewing pharmacology even when the anesthesia pharm class is complete first semester.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Work together as a team, help each other.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take it day by day. The days are long but the weeks are so fast.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Start forcing yourself to set a monthly budget early. Summer is jam-packed with multiple tests a week — learn how to set up a good schedule and not cram every week. It is okay to struggle and not get A+'s on everything... the competition is over, we are all in this together. Lean on your friends!</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">You're stuck with these people for 3 years — make a point to reach out and talk/learn/ask questions of everyone!</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Be patient with the slow processes of Hunter College, everything will work out (after a LOT of stress). Help each other! Your cohort's collaboration will be key to success.</li>
-                                    <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Develop good time management because balancing clinical and studying can be difficult. Be flexible — in this program nothing is set in stone, everything is always changing.</li>
-                                </ul>
-                            </div></div>
-                        </div>
-                    </div>
-
-
-                    <!-- STUDY TOOLS (merged How to Study + Recommended Tools) -->
-                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316">
-                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-orange-50" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">🛠️ Study Tools</span>
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 acc-icon flex-shrink-0" style="background:#F97316;color:white;border-color:#1A1035">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-body">
-                            <div><div class="px-6 py-5 border-t-2 space-y-6" style="border-color:#FFF0E6;background:#FFFAF5">
-
-                                <!-- HOW TO STUDY -->
-                                <div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <span class="text-xl">🧠</span>
-                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">How to Study</h4>
-                                    </div>
-                                    <ul class="space-y-3">
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Focus on active recall and spaced repetition over re-reading notes. Form small study groups to talk through complex concepts like hemodynamics and pharmacology, and prioritize understanding the "why" rather than just memorizing facts.</li>
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">📖</span><span><span class="font-bold" style="color:#1A1035">Read: Make It Stick: The Science of Successful Learning</span> — the research-backed playbook for retaining dense material. Required reading before your first exam season.</span></li>
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🃏</span><span><span class="font-bold" style="color:#1A1035">Learn Anki (or a similar spaced-repetition platform)</span> — set it up before day one. Use it daily. Your future self will be very, very grateful.</span></li>
-                                    </ul>
-                                </div>
-
-                                <!-- APPS -->
-                                <div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <span class="text-xl">📱</span>
-                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Apps</h4>
-                                    </div>
-                                    <ul class="space-y-3">
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F97316;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">📝</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Notability</span> — the go-to note-taking app for iPad. Record lectures while you annotate slides, then replay audio synced to your handwriting. Worth every penny for CRNA school.</span>
-                                        </li>
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">🗂️</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Notion</span> — all-in-one workspace for organizing notes, case logs, schedules, and study plans. Great for keeping everything in one place across your phone, tablet, and laptop.</span>
-                                        </li>
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#0D9488;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">💊</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Vargo App</span> — anesthesia drug reference at your fingertips. Perfect for quick lookups on dosing, mechanisms, and clinical pearls before and during cases.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- YOUTUBE / VIDEO -->
-                                <div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <span class="text-xl">▶️</span>
-                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">YouTube & Video</h4>
-                                    </div>
-                                    <ul class="space-y-3">
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F43F82;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">🥷</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Ninja Nerd</span> — free YouTube channel with incredibly clear, visual explanations of physiology and pharmacology. A lifesaver when lectures leave you confused. Watch before class, not after.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- PODCASTS -->
-                                <div>
-                                    <div class="flex items-center gap-2 mb-3">
-                                        <span class="text-xl">🎙️</span>
-                                        <h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Podcasts</h4>
-                                    </div>
-                                    <ul class="space-y-3">
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">🎧</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Core Anesthesia Podcast</span> — high-yield anesthesia concepts broken down into digestible episodes. Great for commutes, the gym, or winding down.</span>
-                                        </li>
-                                        <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151">
-                                            <span class="text-xl flex-shrink-0">⚡</span>
-                                            <span><span class="font-bold" style="color:#1A1035">Atomic Anesthesia</span> — rapid-fire, concise anesthesia pearls in short episodes. Perfect when you only have 10-15 minutes.</span>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div></div>
-                        </div>
-                    </div>
-
-                    <!-- TEXTBOOKS -->
-                    <div class="accordion-item fun-card overflow-hidden" style="border-color:#7C3AED;box-shadow:4px 4px 0 #7C3AED">
-                        <button class="w-full px-6 py-5 flex justify-between items-center transition-colors hover:bg-purple-50" onclick="toggleAcc(this)">
-                            <span style="font-family:'Fredoka',sans-serif;font-size:1.4rem;color:#1A1035" class="flex items-center gap-3">📚 Textbooks</span>
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-current acc-icon flex-shrink-0" style="background:#7C3AED;color:white;border-color:#1A1035">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
-                            </div>
-                        </button>
-                        <div class="accordion-body">
-                            <div><div class="px-6 py-5 border-t-2" style="border-color:#EDE9FF;background:#F9F7FF">
-                                <div class="space-y-3">
-
-                                    <!-- Apex -->
-                                    <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#FBBF24;background:white">
-                                        <span class="text-xl flex-shrink-0">✅</span>
-                                        <div>
-                                            <p class="font-bold text-sm" style="color:#1A1035">Apex Anesthesia Review</p>
-                                            <p class="font-semibold text-sm mt-1" style="color:#6B7280">Paid for by Hunter — use it religiously. Your primary question bank and review platform.</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Intro label -->
-                                    <p class="font-bold text-sm px-1 pt-1" style="color:#1A1035">📖 Pick one textbook to supplement lectures. Most are available as PDFs — check before you buy:</p>
-
-                                    <!-- Nagelhout -->
-                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#7C3AED;background:white">
-                                        <p class="font-bold text-sm" style="color:#7C3AED">Nagelhout & Elisha — Nurse Anesthesia</p>
-                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Written specifically for CRNAs, approachable, and well-organized for how this program teaches.</p>
-                                    </div>
-
-                                    <!-- Morgan -->
-                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#0D9488;background:white">
-                                        <p class="font-bold text-sm" style="color:#0D9488">Morgan & Mikhail — Clinical Anesthesiology</p>
-                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Dense but thorough. Great for learners who want to understand the "why" behind every drug and technique.</p>
-                                    </div>
-
-                                    <!-- Barash -->
-                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#F97316;background:white">
-                                        <p class="font-bold text-sm" style="color:#F97316">Barash — Clinical Anesthesia</p>
-                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Gold standard reference. Better as a deep-dive supplement than cover-to-cover — reach for it when a topic needs more depth.</p>
-                                    </div>
-
-                                    <!-- Miller -->
-                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#F43F82;background:white">
-                                        <p class="font-bold text-sm" style="color:#F43F82">Miller's Anesthesia</p>
-                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">The encyclopedia. Best for specific deep dives — too much for daily studying. Save it for when you need the definitive answer.</p>
-                                    </div>
-
-                                    <!-- Jaffe -->
-                                    <div class="rounded-xl p-4 border-l-4" style="border-color:#FBBF24;background:white">
-                                        <p class="font-bold text-sm" style="color:#92400E">Jaffe's — Anesthesiologist's Manual of Surgical Procedures</p>
-                                        <p class="font-semibold text-sm mt-1" style="color:#6B7280">Go-to for case planning. Essential for understanding the surgical procedure, positioning, and anesthetic considerations before stepping into the OR.</p>
-                                    </div>
-
-                                    <!-- Tip -->
-                                    <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#F43F82;background:#FFF0F7">
-                                        <span class="text-xl flex-shrink-0">💡</span>
-                                        <p class="font-bold text-sm" style="color:#9D174D">One textbook done well beats four textbooks skimmed. Pick one and stick with it.</p>
-                                    </div>
-
-                                </div>
-                            </div></div>
-                        </div>
-                    </div>
-
+                <div class="study-tabs">
+                    <button class="study-tab-btn active" onclick="switchStudyTab('stab-advice', this)">💡 Cohort Advice</button>
+                    <button class="study-tab-btn" onclick="switchStudyTab('stab-tools', this)">🛠️ Study Tools</button>
+                    <button class="study-tab-btn" onclick="switchStudyTab('stab-books', this)">📚 Textbooks</button>
                 </div>
+
+                <!-- Tab: Cohort Advice -->
+                <div id="stab-advice" class="study-tab-panel active">
+                    <div class="fun-card p-6" style="border-color:#FBBF24;box-shadow:4px 4px 0 #FBBF24">
+                        <ul class="space-y-3">
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">Stay organized and lean on your cohort!</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Try to get the easy assignments done and out of the way by the first 2-3 weeks. Saves you time at the end. Show up — do YOUR best. You got this.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take one day at a time. Stay organized and on top of your work. Make sure you take time to enjoy yourself!</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Make sure to take time off before beginning.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">The faculty is there to help you so use them if you are struggling. Keep reviewing pharmacology even when the anesthesia pharm class is complete first semester.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Work together as a team, help each other.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Take it day by day. The days are long but the weeks are so fast.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F97316;background:white;color:#374151">Start forcing yourself to set a monthly budget early. Summer is jam-packed with multiple tests a week — learn how to set up a good schedule and not cram every week. It is okay to struggle and not get A+'s on everything... the competition is over, we are all in this together. Lean on your friends!</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#F43F82;background:white;color:#374151">You're stuck with these people for 3 years — make a point to reach out and talk/learn/ask questions of everyone!</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#7C3AED;background:white;color:#374151">Be patient with the slow processes of Hunter College, everything will work out (after a LOT of stress). Help each other! Your cohort's collaboration will be key to success.</li>
+                            <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Develop good time management because balancing clinical and studying can be difficult. Be flexible — in this program nothing is set in stone, everything is always changing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tab: Study Tools -->
+                <div id="stab-tools" class="study-tab-panel">
+                    <div class="fun-card p-6 space-y-6" style="border-color:#F97316;box-shadow:4px 4px 0 #F97316;background:#FFFAF5">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xl">🧠</span><h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">How to Study</h4></div>
+                            <ul class="space-y-3">
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed" style="border-color:#0D9488;background:white;color:#374151">Focus on active recall and spaced repetition over re-reading notes. Form small study groups to talk through complex concepts like hemodynamics and pharmacology, and prioritize understanding the "why" rather than just memorizing facts.</li>
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">📖</span><span><span class="font-bold" style="color:#1A1035">Read: Make It Stick: The Science of Successful Learning</span> — the research-backed playbook for retaining dense material. Required reading before your first exam season.</span></li>
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🃏</span><span><span class="font-bold" style="color:#1A1035">Learn Anki (or a similar spaced-repetition platform)</span> — set it up before day one. Use it daily. Your future self will be very, very grateful.</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xl">📱</span><h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Apps</h4></div>
+                            <ul class="space-y-3">
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F97316;background:white;color:#374151"><span class="text-xl flex-shrink-0">📝</span><span><span class="font-bold" style="color:#1A1035">Notability</span> — the go-to note-taking app for iPad. Record lectures while you annotate slides, then replay audio synced to your handwriting. Worth every penny for CRNA school.</span></li>
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">🗂️</span><span><span class="font-bold" style="color:#1A1035">Notion</span> — all-in-one workspace for organizing notes, case logs, schedules, and study plans. Great for keeping everything in one place across your phone, tablet, and laptop.</span></li>
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#0D9488;background:white;color:#374151"><span class="text-xl flex-shrink-0">💊</span><span><span class="font-bold" style="color:#1A1035">Vargo App</span> — anesthesia drug reference at your fingertips. Perfect for quick lookups on dosing, mechanisms, and clinical pearls before and during cases.</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xl">▶️</span><h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">YouTube & Video</h4></div>
+                            <ul class="space-y-3">
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#F43F82;background:white;color:#374151"><span class="text-xl flex-shrink-0">🥷</span><span><span class="font-bold" style="color:#1A1035">Ninja Nerd</span> — free YouTube channel with incredibly clear, visual explanations of physiology and pharmacology. A lifesaver when lectures leave you confused. Watch before class, not after.</span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-3"><span class="text-xl">🎙️</span><h4 style="font-family:'Fredoka',sans-serif;font-size:1.2rem;color:#1A1035">Podcasts</h4></div>
+                            <ul class="space-y-3">
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#FBBF24;background:white;color:#374151"><span class="text-xl flex-shrink-0">🎧</span><span><span class="font-bold" style="color:#1A1035">Core Anesthesia Podcast</span> — high-yield anesthesia concepts broken down into digestible episodes. Great for commutes, the gym, or winding down.</span></li>
+                                <li class="rounded-xl p-4 border-l-4 font-semibold text-sm leading-relaxed flex items-start gap-3" style="border-color:#7C3AED;background:white;color:#374151"><span class="text-xl flex-shrink-0">⚡</span><span><span class="font-bold" style="color:#1A1035">Atomic Anesthesia</span> — rapid-fire, concise anesthesia pearls in short episodes. Perfect when you only have 10-15 minutes.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Textbooks -->
+                <div id="stab-books" class="study-tab-panel">
+                    <div class="fun-card p-6 space-y-3" style="border-color:#7C3AED;box-shadow:4px 4px 0 #7C3AED;background:#F9F7FF">
+                        <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#FBBF24;background:white"><span class="text-xl flex-shrink-0">✅</span><div><p class="font-bold text-sm" style="color:#1A1035">Apex Anesthesia Review</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">Paid for by Hunter — use it religiously. Your primary question bank and review platform.</p></div></div>
+                        <p class="font-bold text-sm px-1 pt-1" style="color:#1A1035">📖 Pick one textbook to supplement lectures. Most are available as PDFs — check before you buy:</p>
+                        <div class="rounded-xl p-4 border-l-4" style="border-color:#7C3AED;background:white"><p class="font-bold text-sm" style="color:#7C3AED">Nagelhout & Elisha — Nurse Anesthesia</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">Written specifically for CRNAs, approachable, and well-organized for how this program teaches.</p></div>
+                        <div class="rounded-xl p-4 border-l-4" style="border-color:#0D9488;background:white"><p class="font-bold text-sm" style="color:#0D9488">Morgan & Mikhail — Clinical Anesthesiology</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">Dense but thorough. Great for learners who want to understand the "why" behind every drug and technique.</p></div>
+                        <div class="rounded-xl p-4 border-l-4" style="border-color:#F97316;background:white"><p class="font-bold text-sm" style="color:#F97316">Barash — Clinical Anesthesia</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">Gold standard reference. Better as a deep-dive supplement than cover-to-cover — reach for it when a topic needs more depth.</p></div>
+                        <div class="rounded-xl p-4 border-l-4" style="border-color:#F43F82;background:white"><p class="font-bold text-sm" style="color:#F43F82">Miller's Anesthesia</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">The encyclopedia. Best for specific deep dives — too much for daily studying. Save it for when you need the definitive answer.</p></div>
+                        <div class="rounded-xl p-4 border-l-4" style="border-color:#FBBF24;background:white"><p class="font-bold text-sm" style="color:#92400E">Jaffe's — Anesthesiologist's Manual of Surgical Procedures</p><p class="font-semibold text-sm mt-1" style="color:#6B7280">Go-to for case planning. Essential for understanding the surgical procedure, positioning, and anesthetic considerations before stepping into the OR.</p></div>
+                        <div class="rounded-xl p-4 border-l-4 flex items-start gap-3" style="border-color:#F43F82;background:#FFF0F7"><span class="text-xl flex-shrink-0">💡</span><p class="font-bold text-sm" style="color:#9D174D">One textbook done well beats four textbooks skimmed. Pick one and stick with it.</p></div>
+                    </div>
+                </div>
+
             </section>
 
             <!-- ===== FINANCIAL AID ===== -->
@@ -1047,77 +973,85 @@
 
             <!-- ===== LOCAL ===== -->
             <section id="local" class="page-section">
-                <div class="mb-8 mt-2">
+                <div class="mb-6 mt-2">
                     <span class="sticker mb-3 inline-block">🗺️ FiDi Picks</span>
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Fuel & Food</h2>
-                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Cohort-approved coffee spots in the Financial District.</p>
+                    <p class="font-semibold text-lg mt-2" style="color:#6B7280">Cohort-approved spots in the Financial District.</p>
                 </div>
 
-                <div class="fun-card fun-card-purple p-8">
-                    <h3 style="font-family:'Fredoka',sans-serif;font-size:2rem;color:#7C3AED;margin-bottom:1.25rem">☕ Coffee & Caffeine</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="local-tabs">
+                    <button class="local-tab-btn active" onclick="switchLocalTab('ltab-coffee', this)">☕ Coffee Spots</button>
+                    <button class="local-tab-btn" onclick="switchLocalTab('ltab-picks', this)">💬 Community Picks</button>
+                </div>
 
-                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#7C3AED;box-shadow:3px 3px 0 #7C3AED">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Conwell Coffee</h4>
-                                <span class="sticker sticker-purple" style="font-size:0.6rem">Local fave</span>
+                <div id="ltab-coffee" class="local-tab-panel active">
+                    <div class="fun-card fun-card-purple p-8">
+                        <h3 style="font-family:'Fredoka',sans-serif;font-size:2rem;color:#7C3AED;margin-bottom:1.25rem">☕ Coffee & Caffeine</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                            <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#7C3AED;box-shadow:3px 3px 0 #7C3AED">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Conwell Coffee</h4>
+                                    <span class="sticker sticker-purple" style="font-size:0.6rem">Local fave</span>
+                                </div>
+                                <p class="font-semibold text-sm mb-1" style="color:#6B7280">Conwell Coffee Hall provides an elegant environment for neighborhood locals to relax, chat, and dream.</p>
                             </div>
-                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">Conwell Coffee Hall provides an elegant environment for neighborhood locals to relax, chat, and dream.</p>
-                        </div>
 
-                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#F43F82;box-shadow:3px 3px 0 #F43F82">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Gregory's Coffee</h4>
-                                <span class="sticker sticker-pink" style="font-size:0.6rem">NYC staple</span>
+                            <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#F43F82;box-shadow:3px 3px 0 #F43F82">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Gregory's Coffee</h4>
+                                    <span class="sticker sticker-pink" style="font-size:0.6rem">NYC staple</span>
+                                </div>
+                                <p class="font-semibold text-sm mb-1" style="color:#6B7280">100 William St. A NYC-born chain that takes its espresso seriously — strong, fast, and reliable when you have 10 minutes before rounds.</p>
                             </div>
-                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">100 William St. A NYC-born chain that takes its espresso seriously — strong, fast, and reliable when you have 10 minutes before rounds.</p>
-                        </div>
 
-                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#0D9488;box-shadow:3px 3px 0 #0D9488">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Suited NYC</h4>
-                                <span class="sticker sticker-teal" style="font-size:0.6rem">FiDi staple</span>
+                            <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#0D9488;box-shadow:3px 3px 0 #0D9488">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Suited NYC</h4>
+                                    <span class="sticker sticker-teal" style="font-size:0.6rem">FiDi staple</span>
+                                </div>
+                                <p class="font-semibold text-sm mb-1" style="color:#6B7280">A sleek FiDi café popular with the finance crowd — great espresso, fast service, and just the right energy to get you focused before a long clinical day.</p>
                             </div>
-                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">A sleek FiDi café popular with the finance crowd — great espresso, fast service, and just the right energy to get you focused before a long clinical day.</p>
-                        </div>
 
-                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Black Fox Coffee</h4>
-                                <span class="sticker" style="font-size:0.6rem">Top tier</span>
+                            <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1" style="background:white;border-color:#FBBF24;box-shadow:3px 3px 0 #FBBF24">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Black Fox Coffee</h4>
+                                    <span class="sticker" style="font-size:0.6rem">Top tier</span>
+                                </div>
+                                <p class="font-semibold text-sm mb-1" style="color:#6B7280">70 Pine St. Known for some of the best coffee in the city. A premium spot to treat yourself after surviving a tough exam or a long case.</p>
                             </div>
-                            <p class="font-semibold text-sm mb-1" style="color:#6B7280">70 Pine St. Known for some of the best coffee in the city. A premium spot to treat yourself after surviving a tough exam or a long case.</p>
-                        </div>
 
-                        <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1 sm:col-span-2" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Brookfield Place Food Hall</h4>
-                                <span class="sticker" style="background:#F97316;color:white;border-color:#1A1035;font-size:0.6rem">Bonus spot</span>
+                            <div class="rounded-xl p-5 border-2 transition-all hover:-translate-y-1 sm:col-span-2" style="background:white;border-color:#F97316;box-shadow:3px 3px 0 #F97316">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 style="font-family:'Fredoka',sans-serif;font-size:1.3rem;color:#1A1035">Brookfield Place Food Hall</h4>
+                                    <span class="sticker" style="background:#F97316;color:white;border-color:#1A1035;font-size:0.6rem">Bonus spot</span>
+                                </div>
+                                <p class="font-semibold text-sm" style="color:#6B7280">230 Vesey St. Not just coffee — multiple vendors including Le District for a proper café au lait and pastry. Great for a longer study break or grabbing a real meal between a morning and afternoon case.</p>
                             </div>
-                            <p class="font-semibold text-sm" style="color:#6B7280">230 Vesey St. Not just coffee — multiple vendors including Le District for a proper café au lait and pastry. Great for a longer study break or grabbing a real meal between a morning and afternoon case.</p>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
-                <!-- COMMUNITY PICKS -->
-                <div class="fun-card mt-6 p-6 sm:p-8" style="border-color:#F43F82;box-shadow:4px 4px 0 #F43F82">
-                    <h3 style="font-family:'Fredoka',sans-serif;font-size:1.8rem;color:#F43F82;margin-bottom:4px">💬 Community Picks</h3>
-                    <p style="font-family:'Nunito',sans-serif;font-size:0.875rem;font-weight:700;color:#6B7280;margin-bottom:20px">Drop your favorite local spot for the cohort!</p>
+                <div id="ltab-picks" class="local-tab-panel">
+                    <div class="fun-card p-6 sm:p-8" style="border-color:#F43F82;box-shadow:4px 4px 0 #F43F82">
+                        <h3 style="font-family:'Fredoka',sans-serif;font-size:1.8rem;color:#F43F82;margin-bottom:4px">💬 Community Picks</h3>
+                        <p style="font-family:'Nunito',sans-serif;font-size:0.875rem;font-weight:700;color:#6B7280;margin-bottom:20px">Drop your favorite local spot for the cohort!</p>
 
-                    <!-- Submit form -->
-                    <div style="background:#FFF0F7;border-radius:16px;padding:20px;margin-bottom:20px;border:2px solid #FEC4D8">
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-                            <input id="spot-name" maxlength="40" placeholder="Your name (optional)" style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035">
-                            <input id="spot-place" maxlength="60" placeholder="Favorite spot ☕" style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035">
+                        <!-- Submit form -->
+                        <div style="background:#FFF0F7;border-radius:16px;padding:20px;margin-bottom:20px;border:2px solid #FEC4D8">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+                                <input id="spot-name" maxlength="40" placeholder="Your name (optional)" style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035">
+                                <input id="spot-place" maxlength="60" placeholder="Favorite spot ☕" style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035">
+                            </div>
+                            <textarea id="spot-comment" maxlength="280" rows="3" placeholder="Why do you love it? Any tips for the cohort..." style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035;resize:none;margin-bottom:10px"></textarea>
+                            <button onclick="submitSpot()" id="spot-submit-btn" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;background:#F43F82;color:white;border:2px solid #1A1035;border-radius:999px;padding:10px 28px;cursor:pointer;box-shadow:3px 3px 0 #1A1035;transition:transform 0.15s,box-shadow 0.15s">Share it! ☕</button>
                         </div>
-                        <textarea id="spot-comment" maxlength="280" rows="3" placeholder="Why do you love it? Any tips for the cohort..." style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;padding:10px 14px;border-radius:10px;border:2px solid #e5e7eb;outline:none;width:100%;box-sizing:border-box;color:#1A1035;resize:none;margin-bottom:10px"></textarea>
-                        <button onclick="submitSpot()" id="spot-submit-btn" style="font-family:'Fredoka',sans-serif;font-size:1rem;font-weight:700;background:#F43F82;color:white;border:2px solid #1A1035;border-radius:999px;padding:10px 28px;cursor:pointer;box-shadow:3px 3px 0 #1A1035;transition:transform 0.15s,box-shadow 0.15s">Share it! ☕</button>
-                    </div>
 
-                    <!-- Picks list -->
-                    <div id="spots-list" style="display:flex;flex-direction:column;gap:12px">
-                        <p style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;color:#9CA3AF;text-align:center;padding:20px 0">Loading picks…</p>
+                        <!-- Picks list -->
+                        <div id="spots-list" style="display:flex;flex-direction:column;gap:12px">
+                            <p style="font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;color:#9CA3AF;text-align:center;padding:20px 0">Loading picks…</p>
+                        </div>
                     </div>
                 </div>
 
@@ -1514,6 +1448,22 @@
         function switchHunterTab(id, btn) {
             document.querySelectorAll('.hunter-tab-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.hunter-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // ====== STUDY TABS ======
+        function switchStudyTab(id, btn) {
+            document.querySelectorAll('.study-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.study-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // ====== LOCAL TABS ======
+        function switchLocalTab(id, btn) {
+            document.querySelectorAll('.local-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.local-tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             btn.classList.add('active');
         }
