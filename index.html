@@ -290,19 +290,49 @@
             box-shadow: 5px 7px 0 #7C3AED;
         }
 
-        /* === POLAROID GALLERY === */
-        .polaroid {
-            background: white;
-            padding: 10px 10px 40px;
+        /* === MASONRY GALLERY === */
+        .gallery-masonry {
+            columns: 1;
+            column-gap: 1rem;
+            padding-bottom: 2.5rem;
+        }
+        @media (min-width: 640px)  { .gallery-masonry { columns: 2; } }
+        @media (min-width: 1024px) { .gallery-masonry { columns: 3; } }
+
+        .gallery-card {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
             border: 2px solid #e5e7eb;
             box-shadow: 3px 3px 0 #1A1035;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .polaroid:hover {
-            transform: rotate(0deg) translateY(-6px) !important;
-            box-shadow: 6px 8px 0 #7C3AED;
-            z-index: 10;
-            position: relative;
+        .gallery-card:hover { transform: translateY(-5px); box-shadow: 5px 8px 0 #7C3AED; z-index: 10; position: relative; }
+        .gallery-card img { display: block; width: 100%; height: auto; }
+        .gallery-card .gc-caption {
+            padding: 10px 12px 14px;
+            background: #fff;
+        }
+        .gallery-card .gc-caption strong {
+            display: block;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: #7C3AED;
+            line-height: 1.3;
+            text-align: center;
+        }
+        .gallery-card .gc-caption small {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #6B7280;
+            margin-top: 4px;
+            line-height: 1.4;
+            text-align: center;
         }
 
         /* scrollbar hide */
@@ -982,7 +1012,7 @@
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Cohort Memories</h2>
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">A little proof that we actually have fun sometimes!</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10" id="gallery-grid"></div>
+                <div class="gallery-masonry" id="gallery-grid"></div>
             </section>
 
         </main>
@@ -1620,95 +1650,39 @@
             const grid = document.getElementById('gallery-grid');
             if (!grid) return;
             GALLERY.forEach(item => {
+                const srcs = item.photos || (item.photo ? [item.photo] : []);
+                if (srcs.length === 0) return;
+
                 const card = document.createElement('div');
-                card.className = `polaroid ${item.rotate} mx-auto w-full max-w-xs group`;
+                card.className = 'gallery-card';
 
-                // normalise: support both photo (string) and photos (array)
-                const photos = item.photos || (item.photo ? [item.photo] : []);
+                // image (natural aspect ratio — key for masonry)
+                const img = document.createElement('img');
+                img.src = srcs[0];
+                img.alt = item.caption;
+                img.loading = 'lazy';
+                card.appendChild(img);
 
-                // image section
-                const imgWrap = document.createElement('div');
-
-                if (photos.length === 0) {
-                    imgWrap.className = 'aspect-square overflow-hidden flex items-center justify-center text-6xl';
-                    imgWrap.style.background = item.bg;
-                    imgWrap.textContent = item.emoji;
-                } else {
-                    imgWrap.className = 'aspect-square overflow-hidden bg-gray-100 relative';
-                    let idx = 0;
-
-                    const img = document.createElement('img');
-                    img.src = photos[0];
-                    img.alt = item.caption;
-                    img.className = 'w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105';
-                    imgWrap.appendChild(img);
-
-                    if (photos.length > 1) {
-                        // dots
-                        const dotsWrap = document.createElement('div');
-                        dotsWrap.style.cssText = 'position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;pointer-events:none';
-                        const dotEls = photos.map((_, i) => {
-                            const d = document.createElement('div');
-                            d.style.cssText = `width:6px;height:6px;border-radius:50%;background:${i === 0 ? 'white' : 'rgba(255,255,255,0.4)'};box-shadow:0 1px 3px rgba(0,0,0,0.5);transition:background 0.2s`;
-                            dotsWrap.appendChild(d);
-                            return d;
-                        });
-
-                        function go(newIdx) {
-                            img.style.opacity = '0';
-                            setTimeout(() => {
-                                idx = (newIdx + photos.length) % photos.length;
-                                img.src = photos[idx];
-                                img.style.opacity = '1';
-                                dotEls.forEach((d, i) => d.style.background = i === idx ? 'white' : 'rgba(255,255,255,0.4)');
-                            }, 180);
-                        }
-
-                        // prev / next buttons
-                        const btnStyle = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;border-radius:50%;width:28px;height:28px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:opacity 0.2s';
-                        const prev = document.createElement('button');
-                        prev.innerHTML = '&#8249;';
-                        prev.setAttribute('aria-label', 'Previous photo');
-                        prev.style.cssText = btnStyle + ';left:6px';
-                        prev.onclick = (e) => { e.stopPropagation(); go(idx - 1); };
-
-                        const next = document.createElement('button');
-                        next.innerHTML = '&#8250;';
-                        next.setAttribute('aria-label', 'Next photo');
-                        next.style.cssText = btnStyle + ';right:6px';
-                        next.onclick = (e) => { e.stopPropagation(); go(idx + 1); };
-
-                        // show arrows on hover (desktop)
-                        imgWrap.addEventListener('mouseenter', () => { prev.style.opacity = '1'; next.style.opacity = '1'; });
-                        imgWrap.addEventListener('mouseleave', () => { prev.style.opacity = '0'; next.style.opacity = '0'; });
-
-                        // swipe support (mobile)
-                        let tx = 0;
-                        imgWrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-                        imgWrap.addEventListener('touchend', e => {
-                            const diff = tx - e.changedTouches[0].clientX;
-                            if (Math.abs(diff) > 40) go(diff > 0 ? idx + 1 : idx - 1);
-                        });
-
-                        imgWrap.appendChild(prev);
-                        imgWrap.appendChild(next);
-                        imgWrap.appendChild(dotsWrap);
-                    }
+                // +N badge for multi-photo cards
+                if (srcs.length > 1) {
+                    const badge = document.createElement('div');
+                    badge.style.cssText = 'position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.55);color:#fff;font-family:\'Nunito\',sans-serif;font-size:0.7rem;font-weight:800;padding:2px 7px;border-radius:999px;pointer-events:none';
+                    badge.textContent = `+${srcs.length - 1}`;
+                    card.appendChild(badge);
                 }
 
-                card.appendChild(imgWrap);
-
-                const cap = document.createElement('p');
-                cap.style.cssText = `font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px`;
-                cap.textContent = item.caption;
-                card.appendChild(cap);
+                const capWrap = document.createElement('div');
+                capWrap.className = 'gc-caption';
+                const capTitle = document.createElement('strong');
+                capTitle.textContent = item.caption;
+                capWrap.appendChild(capTitle);
 
                 if (item.subcaption) {
-                    const sub = document.createElement('p');
-                    sub.style.cssText = `font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:#6B7280;text-align:center;margin-top:3px;line-height:1.4`;
-                    sub.textContent = item.subcaption;
-                    card.appendChild(sub);
+                    const capSub = document.createElement('small');
+                    capSub.textContent = item.subcaption;
+                    capWrap.appendChild(capSub);
                 }
+                card.appendChild(capWrap);
 
                 grid.appendChild(card);
             });
