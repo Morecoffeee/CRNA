@@ -290,20 +290,127 @@
             box-shadow: 5px 7px 0 #7C3AED;
         }
 
-        /* === POLAROID GALLERY === */
-        .polaroid {
-            background: white;
-            padding: 10px 10px 40px;
-            border: 2px solid #e5e7eb;
-            box-shadow: 3px 3px 0 #1A1035;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* === MASONRY GALLERY === */
+        .gallery-masonry {
+            columns: 1;
+            column-gap: 1rem;
+            padding-bottom: 2.5rem;
         }
-        .polaroid:hover {
-            transform: rotate(0deg) translateY(-6px) !important;
-            box-shadow: 6px 8px 0 #7C3AED;
-            z-index: 10;
+        @media (min-width: 640px)  { .gallery-masonry { columns: 2; } }
+        @media (min-width: 1024px) { .gallery-masonry { columns: 3; } }
+
+        .gallery-card {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
             position: relative;
+            background: #fff;
+            box-shadow: 3px 3px 0 #1A1035;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+        .gallery-card:hover { transform: translateY(-5px); box-shadow: 5px 8px 0 #7C3AED; }
+        .gallery-card img { display: block; width: 100%; height: auto; }
+        .gallery-card .gc-caption {
+            padding: 10px 12px 12px;
+            background: #fff;
+        }
+        .gallery-card .gc-caption strong {
+            display: block;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: #7C3AED;
+            line-height: 1.3;
+        }
+        .gallery-card .gc-caption small {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #6B7280;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+        .gallery-card .gc-badge {
+            position: absolute;
+            top: 8px; right: 8px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        /* === LIGHTBOX === */
+        #gallery-lightbox {
+            display: none;
+            position: fixed; inset: 0; z-index: 9990;
+            background: rgba(10,5,25,0.95);
+            align-items: center; justify-content: center;
+            flex-direction: column;
+        }
+        #gallery-lightbox.lb-open { display: flex; }
+        #lb-img {
+            max-width: min(90vw, 1000px);
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 6px;
+            transition: opacity 0.22s ease;
+        }
+        #lb-caption-wrap {
+            margin-top: 14px;
+            text-align: center;
+            max-width: min(90vw, 800px);
+            padding: 0 16px;
+        }
+        #lb-caption-wrap strong {
+            display: block;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: #e9e0ff;
+        }
+        #lb-caption-wrap small {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(200,185,255,0.7);
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        #lb-counter {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: rgba(200,185,255,0.55);
+            margin-top: 8px;
+        }
+        .lb-btn {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            border: none; border-radius: 50%;
+            width: 46px; height: 46px;
+            color: #fff; font-size: 1.6rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .lb-btn:hover { background: rgba(124,58,237,0.6); }
+        #lb-prev { left: 14px; }
+        #lb-next { right: 14px; }
+        #lb-close {
+            position: fixed; top: 14px; right: 18px;
+            background: rgba(255,255,255,0.12);
+            border: none; border-radius: 50%;
+            width: 40px; height: 40px;
+            color: #fff; font-size: 1.3rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        #lb-close:hover { background: rgba(220,38,38,0.5); }
 
         /* scrollbar hide */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -982,7 +1089,7 @@
                     <h2 style="font-family:'Fredoka',sans-serif;font-size:2.8rem;color:#1A1035">Cohort Memories</h2>
                     <p class="font-semibold text-lg mt-2" style="color:#6B7280">A little proof that we actually have fun sometimes!</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-10" id="gallery-grid"></div>
+                <div class="gallery-masonry" id="gallery-grid"></div>
             </section>
 
         </main>
@@ -1616,105 +1723,145 @@
             { caption: 'FIRE Event & DNP Scholarship Winners — Hunter\'s 20th Annual Poster Day', subcaption: 'Left to Right: Tara Mackey, Wen Huang, Erin Murphy, Aaron Tan · Topic: Intraoperative Anesthetic Requirements in Cannabis Users: A RE-AIM-Guided Comprehensive Lit Review', photo: 'https://i.imgur.com/rDue5A5.jpeg', emoji: '🏆', bg: '#FEF9C3', captionColor: '#F59E0B', rotate: '-rotate-2' },
         ];
 
+        // ── Flatten all gallery photos into one lightbox array ──
+        const LB_PHOTOS = [];
+        GALLERY.forEach(item => {
+            const srcs = item.photos || (item.photo ? [item.photo] : []);
+            srcs.forEach((src, i) => {
+                LB_PHOTOS.push({ src, caption: item.caption, subcaption: item.subcaption || '' });
+            });
+        });
+
+        let lbIdx = 0;
+        let _lbTrigger = null;
+        const lbEl    = document.getElementById('gallery-lightbox');
+        const lbImg   = document.getElementById('lb-img');
+        const lbCapT  = document.getElementById('lb-cap-title');
+        const lbCapS  = document.getElementById('lb-cap-sub');
+        const lbCount = document.getElementById('lb-counter');
+
+        function lbRender(fade) {
+            const p = LB_PHOTOS[lbIdx];
+            if (fade) lbImg.style.opacity = '0';
+            const doSet = () => {
+                lbImg.src = p.src;
+                lbImg.alt = p.caption;
+                lbCapT.textContent = p.caption;
+                lbCapS.textContent = p.subcaption;
+                lbCapS.style.display = p.subcaption ? 'block' : 'none';
+                lbCount.textContent = LB_PHOTOS.length > 1 ? `${lbIdx + 1} / ${LB_PHOTOS.length}` : '';
+                document.getElementById('lb-prev').style.display = LB_PHOTOS.length > 1 ? 'flex' : 'none';
+                document.getElementById('lb-next').style.display = LB_PHOTOS.length > 1 ? 'flex' : 'none';
+                if (fade) setTimeout(() => { lbImg.style.opacity = '1'; }, 30);
+            };
+            fade ? setTimeout(doSet, 180) : doSet();
+        }
+
+        function openLightbox(startSrc, triggerEl) {
+            const i = LB_PHOTOS.findIndex(p => p.src === startSrc);
+            lbIdx = i >= 0 ? i : 0;
+            _lbTrigger = triggerEl || null;
+            lbRender(false);
+            lbEl.classList.add('lb-open');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('lb-close').focus();
+        }
+
+        function closeLightbox() {
+            lbEl.classList.remove('lb-open');
+            document.body.style.overflow = '';
+            if (_lbTrigger) { _lbTrigger.focus(); _lbTrigger = null; }
+        }
+
+        function lbGo(dir) {
+            lbIdx = (lbIdx + dir + LB_PHOTOS.length) % LB_PHOTOS.length;
+            lbRender(true);
+        }
+
+        document.getElementById('lb-close').addEventListener('click', closeLightbox);
+        document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+        document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+
+        document.addEventListener('keydown', e => {
+            if (!lbEl.classList.contains('lb-open')) return;
+            if (e.key === 'Escape')     closeLightbox();
+            if (e.key === 'ArrowRight') lbGo(1);
+            if (e.key === 'ArrowLeft')  lbGo(-1);
+        });
+
+        lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLightbox(); });
+
+        (function() {
+            let sx = 0;
+            lbEl.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+            lbEl.addEventListener('touchend', e => {
+                const diff = sx - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) lbGo(diff > 0 ? 1 : -1);
+            });
+        })();
+
+        // ── Render masonry cards ──
         (function renderGallery() {
             const grid = document.getElementById('gallery-grid');
             if (!grid) return;
+
             GALLERY.forEach(item => {
+                const srcs = item.photos || (item.photo ? [item.photo] : []);
+                if (srcs.length === 0) return;
+
                 const card = document.createElement('div');
-                card.className = `polaroid ${item.rotate} mx-auto w-full max-w-xs group`;
+                card.className = 'gallery-card';
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', item.caption);
+                card.addEventListener('click', () => openLightbox(srcs[0], card));
+                card.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(srcs[0], card); }
+                });
 
-                // normalise: support both photo (string) and photos (array)
-                const photos = item.photos || (item.photo ? [item.photo] : []);
+                const img = document.createElement('img');
+                img.src = srcs[0];
+                img.alt = item.caption;
+                img.loading = 'lazy';
+                card.appendChild(img);
 
-                // image section
-                const imgWrap = document.createElement('div');
-
-                if (photos.length === 0) {
-                    imgWrap.className = 'aspect-square overflow-hidden flex items-center justify-center text-6xl';
-                    imgWrap.style.background = item.bg;
-                    imgWrap.textContent = item.emoji;
-                } else {
-                    imgWrap.className = 'aspect-square overflow-hidden bg-gray-100 relative';
-                    let idx = 0;
-
-                    const img = document.createElement('img');
-                    img.src = photos[0];
-                    img.alt = item.caption;
-                    img.className = 'w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105';
-                    imgWrap.appendChild(img);
-
-                    if (photos.length > 1) {
-                        // dots
-                        const dotsWrap = document.createElement('div');
-                        dotsWrap.style.cssText = 'position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;pointer-events:none';
-                        const dotEls = photos.map((_, i) => {
-                            const d = document.createElement('div');
-                            d.style.cssText = `width:6px;height:6px;border-radius:50%;background:${i === 0 ? 'white' : 'rgba(255,255,255,0.4)'};box-shadow:0 1px 3px rgba(0,0,0,0.5);transition:background 0.2s`;
-                            dotsWrap.appendChild(d);
-                            return d;
-                        });
-
-                        function go(newIdx) {
-                            img.style.opacity = '0';
-                            setTimeout(() => {
-                                idx = (newIdx + photos.length) % photos.length;
-                                img.src = photos[idx];
-                                img.style.opacity = '1';
-                                dotEls.forEach((d, i) => d.style.background = i === idx ? 'white' : 'rgba(255,255,255,0.4)');
-                            }, 180);
-                        }
-
-                        // prev / next buttons
-                        const btnStyle = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;border-radius:50%;width:28px;height:28px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;opacity:0;transition:opacity 0.2s';
-                        const prev = document.createElement('button');
-                        prev.innerHTML = '&#8249;';
-                        prev.setAttribute('aria-label', 'Previous photo');
-                        prev.style.cssText = btnStyle + ';left:6px';
-                        prev.onclick = (e) => { e.stopPropagation(); go(idx - 1); };
-
-                        const next = document.createElement('button');
-                        next.innerHTML = '&#8250;';
-                        next.setAttribute('aria-label', 'Next photo');
-                        next.style.cssText = btnStyle + ';right:6px';
-                        next.onclick = (e) => { e.stopPropagation(); go(idx + 1); };
-
-                        // show arrows on hover (desktop)
-                        imgWrap.addEventListener('mouseenter', () => { prev.style.opacity = '1'; next.style.opacity = '1'; });
-                        imgWrap.addEventListener('mouseleave', () => { prev.style.opacity = '0'; next.style.opacity = '0'; });
-
-                        // swipe support (mobile)
-                        let tx = 0;
-                        imgWrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-                        imgWrap.addEventListener('touchend', e => {
-                            const diff = tx - e.changedTouches[0].clientX;
-                            if (Math.abs(diff) > 40) go(diff > 0 ? idx + 1 : idx - 1);
-                        });
-
-                        imgWrap.appendChild(prev);
-                        imgWrap.appendChild(next);
-                        imgWrap.appendChild(dotsWrap);
-                    }
+                if (srcs.length > 1) {
+                    const badge = document.createElement('div');
+                    badge.className = 'gc-badge';
+                    badge.textContent = `+${srcs.length - 1}`;
+                    card.appendChild(badge);
                 }
 
-                card.appendChild(imgWrap);
-
-                const cap = document.createElement('p');
-                cap.style.cssText = `font-family:'Fredoka',sans-serif;font-size:1.1rem;color:${item.captionColor};text-align:center;margin-top:8px`;
-                cap.textContent = item.caption;
-                card.appendChild(cap);
-
+                const capWrap = document.createElement('div');
+                capWrap.className = 'gc-caption';
+                const capTitle = document.createElement('strong');
+                capTitle.textContent = item.caption;
+                capWrap.appendChild(capTitle);
                 if (item.subcaption) {
-                    const sub = document.createElement('p');
-                    sub.style.cssText = `font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:#6B7280;text-align:center;margin-top:3px;line-height:1.4`;
-                    sub.textContent = item.subcaption;
-                    card.appendChild(sub);
+                    const capSub = document.createElement('small');
+                    capSub.textContent = item.subcaption;
+                    capWrap.appendChild(capSub);
                 }
+                card.appendChild(capWrap);
 
                 grid.appendChild(card);
             });
         })();
     </script>    
     
+    <!-- ======================== GALLERY LIGHTBOX ======================== -->
+    <div id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button id="lb-close" aria-label="Close photo viewer">&#x2715;</button>
+        <button id="lb-prev" class="lb-btn" aria-label="Previous photo">&#8249;</button>
+        <button id="lb-next" class="lb-btn" aria-label="Next photo">&#8250;</button>
+        <img id="lb-img" src="" alt="">
+        <div id="lb-caption-wrap">
+            <strong id="lb-cap-title"></strong>
+            <small id="lb-cap-sub"></small>
+        </div>
+        <div id="lb-counter"></div>
+    </div>
+
     <div style="position:fixed;bottom:10px;right:14px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
         <p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(26,16,53,0.35);margin:0">Made by Aaron Tan</p>
         <a href="mailto:Tan.aaronh@gmail.com" style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(124,58,237,0.5);text-decoration:none;display:block;text-align:right">Tan.aaronh@gmail.com</a>
