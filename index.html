@@ -1086,6 +1086,18 @@
         </main>
     </div>
 
+    <div id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button id="lb-close" aria-label="Close photo viewer">&#x2715;</button>
+        <button id="lb-prev" class="lb-btn" aria-label="Previous photo">&#8249;</button>
+        <button id="lb-next" class="lb-btn" aria-label="Next photo">&#8250;</button>
+        <img id="lb-img" src="" alt="">
+        <div id="lb-caption-wrap">
+            <strong id="lb-cap-title"></strong>
+            <small id="lb-cap-sub"></small>
+        </div>
+        <div id="lb-counter"></div>
+    </div>
+
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ====== ADJUNCT FACULTY PHOTOS ======
         // ─────────────────────────────────────────────────────────────
@@ -1822,18 +1834,6 @@
         })();
     </script>    
     
-    <div id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-        <button id="lb-close" aria-label="Close photo viewer">&#x2715;</button>
-        <button id="lb-prev" class="lb-btn" aria-label="Previous photo">&#8249;</button>
-        <button id="lb-next" class="lb-btn" aria-label="Next photo">&#8250;</button>
-        <img id="lb-img" src="" alt="">
-        <div id="lb-caption-wrap">
-            <strong id="lb-cap-title"></strong>
-            <small id="lb-cap-sub"></small>
-        </div>
-        <div id="lb-counter"></div>
-    </div>
-
     <div style="position:fixed;bottom:10px;right:14px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
         <p style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(26,16,53,0.35);margin:0">Made by Aaron Tan</p>
         <a href="mailto:Tan.aaronh@gmail.com" style="font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:700;color:rgba(124,58,237,0.5);text-decoration:none;display:block;text-align:right">Tan.aaronh@gmail.com</a>
